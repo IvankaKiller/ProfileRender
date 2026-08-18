@@ -131,7 +131,7 @@ module.exports = (Request, Result) => {
 					Key = Key.trim();
 					let FileName = IconsInfo[Key];
 					if(!FileName){
-						FileName = "blank";
+						FileName = "error";
 					}
 
 					const IconPath = PATH.join(ResourcesPath, FileName + ".svg");
