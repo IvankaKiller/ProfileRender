@@ -12,24 +12,29 @@ const EscapeXML = (S) => {
 	}[C])).replace(/[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]/g, "?");
 };
 
-const WrapInSVG = (Text, BackgroundColor = "#222", TextColor = "#0FA") => {
+const WrapInSVG = (Text, Options = {}) => {
 	if(Text.trim().startsWith("<svg")){ return Text; }
 
-	const Lines = Text.split("\n");
+	const FixColor = (C) => C && !C.startsWith("#") ? "#" + C : C;
+
+	const Background = FixColor(Options.BackGround);
+	const Color = FixColor(Options.Color);
+	const Width = parseInt(Options.Width);
+
 	const LineHeight = 20;
 	const Padding = 30;
-	const Width = 650;
 
-	const DisplayLines = Lines.slice(0, 50);
-	const Height = Math.max(60, DisplayLines.length * LineHeight + Padding);
+	const Lines = Text.split("\n");
+	const DisplayLines = Lines.slice(0, 100);
+	const Height = parseInt(Options.Height) || Math.max(60, DisplayLines.length * LineHeight + Padding);
 
 	let TextElements = DisplayLines.map((line, index) =>
-		`<text x="20" y="${30 + index * LineHeight}" fill="${TextColor}" font-family="monospace" font-size="12" xml:space="preserve">${EscapeXML(line)}</text>`
+		`<text x="20" y="${30 + index * LineHeight}" fill="${Color}" font-family="monospace" font-size="12" xml:space="preserve">${EscapeXML(line)}</text>`
 	).join("");
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
     <svg xmlns="http://www.w3.org/2000/svg" width="${Width}" height="${Height}" viewBox="0 0 ${Width} ${Height}">
-      <rect width="100%" height="100%" rx="6" fill="${BackgroundColor}" />
+      <rect width="100%" height="100%" rx="6" fill="${Background}" />
       ${TextElements}
     </svg>`.trim();
 };
@@ -44,13 +49,20 @@ module.exports = (Request, Result) => {
 		Result.setHeader("Content-Type", "image/svg+xml; charset=utf-8");
 		Result.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
+		let Options = {
+			Background: QueryObject.bg || "#555555",
+			Color     : QueryObject.color || "#FFFFFF",
+			Width     : QueryObject.w || 650,
+			Height    : QueryObject.h || null
+		};
+
 		function Run(){
 			if(Type === "notype"){
 				return "Не указан тип";
 			}
 
 			if(Type === "text"){
-				return QueryObject.text || "Не указан текст";
+				return (QueryObject.text || "Не указан текст").replace("nbsp;", " ");
 			}
 
 			if(Type === "js"){
@@ -79,8 +91,15 @@ module.exports = (Request, Result) => {
 		let Result__ = Run();
 		if(Result__ === undefined){ throw new Error("Неизвестный \"type\"!"); }
 
-		Result.end(WrapInSVG(Result__));
+		Result.end(WrapInSVG(Result__, Options));
 	}catch(e){
-		Result.end(WrapInSVG("Ошибка скрипта: " + e.stack, "#411", "#ff7878"));
+		let Options = {
+			Background: "#411",
+			Color     : "#ff7878",
+			Width     : 650,
+			Height    : null
+		};
+
+		Result.end(WrapInSVG("Ошибка скрипта: " + e.stack, Options));
 	}
 };
