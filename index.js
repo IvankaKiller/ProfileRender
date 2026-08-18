@@ -76,12 +76,6 @@ const GetIconSVG = function(IconID, UniquePrefix){
 	SVG = SVG.replace(/(url\(#)([^)]*)(\))/g, `$1${UniquePrefix}_$2$3`);
 	SVG = SVG.replace(/xlink:href="#([^"]*)"/g, `xlink:href="#${UniquePrefix}_$1"`);
 
-	//SVG = SVG.replace(/fill="[^"]*"/gi, 'fill="currentColor"');
-	//SVG = SVG.replace(/stroke="[^"]*"/gi, 'stroke="currentColor"');
-
-	//SVG = SVG.replace(/inkscape:[a-z-]+="[^"]*"/gi, "");
-	//SVG = SVG.replace(/sodipodi:[a-z-]+="[^"]*"/gi, "");
-
 	return SVG.trim();
 }
 

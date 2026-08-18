@@ -46,5 +46,12 @@
 	"luagmod"     : "glua",
 	"roblox"      : "roblox",
 	"robloxstudio": "robloxstudio",
-	"robloxstd"   : "robloxstudio"
+	"robloxstd"   : "robloxstudio",
+	"rust"        : "rs",
+	"rs"          : "rs",
+	"docker"      : "docker",
+	"dock"        : "docker",
+	"mvs"         : "mvs",
+	"vsc"         : "vsc",
+	"svg"         : "svg"
 }
