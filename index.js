@@ -140,7 +140,7 @@ module.exports = (Request, Result) => {
 					}
 
 					const IconPath = `${RepoURL}resources/icons/${IconID}.svg`;
-					CombinedContent += `<image href="${IconPath}" width="${Size}" height="${Size}" />`;
+					CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}"><image href="${IconPath}" width="${Size}" height="${Size}" /></svg>`;
 
 					X += Size + Gap;
 				});
