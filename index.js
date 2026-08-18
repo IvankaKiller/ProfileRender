@@ -190,8 +190,8 @@ module.exports = (Request, Result) => {
 				const Debug = QueryObject.debug;
 
 				if(Debug === "icons"){
-					const Names = IconsInfo["Names"] || {};
-					const Categories = IconsInfo["Categories"] || {};
+					const Names = IconsInfo.Names || {};
+					const Categories = IconsInfo.Categories || {};
 
 					// Группируем по ID
 					const AllIcons = {};
@@ -222,38 +222,39 @@ module.exports = (Request, Result) => {
 
 					// Строим SVG
 					let Y = 10;
-					const LineHeight = 28;
+					const LineHeight = 80; // 75 + отступ
 					const Col1 = 10;
 					const Col2 = 120;
 					const Col3 = 300;
+					const IconSize = 75;
 
-					let SVGContent = `<svg xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="14">
+					let SVGContent = `<svg xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="14" width="800" height="${(SortedIDs.length + Object.keys(CategoryMap).length + Uncategorized.length + 5) * 85}">
     <rect width="100%" height="100%" fill="#1a1a2e"/>`;
 
 					// Шапка
 					SVGContent += `
-    <text x="${Col1}" y="${Y}" fill="#4fc3f7" font-weight="bold">ID</text>
-    <text x="${Col2}" y="${Y}" fill="#4fc3f7" font-weight="bold">Иконка</text>
-    <text x="${Col3}" y="${Y}" fill="#4fc3f7" font-weight="bold">Алиасы</text>`;
-					Y += LineHeight + 10;
+    <text x="${Col1}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="16">ID</text>
+    <text x="${Col2}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="16">Имена (алиасы)</text>
+    <text x="${Col3}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="16">Иконка</text>`;
+					Y += LineHeight;
 
 					// Функция рендера строки
 					const RenderRow = (id, names, Ypos) => {
 						const iconSVG = GetIconSVG(id, `debug_${id}`);
-						const namesStr = names.filter(n => n !== id).join(', ') || '(только ID)';
+						const namesStr = names.filter(n => n !== id).join(', ');
 
 						return `
-    <rect x="0" y="${Ypos - 18}" width="100%" height="${LineHeight}" fill="#16213e" rx="4"/>
-    <text x="${Col1}" y="${Ypos}" fill="#ffffff">${id}</text>
-    <svg x="${Col2}" y="${Ypos - 14}" width="28" height="28" viewBox="0 0 19.84375 19.84375"><g fill="#ffffff">${iconSVG}</g></svg>
-    <text x="${Col3}" y="${Ypos}" fill="#b0b0d0" font-size="12">${namesStr}</text>`;
+    <rect x="0" y="${Ypos - 20}" width="100%" height="${LineHeight}" fill="#16213e" rx="4"/>
+    <text x="${Col1}" y="${Ypos + 5}" fill="#ffffff" font-size="14">${id}</text>
+    <text x="${Col2}" y="${Ypos + 5}" fill="#b0b0d0" font-size="12">${namesStr}</text>
+    <svg x="${Col3}" y="${Ypos - 50}" width="${IconSize}" height="${IconSize}" viewBox="0 0 19.84375 19.84375"><g fill="#ffffff">${iconSVG}</g></svg>`;
 					};
 
 					// Категории
 					for(const category of Object.keys(CategoryMap).sort()){
 						SVGContent += `
-    <text x="${Col1}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="16">📁 ${category}</text>`;
-						Y += LineHeight + 5;
+    <text x="${Col1}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="18">📁 ${category}</text>`;
+						Y += LineHeight;
 
 						for(const id of CategoryMap[category].sort()){
 							SVGContent += RenderRow(id, AllIcons[id].names, Y);
@@ -265,8 +266,8 @@ module.exports = (Request, Result) => {
 					// Без категории
 					if(Uncategorized.length > 0){
 						SVGContent += `
-    <text x="${Col1}" y="${Y}" fill="#ffb74d" font-weight="bold" font-size="16">📂 Без категории</text>`;
-						Y += LineHeight + 5;
+    <text x="${Col1}" y="${Y}" fill="#ffb74d" font-weight="bold" font-size="18">📂 Без категории</text>`;
+						Y += LineHeight;
 
 						for(const id of Uncategorized.sort()){
 							SVGContent += RenderRow(id, AllIcons[id].names, Y);
