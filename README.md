@@ -113,14 +113,18 @@
 
 ### Доступные иконки
 
-| Название |          ID          | Иконка                                                                                       |
-|:--------:|:--------------------:|:---------------------------------------------------------------------------------------------|
-|  Пустая  |       `blank`        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/blank.svg)  |
-|  Ошибка  |       `error`        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/error.svg)  |
-|    C     |         `c`          | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/c.svg)      |
-|   C++    |  `cpp`, `cplusplus`  | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cpp.svg)    |
-|    C#    |    `cs`, `csharp`    | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cs.svg)     |
-|   C--    | `cmm`, `cminusminus` | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cmm.svg)    |
+|  Название  |          ID          | Иконка                                                                                      |
+|:----------:|:--------------------:|:--------------------------------------------------------------------------------------------|
+|   Пустая   |       `blank`        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/blank.svg) |
+|   Ошибка   |       `error`        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/error.svg) |
+|     C      |     `c`, `clang`     | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/c.svg)     |
+|    C++     |  `cpp`, `cplusplus`  | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cpp.svg)   |
+|     C#     |    `cs`, `csharp`    | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cs.svg)    |
+|    C--     | `cmm`, `cminusminus` | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cmm.svg)   |
+|   Python   |    `py`, `python`    | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/py.svg)    |
+|    HTML    |        `html`        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/html.svg)  |
+|    CSS     |        `css`         | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/css.svg)   |
+| JavaScript |  `js`, `javascript`  | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/js.svg)    |
 
 ``https://profile-render-fawn.vercel.app/?type=icons``
 
@@ -128,8 +132,8 @@
 
 ``https://profile-render-fawn.vercel.app/?type=icons&icons=c,cpp,cs,cmm``
 
-![](https://profile-render-fawn.vercel.app/?type=icons&icons=c,cpp,cs,cmm)
+![](https://profile-render-fawn.vercel.app/?type=icons&icons=c,cpp,cs)
 
-``https://profile-render-fawn.vercel.app/?type=icons&icons=cs,not_existing_icon,cpp``
+``https://profile-render-fawn.vercel.app/?type=icons&icons=python,not_existing_icon,js``
 
-![](https://profile-render-fawn.vercel.app/?type=icons&icons=cs,not_existing_icon,cpp)
+![](https://profile-render-fawn.vercel.app/?type=icons&icons=python,not_existing_icon,js)

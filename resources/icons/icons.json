@@ -2,10 +2,17 @@
 	"blank"      : "blank",
 	"error"      : "error",
 	"c"          : "c",
+	"clang"      : "c",
 	"cpp"        : "cpp",
 	"cplusplus"  : "cpp",
 	"cmm"        : "cmm",
 	"cminusminus": "cmm",
 	"cs"         : "cs",
-	"csharp"     : "cs"
+	"csharp"     : "cs",
+	"py"         : "py",
+	"python"     : "py",
+	"html"       : "html",
+	"css"        : "css",
+	"js"         : "js",
+	"javascript" : "js"
 }
