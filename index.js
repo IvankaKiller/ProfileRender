@@ -17,19 +17,19 @@ const WrapInSVG = (Text, Options = {}) => {
 
 	const FixColor = (C) => C && !C.startsWith("#") ? "#" + C : C;
 
-	const Background = FixColor(Options.BackGround);
+	const Background = FixColor(Options.Background);
 	const Color = FixColor(Options.Color);
-	const Width = parseInt(Options.Width);
+	const Width= parseInt(Options.Width);
 
-	const LineHeight = 20;
-	const Padding = 30;
+	const LineHeight = parseInt(Options.LineHeight);
+	const Padding = parseInt(Options.Padding);
 
 	const Lines = Text.split("\n");
-	const DisplayLines = Lines.slice(0, 100);
+	const DisplayLines = Lines.slice(0, parseInt(Options.MaxLines));
 	const Height = parseInt(Options.Height) || Math.max(60, DisplayLines.length * LineHeight + Padding);
 
-	let TextElements = DisplayLines.map((line, index) =>
-		`<text x="20" y="${30 + index * LineHeight}" fill="${Color}" font-family="monospace" font-size="12" xml:space="preserve">${EscapeXML(line)}</text>`
+	let TextElements = DisplayLines.map((Line, Index) =>
+		`<text x="20" y="${30 + Index * LineHeight}" fill="${Color}" font-family="monospace" font-size="${Options.FontSize}" xml:space="preserve">${EscapeXML(Line)}</text>`
 	).join("");
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
@@ -53,7 +53,11 @@ module.exports = (Request, Result) => {
 			Background: QueryObject.bg || "#555555",
 			Color     : QueryObject.color || "#FFFFFF",
 			Width     : QueryObject.w || 650,
-			Height    : QueryObject.h || null
+			Height    : QueryObject.h || null,
+			LineHeight: QueryObject.lh || 20,
+			Padding   : QueryObject.pad || 30,
+			MaxLines  : QueryObject.ml || 100,
+			FontSize  : QueryObject.fs || 12
 		};
 
 		function Run(){
@@ -95,7 +99,7 @@ module.exports = (Request, Result) => {
 	}catch(e){
 		let Options = {
 			Background: "#411",
-			Color     : "#ff7878",
+			Color     : "#FF7878",
 			Width     : 650,
 			Height    : null
 		};
