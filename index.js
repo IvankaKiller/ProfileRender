@@ -57,14 +57,25 @@ const WrapInSVG = function(Text, Options = {}){
     </svg>`.trim();
 };
 
-const GetIconSVG = function(IconID){
+const GetIconSVG = function(IconID, UniquePrefix){
 	const IconPath = PATH.join(IconsPath, IconID + ".svg");
 	let SVG = FS.readFileSync(IconPath, "utf8");
 
+	// Удаляем метаданные
 	SVG = SVG.replace(/<\?xml.*?\?>/gi, "");
 	SVG = SVG.replace(/<!DOCTYPE.*?>/gi, "");
 	SVG = SVG.replace(/<!--.*?-->/gs, "");
 
+	// ✅ ДЕЛАЕМ ID УНИКАЛЬНЫМИ
+	SVG = SVG.replace(/(id=")([^"]*)(")/g, `$1${UniquePrefix}_$2$3`);
+	SVG = SVG.replace(/(url\(#)([^)]*)(\))/g, `$1${UniquePrefix}_$2$3`);
+	SVG = SVG.replace(/xlink:href="#([^"]*)"/g, `xlink:href="#${UniquePrefix}_$1"`);
+
+	// Заменяем цвета на currentColor
+	SVG = SVG.replace(/fill="[^"]*"/gi, 'fill="currentColor"');
+	SVG = SVG.replace(/stroke="[^"]*"/gi, 'stroke="currentColor"');
+
+	// Удаляем inkscape/sodipodi
 	SVG = SVG.replace(/inkscape:[a-z-]+="[^"]*"/gi, "");
 	SVG = SVG.replace(/sodipodi:[a-z-]+="[^"]*"/gi, "");
 
@@ -147,7 +158,7 @@ module.exports = (Request, Result) => {
 				const Key = QueryObject.icon;
 				let IconID = IconsInfo[Key] || "error";
 
-				let SVGData = GetIconSVG(IconID);
+				let SVGData = GetIconSVG(IconID, "woowz");
 
 				const Size = 75;
 				return `<svg xmlns="http://www.w3.org/2000/svg" width="${Size}" height="${Size}">
@@ -165,11 +176,11 @@ module.exports = (Request, Result) => {
 				const Gap = 5;
 				let CombinedContent = "";
 
-				IconKeys.forEach(Key => {
+				IconKeys.forEach((Key, Index) => {
 					Key = Key.trim();
 					let IconID = IconsInfo[Key] || "error";
 
-					let SVGData = GetIconSVG(IconID);
+					let SVGData = GetIconSVG(IconID, `woowz_${Index}`);
 
 					CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}"><g>${SVGData}</g></svg>`;
 

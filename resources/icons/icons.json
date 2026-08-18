@@ -26,10 +26,10 @@
 	"windows10"  : "win10",
 	"win"        : "win10",
 	"windows"    : "win10",
-	"win8"      : "win8",
-	"windows8"  : "win8",
-	"win7"      : "win7",
-	"windows7"  : "win7",
+	"win8"       : "win8",
+	"windows8"   : "win8",
+	"win7"       : "win7",
+	"windows7"   : "win7",
 	"winxp"      : "winxp",
 	"windowsxp"  : "winxp"
 }

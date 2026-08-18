@@ -119,6 +119,10 @@
 
 ![](https://profile-render-fawn.vercel.app/?type=icon&icon=winxp)
 
+``https://profile-render-fawn.vercel.app/?type=icon&icon=not_existing_icon``
+
+![](https://profile-render-fawn.vercel.app/?type=icon&icon=not_existing_icon)
+
 ### Доступные иконки
 
 |  Название  |                   ID                   | Иконка                                                                                      |
