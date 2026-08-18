@@ -221,63 +221,68 @@ module.exports = (Request, Result) => {
 					}
 
 					// Строим SVG
-					let Y = 10;
-					const LineHeight = 80; // 75 + отступ
-					const Col1 = 10;
-					const Col2 = 120;
-					const Col3 = 300;
-					const IconSize = 75;
+					let Y = 30;
+					const RowHeight = 30;
+					const ColID = 10;
+					const ColNames = 100;
+					const ColIcon = 350;
+					const IconSize = 20;
 
-					let SVGContent = `<svg xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="14" width="800" height="${(SortedIDs.length + Object.keys(CategoryMap).length + Uncategorized.length + 5) * 85}">
+					// Высчитываем высоту
+					let totalRows = SortedIDs.length + Object.keys(CategoryMap).length + (Uncategorized.length > 0 ? 1 : 0);
+					let totalHeight = totalRows * RowHeight + 60;
+
+					let SVGContent = `<svg xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="12" width="500" height="${totalHeight}">
     <rect width="100%" height="100%" fill="#1a1a2e"/>`;
 
 					// Шапка
 					SVGContent += `
-    <text x="${Col1}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="16">ID</text>
-    <text x="${Col2}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="16">Имена (алиасы)</text>
-    <text x="${Col3}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="16">Иконка</text>`;
-					Y += LineHeight;
+    <text x="${ColID}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="14">ID</text>
+    <text x="${ColNames}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="14">Алиасы</text>
+    <text x="${ColIcon}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="14">Иконка</text>`;
+					Y += RowHeight + 5;
 
 					// Функция рендера строки
 					const RenderRow = (id, names, Ypos) => {
 						const iconSVG = GetIconSVG(id, `debug_${id}`);
 						const namesStr = names.filter(n => n !== id).join(', ');
 
+						// ⭐ ПРАВИЛЬНОЕ МАСШТАБИРОВАНИЕ: сохраняем пропорции
 						return `
-    <rect x="0" y="${Ypos - 20}" width="100%" height="${LineHeight}" fill="#16213e" rx="4"/>
-    <text x="${Col1}" y="${Ypos + 5}" fill="#ffffff" font-size="14">${id}</text>
-    <text x="${Col2}" y="${Ypos + 5}" fill="#b0b0d0" font-size="12">${namesStr}</text>
-    <svg x="${Col3}" y="${Ypos - 50}" width="${IconSize}" height="${IconSize}" viewBox="0 0 19.84375 19.84375"><g fill="#ffffff">${iconSVG}</g></svg>`;
+    <rect x="0" y="${Ypos - 12}" width="100%" height="${RowHeight}" fill="#16213e" rx="3"/>
+    <text x="${ColID}" y="${Ypos + 4}" fill="#ffffff">${id}</text>
+    <text x="${ColNames}" y="${Ypos + 4}" fill="#b0b0d0" font-size="11">${namesStr}</text>
+    <svg x="${ColIcon}" y="${Ypos - 10}" width="${IconSize}" height="${IconSize}" viewBox="0 0 19.84375 19.84375" preserveAspectRatio="xMidYMid meet"><g fill="#ffffff">${iconSVG}</g></svg>`;
 					};
 
 					// Категории
 					for(const category of Object.keys(CategoryMap).sort()){
 						SVGContent += `
-    <text x="${Col1}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="18">📁 ${category}</text>`;
-						Y += LineHeight;
+    <text x="${ColID}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="14">📁 ${category}</text>`;
+						Y += RowHeight + 5;
 
 						for(const id of CategoryMap[category].sort()){
 							SVGContent += RenderRow(id, AllIcons[id].names, Y);
-							Y += LineHeight;
+							Y += RowHeight;
 						}
-						Y += 10;
+						Y += 5;
 					}
 
 					// Без категории
 					if(Uncategorized.length > 0){
 						SVGContent += `
-    <text x="${Col1}" y="${Y}" fill="#ffb74d" font-weight="bold" font-size="18">📂 Без категории</text>`;
-						Y += LineHeight;
+    <text x="${ColID}" y="${Y}" fill="#ffb74d" font-weight="bold" font-size="14">📂 Без категории</text>`;
+						Y += RowHeight + 5;
 
 						for(const id of Uncategorized.sort()){
 							SVGContent += RenderRow(id, AllIcons[id].names, Y);
-							Y += LineHeight;
+							Y += RowHeight;
 						}
 					}
 
 					// Итог
 					SVGContent += `
-    <text x="${Col1}" y="${Y + 10}" fill="#666" font-size="12">Всего: ${SortedIDs.length} иконок</text>`;
+    <text x="${ColID}" y="${Y + 10}" fill="#666" font-size="11">Всего: ${SortedIDs.length} иконок</text>`;
 
 					SVGContent += `
 </svg>`;
