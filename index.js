@@ -49,6 +49,10 @@ module.exports = (Request, Result) => {
 				return "Не указан тип";
 			}
 
+			if(Type === "text"){
+				return QueryObject.text || "Не указан текст";
+			}
+
 			if(Type === "js"){
 				const Base64Code = QueryObject.code;
 
