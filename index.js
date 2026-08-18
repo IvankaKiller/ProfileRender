@@ -3,9 +3,6 @@ const VM = require("vm");
 const FS = require("fs");
 const PATH = require("path");
 
-const SiteURL = "https://profile-render-fawn.vercel.app/";
-const RepoURL = "https://raw.githubusercontent.com/Woowz11/ProfileRender/refs/heads/main/";
-
 const EscapeXML = function(S){
 	if(typeof S !== "string"){ S = String(S); }
 	return S.replace(/[<>&"']/g, (C) => ({
@@ -102,8 +99,6 @@ module.exports = (Request, Result) => {
 		FontSize  : 12
 	};
 
-	let Options = { ...DefaultOptions };
-
 	try{
 		Result.statusCode = 200;
 
@@ -112,6 +107,8 @@ module.exports = (Request, Result) => {
 
 		Result.setHeader("Content-Type", "image/svg+xml; charset=utf-8");
 		Result.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+
+		let Options = { ...DefaultOptions };
 
 		Options.Background = QueryObject.t_bg  || Options.Background;
 		Options.Color      = QueryObject.t_c   || Options.Color     ;
@@ -127,7 +124,7 @@ module.exports = (Request, Result) => {
 				return "Не указан тип";
 			}
 
-			if(Type === "text"){
+			if(Type === "simple"){
 				return (QueryObject.text || "Не указан \"text\"").replace(/\\n/g, "\n").replace(/nbsp;?/g, " ");
 			}
 
@@ -153,7 +150,7 @@ module.exports = (Request, Result) => {
 				if(!QueryObject.icon || QueryObject.icon === ""){ return "Не указан \"icon\""; }
 
 				const Key = QueryObject.icon;
-				let IconID = IconsInfo[Key] || "error";
+				let IconID = IconsInfo["Names"][Key] || "error";
 
 				let SVGData = GetIconSVG(IconID, "woowz");
 
@@ -175,7 +172,7 @@ module.exports = (Request, Result) => {
 
 				IconKeys.forEach((Key, Index) => {
 					Key = Key.trim();
-					let IconID = IconsInfo[Key] || "error";
+					let IconID = IconsInfo["Names"][Key] || "error";
 
 					let SVGData = GetIconSVG(IconID, `woowz_${Index}`);
 
@@ -188,6 +185,108 @@ module.exports = (Request, Result) => {
 				return `<svg xmlns="http://www.w3.org/2000/svg" width="${TotalWidth}" height="${Size}">${CombinedContent}</svg>`;
 			}
 
+			if(Type === "debug"){
+				if(!QueryObject.debug || QueryObject.debug === ""){ return "Не указан \"debug\""; }
+				const Debug = QueryObject.debug;
+
+				if(Debug === "icons"){
+					const Names = IconsInfo["Names"] || {};
+					const Categories = IconsInfo["Categories"] || {};
+
+					// Группируем по ID
+					const AllIcons = {};
+					for(const [key, value] of Object.entries(Names)){
+						if(!AllIcons[value]){
+							AllIcons[value] = { id: value, names: [] };
+						}
+						AllIcons[value].names.push(key);
+					}
+
+					// Распределяем по категориям
+					const CategoryMap = {};
+					const Uncategorized = [];
+					const SortedIDs = Object.keys(AllIcons).sort();
+
+					for(const id of SortedIDs){
+						let found = false;
+						for(const [category, icons] of Object.entries(Categories)){
+							if(icons.includes(id)){
+								if(!CategoryMap[category]) CategoryMap[category] = [];
+								CategoryMap[category].push(id);
+								found = true;
+								break;
+							}
+						}
+						if(!found) Uncategorized.push(id);
+					}
+
+					// Строим SVG
+					let Y = 10;
+					const LineHeight = 28;
+					const Col1 = 10;
+					const Col2 = 120;
+					const Col3 = 300;
+
+					let SVGContent = `<svg xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="14">
+    <rect width="100%" height="100%" fill="#1a1a2e"/>`;
+
+					// Шапка
+					SVGContent += `
+    <text x="${Col1}" y="${Y}" fill="#4fc3f7" font-weight="bold">ID</text>
+    <text x="${Col2}" y="${Y}" fill="#4fc3f7" font-weight="bold">Иконка</text>
+    <text x="${Col3}" y="${Y}" fill="#4fc3f7" font-weight="bold">Алиасы</text>`;
+					Y += LineHeight + 10;
+
+					// Функция рендера строки
+					const RenderRow = (id, names, Ypos) => {
+						const iconSVG = GetIconSVG(id, `debug_${id}`);
+						const namesStr = names.filter(n => n !== id).join(', ') || '(только ID)';
+
+						return `
+    <rect x="0" y="${Ypos - 18}" width="100%" height="${LineHeight}" fill="#16213e" rx="4"/>
+    <text x="${Col1}" y="${Ypos}" fill="#ffffff">${id}</text>
+    <svg x="${Col2}" y="${Ypos - 14}" width="28" height="28" viewBox="0 0 19.84375 19.84375"><g fill="#ffffff">${iconSVG}</g></svg>
+    <text x="${Col3}" y="${Ypos}" fill="#b0b0d0" font-size="12">${namesStr}</text>`;
+					};
+
+					// Категории
+					for(const category of Object.keys(CategoryMap).sort()){
+						SVGContent += `
+    <text x="${Col1}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="16">📁 ${category}</text>`;
+						Y += LineHeight + 5;
+
+						for(const id of CategoryMap[category].sort()){
+							SVGContent += RenderRow(id, AllIcons[id].names, Y);
+							Y += LineHeight;
+						}
+						Y += 10;
+					}
+
+					// Без категории
+					if(Uncategorized.length > 0){
+						SVGContent += `
+    <text x="${Col1}" y="${Y}" fill="#ffb74d" font-weight="bold" font-size="16">📂 Без категории</text>`;
+						Y += LineHeight + 5;
+
+						for(const id of Uncategorized.sort()){
+							SVGContent += RenderRow(id, AllIcons[id].names, Y);
+							Y += LineHeight;
+						}
+					}
+
+					// Итог
+					SVGContent += `
+    <text x="${Col1}" y="${Y + 10}" fill="#666" font-size="12">Всего: ${SortedIDs.length} иконок</text>`;
+
+					SVGContent += `
+</svg>`;
+
+					return SVGContent;
+				}
+
+				return "Неизвестный тип \"debug\"!";
+			}
+
 			return undefined;
 		}
 
@@ -196,6 +295,8 @@ module.exports = (Request, Result) => {
 
 		Result.end(WrapInSVG(Result__, Options));
 	}catch(e){
+		let Options = { ...DefaultOptions };
+
 		Options.Background = "#411";
 		Options.Color      = "#FF7878";
 

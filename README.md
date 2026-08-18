@@ -1,5 +1,7 @@
 # ProfileRender
 
+### Применяется ко всем типам (только для текста simple)
+
 | Параметр  | Информация                              | Дефолт |
 |:---------:|:----------------------------------------|:------:|
 |   t_bg    | Цвет заднего фона                       | 555555 |
@@ -15,73 +17,79 @@
 
 ![](https://profile-render-fawn.vercel.app/)
 
-``https://profile-render-fawn.vercel.app/?type=text``
+``https://profile-render-fawn.vercel.app/?type=simple``
 
-![](https://profile-render-fawn.vercel.app/?type=text)
+![](https://profile-render-fawn.vercel.app/?type=simple)
 
-``https://profile-render-fawn.vercel.app/?t_bg=FF0000&type=text``
+``https://profile-render-fawn.vercel.app/?t_bg=FF0000&type=simple``
 
-![](https://profile-render-fawn.vercel.app/?t_bg=FF0000&type=text)
+![](https://profile-render-fawn.vercel.app/?t_bg=FF0000&type=simple)
 
-``https://profile-render-fawn.vercel.app/?t_c=000000&type=text``
+``https://profile-render-fawn.vercel.app/?t_c=000000&type=simple``
 
-![](https://profile-render-fawn.vercel.app/?t_c=000000&type=text)
+![](https://profile-render-fawn.vercel.app/?t_c=000000&type=simple)
 
-``https://profile-render-fawn.vercel.app/?t_pad=0&type=text``
+``https://profile-render-fawn.vercel.app/?t_pad=0&type=simple``
 
-![](https://profile-render-fawn.vercel.app/?t_pad=0&type=text)
+![](https://profile-render-fawn.vercel.app/?t_pad=0&type=simple)
 
-``https://profile-render-fawn.vercel.app/?t_pad=100&type=text``
+``https://profile-render-fawn.vercel.app/?t_pad=100&type=simple``
 
-![](https://profile-render-fawn.vercel.app/?t_pad=100&type=text)
+![](https://profile-render-fawn.vercel.app/?t_pad=100&type=simple)
 
-``https://profile-render-fawn.vercel.app/?t_w=150&t_h=150&type=text``
+``https://profile-render-fawn.vercel.app/?t_w=150&t_h=150&type=simple``
 
-![](https://profile-render-fawn.vercel.app/?t_w=150&t_h=150&type=text)
+![](https://profile-render-fawn.vercel.app/?t_w=150&t_h=150&type=simple)
 
-``https://profile-render-fawn.vercel.app/?t_fs=50&type=text``
+``https://profile-render-fawn.vercel.app/?t_fs=50&type=simple``
 
-![](https://profile-render-fawn.vercel.app/?t_fs=50&type=text)
+![](https://profile-render-fawn.vercel.app/?t_fs=50&type=simple)
 
-``https://profile-render-fawn.vercel.app/?t_lh=5&type=text&text=1\n2\n3\n4\n5``
+``https://profile-render-fawn.vercel.app/?t_lh=5&type=simple&text=1\n2\n3\n4\n5``
 
-![](https://profile-render-fawn.vercel.app/?t_lh=5&type=text&text=1\n2\n3\n4\n5)
+![](https://profile-render-fawn.vercel.app/?t_lh=5&type=simple&text=1\n2\n3\n4\n5)
 
-``https://profile-render-fawn.vercel.app/?t_lh=50&type=text&text=1\n2\n3\n4\n5``
+``https://profile-render-fawn.vercel.app/?t_lh=50&type=simple&text=1\n2\n3\n4\n5``
 
-![](https://profile-render-fawn.vercel.app/?t_lh=50&type=text&text=1\n2\n3\n4\n5)
+![](https://profile-render-fawn.vercel.app/?t_lh=50&type=simple&text=1\n2\n3\n4\n5)
 
-``https://profile-render-fawn.vercel.app/?t_ml=2&type=text&text=1\n2\n3\n4\n5``
+``https://profile-render-fawn.vercel.app/?t_ml=2&type=simple&text=1\n2\n3\n4\n5``
 
-![](https://profile-render-fawn.vercel.app/?t_ml=2&type=text&text=1\n2\n3\n4\n5)
+![](https://profile-render-fawn.vercel.app/?t_ml=2&type=simple&text=1\n2\n3\n4\n5)
 
 # Типы
 
-## text
+## notype
+
+``https://profile-render-fawn.vercel.app/?type=notype``
+
+![](https://profile-render-fawn.vercel.app/?type=notype)
+
+## simple
 
 | Параметр | Информация                         |      Дефолт      |
 |:--------:|:-----------------------------------|:----------------:|
 |   text   | Текст ("nbsp" заменяется на побел) | Не указан "text" |
 
-``https://profile-render-fawn.vercel.app/?type=text&text=Hellonbspworld!``
+``https://profile-render-fawn.vercel.app/?type=simple&text=Hellonbspworld!``
 
-![](https://profile-render-fawn.vercel.app/?type=text&text=Hellonbspworld!)
+![](https://profile-render-fawn.vercel.app/?type=simple&text=Hellonbspworld!)
 
-``https://profile-render-fawn.vercel.app/?type=text&text=New\nLine``
+``https://profile-render-fawn.vercel.app/?type=simple&text=New\nLine``
 
-![](https://profile-render-fawn.vercel.app/?type=text&text=New\nLine)
+![](https://profile-render-fawn.vercel.app/?type=simple&text=New\nLine)
 
-``https://profile-render-fawn.vercel.app/?type=text&text=1\n2\n3\n4\n5\n6\n7\n8\n9``
+``https://profile-render-fawn.vercel.app/?type=simple&text=1\n2\n3\n4\n5\n6\n7\n8\n9``
 
-![](https://profile-render-fawn.vercel.app/?type=text&text=1\n2\n3\n4\n5\n6\n7\n8\n9)
+![](https://profile-render-fawn.vercel.app/?type=simple&text=1\n2\n3\n4\n5\n6\n7\n8\n9)
 
-``https://profile-render-fawn.vercel.app/?type=text&text=Приветnbspмир!``
+``https://profile-render-fawn.vercel.app/?type=simple&text=Приветnbspмир!``
 
-![](https://profile-render-fawn.vercel.app/?type=text&text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82nbsp%D0%BC%D0%B8%D1%80!)
+![](https://profile-render-fawn.vercel.app/?type=simple&text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82nbsp%D0%BC%D0%B8%D1%80!)
 
-``https://profile-render-fawn.vercel.app/?type=text&text=Эмодзиnbsp->nbsp🙄``
+``https://profile-render-fawn.vercel.app/?type=simple&text=Эмодзиnbsp->nbsp🙄``
 
-![](https://profile-render-fawn.vercel.app/?type=text&text=%D0%AD%D0%BC%D0%BE%D0%B4%D0%B7%D0%B8nbsp-%3Enbsp%F0%9F%99%84)
+![](https://profile-render-fawn.vercel.app/?type=simple&text=%D0%AD%D0%BC%D0%BE%D0%B4%D0%B7%D0%B8nbsp-%3Enbsp%F0%9F%99%84)
 
 ## js
 
@@ -125,38 +133,38 @@
 
 ### Доступные иконки
 
-|        Название         |                         ID                         | Иконка                                                                                             |
-|:-----------------------:|:--------------------------------------------------:|:---------------------------------------------------------------------------------------------------|
-|         Пустая          |                      `blank`                       | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/blank.svg)        |
-|         Ошибка          |                      `error`                       | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/error.svg)        |
-|            C            |                    `c`, `clang`                    | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/c.svg)            |
-|           C++           |                 `cpp`, `cplusplus`                 | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cpp.svg)          |
-|           C#            |                   `cs`, `csharp`                   | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cs.svg)           |
-|           C--           |                `cmm`, `cminusminus`                | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cmm.svg)          |
-|         Python          |                   `py`, `python`                   | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/py.svg)           |
-|          HTML           |                       `html`                       | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/html.svg)         |
-|           CSS           |                       `css`                        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/css.svg)          |
-|       JavaScript        |                 `js`, `javascript`                 | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/js.svg)           |
-|       TypeScript        |                 `ts`, `typecript`                  | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/ts.svg)           |
-|          Java           |                       `java`                       | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/java.svg)         |
-|          NASM           |                       `nasm`                       | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/nasm.svg)         |
-|          WASM           |                       `wasm`                       | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/wasm.svg)         |
-|       Windows 11        |                `win11`, `windows11`                | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/win11.svg)        |
-|       Windows 10        |       `win10`, `windows10`, `win`, `windows`       | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/win10.svg)        |
-|        Windows 8        |                 `win8`, `windows8`                 | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/win8.svg)         |
-|        Windows 7        |                 `win7`, `windows7`                 | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/win7.svg)         |
-|       Windows XP        |                `winxp`, `windowsxp`                | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/winxp.svg)        |
-|           Lua           |                       `lua`                        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/lua.svg)          |
-|          Luau           | `luau`, `robloxlua`, `luaroblox`, `rblua`, `luarb` | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/luau.svg)         |
-|       Garry's Mod       |          `gmod`, `garrymod`, `garrysmod`           | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/gmod.svg)         |
-|     Garry's Mod Lua     |            `glua`, `gmodlua`, `luagmod`            | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/glua.svg)         |
-|         Roblox          |                      `roblox`                      | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/roblox.svg)       |
-|      Roblox Studio      |            `robloxstudio`, `robloxstd`             | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/robloxstudio.svg) |
-|          Rust           |                    `rust`, `rs`                    | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/rs.svg)           |
-|         Docker          |                  `docker`, `dock`                  | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/docker.svg)       |
-| Microsoft Visual Studio |                       `mvs`                        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/mvs.svg)          |
-|   Visual Studio Code    |                       `vsc`                        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/vsc.svg)          |
-|       SVG Format        |                       `svg`                        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/svg.svg)          |
+|        Название         |                         ID                         | Иконка                                                                   |
+|:-----------------------:|:--------------------------------------------------:|:-------------------------------------------------------------------------|
+|         Пустая          |                      `blank`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=blank)        |
+|         Ошибка          |                      `error`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=error)        |
+|            C            |                    `c`, `clang`                    | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=c)            |
+|           C++           |                 `cpp`, `cplusplus`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=cpp)          |
+|           C#            |                   `cs`, `csharp`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=cs)           |
+|           C--           |                `cmm`, `cminusminus`                | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=cmm)          |
+|         Python          |                   `py`, `python`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=py)           |
+|          HTML           |                       `html`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=html)         |
+|           CSS           |                       `css`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=css)          |
+|       JavaScript        |                 `js`, `javascript`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=js)           |
+|       TypeScript        |                 `ts`, `typecript`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=ts)           |
+|          Java           |                       `java`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=java)         |
+|          NASM           |                       `nasm`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=nasm)         |
+|          WASM           |                       `wasm`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=wasm)         |
+|       Windows 11        |                `win11`, `windows11`                | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=win11)        |
+|       Windows 10        |       `win10`, `windows10`, `win`, `windows`       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=win10)        |
+|        Windows 8        |                 `win8`, `windows8`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=win8)         |
+|        Windows 7        |                 `win7`, `windows7`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=win7)         |
+|       Windows XP        |                `winxp`, `windowsxp`                | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=winxp)        |
+|           Lua           |                       `lua`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=lua)          |
+|          Luau           | `luau`, `robloxlua`, `luaroblox`, `rblua`, `luarb` | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=luau)         |
+|       Garry's Mod       |          `gmod`, `garrymod`, `garrysmod`           | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=gmod)         |
+|     Garry's Mod Lua     |            `glua`, `gmodlua`, `luagmod`            | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=glua)         |
+|         Roblox          |                      `roblox`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=roblox)       |
+|      Roblox Studio      |            `robloxstudio`, `robloxstd`             | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=robloxstudio) |
+|          Rust           |                    `rust`, `rs`                    | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=rs)           |
+|         Docker          |                  `docker`, `dock`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=docker)       |
+| Microsoft Visual Studio |                       `mvs`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=mvs)          |
+|   Visual Studio Code    |                       `vsc`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vsc)          |
+|       SVG Format        |                       `svg`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=svg)          |
 
 ## icons
 
@@ -176,6 +184,12 @@
 
 ![](https://profile-render-fawn.vercel.app/?type=icons&icons=python,not_existing_icon,js)
 
-``https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error,c,cpp,cs,cmm,py,html,css,js,ts,java,nasm,wasm,win11,win,win8,win7,winxp``
+``https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error,c,cpp,cs,cmm,py,html,css,js,ts,java,nasm,wasm,win11,win,win8,win7,winxp,lua,luau,gmod,glua,roblox,robloxstd,rs,dock,mvs,vsc,svg``
 
 ![](https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error,c,cpp,cs,cmm,py,html,css,js,ts,java,nasm,wasm,win11,win,win8,win7,winxp,lua,luau,gmod,glua,roblox,robloxstd,rs,dock,mvs,vsc,svg)
+
+## debug
+
+| Параметр | Информация    | Дефолт |
+|:--------:|:--------------|:------:|
+|  debug   | Что дебажить? |        |
