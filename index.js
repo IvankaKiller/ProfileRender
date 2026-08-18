@@ -63,9 +63,22 @@ const GetIconSVG = function(IconID){
 		.replace(/<\?xml.*?\?>/gi, "")
 		.replace(/<!DOCTYPE.*?>/gi, "")
 		.replace(/<!--.*?-->/gs, "")
-		.replace(/fill="[^"]*"/gi, "fill=\"currentColor\"")
-		.replace(/stroke="[^"]*"/gi, "stroke=\"currentColor\"")
+		.replace(/<defs>[\s\S]*?<\/defs>/gi, "")
+		.replace(/<linearGradient[\s\S]*?<\/linearGradient>/gi, "")
+		.replace(/<radialGradient[\s\S]*?<\/radialGradient>/gi, "")
+		// ⭐ ЧИСТИМ АТРИБУТЫ fill И stroke
+		.replace(/fill="[^"]*"/gi, 'fill="currentColor"')
+		.replace(/fill='[^']*'/gi, "fill='currentColor'")
+		.replace(/stroke="[^"]*"/gi, 'stroke="currentColor"')
+		.replace(/stroke='[^']*'/gi, "stroke='currentColor'")
+		// ⭐ УДАЛЯЕМ CSS-стили ВНУТРИ style="..."
+		.replace(/style="[^"]*"/gi, 'style=""')
+		.replace(/style='[^']*'/gi, "style=''")
+		// ⭐ УДАЛЯЕМ ТЕГИ <style>
 		.replace(/<style>[\s\S]*?<\/style>/gi, "")
+		// ⭐ УДАЛЯЕМ inkscape-специфичные атрибуты (они могут содержать цвета)
+		.replace(/inkscape:label="[^"]*"/gi, "")
+		.replace(/sodipodi:nodetypes="[^"]*"/gi, "")
 		.trim();
 }
 
