@@ -57,6 +57,17 @@ const WrapInSVG = (Text, Options = {}) => {
     </svg>`.trim();
 };
 
+// ----------------------------------------------------------------------
+
+const IconsPath = PATH.join(process.cwd(), "resources", "icons");
+const IconsInfoPath = PATH.join(IconsPath, "icons.json");
+
+if(!FS.existsSync(IconsInfoPath)){ throw new Error("icons.json не найден!"); }
+
+const IconsInfo = JSON.parse(FS.readFileSync(IconsInfoPath, "utf8"));
+
+// ----------------------------------------------------------------------
+
 module.exports = (Request, Result) => {
 	const DefaultOptions = {
 		Background: "#555555",
@@ -116,16 +127,29 @@ module.exports = (Request, Result) => {
 				return String(Sandbox.Result || "Код был успешно вызван, используйте \"Result = ...\" в вашем коде что-бы вывести результат!");
 			}
 
+			if(Type === "icon"){
+				if(!QueryObject.icon || QueryObject.icon === ""){ return "Не указан \"icon\""; }
+
+				const Key = QueryObject.icon;
+				let IconID = IconsInfo[kEY] || "error";
+
+				const IconPath = PATH.join(IconsPath, IconID + ".svg");
+				let SVGData = FS.readFileSync(IconPath, "utf8")
+					.replace(/<\?xml.*?\?>/gi, "")
+					.replace(/<!DOCTYPE.*?>/gi, "")
+					.replace(/<!--.*?-->/gs, "")
+					.trim();
+
+				const Size = 75;
+				return `<svg xmlns="http://www.w3.org/2000/svg" width="${Size}" height="${Size}">
+					<g>${SVGData}</g>
+				</svg>`;
+			}
+
 			if(Type === "icons"){
 				if(!QueryObject.icons || QueryObject.icons === ""){ return "Не указан \"icons\""; }
 
 				const IconKeys = QueryObject.icons.split(",");
-				const ResourcesPath = PATH.join(process.cwd(), "resources", "icons");
-				const IconsInfoPath = PATH.join(ResourcesPath, "icons.json");
-
-				if(!FS.existsSync(IconsInfoPath)){ throw new Error("icons.json не найден!"); }
-
-				const IconsInfo = JSON.parse(FS.readFileSync(IconsInfoPath, "utf8"));
 
 				let X = 0;
 				const Size = 75;
@@ -139,7 +163,7 @@ module.exports = (Request, Result) => {
 						IconID = "error";
 					}
 
-					const IconPath = `${RepoURL}resources/icons/${IconID}.svg`;
+					const IconPath = `${SiteURL}?type=icon&icon=${IconID}`;
 					CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}"><image href="${IconPath}" width="${Size}" height="${Size}" /></svg>`;
 
 					X += Size + Gap;
