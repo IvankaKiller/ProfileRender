@@ -107,4 +107,29 @@
 
 ## icons
 
-![](https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error)
+| Параметр | Информация                 | Дефолт |
+|:--------:|:---------------------------|:------:|
+|  icons   | Список отображаемых иконок |        |
+
+### Доступные иконки
+
+| Название |          ID          | Иконка                                                                                       |
+|:--------:|:--------------------:|:---------------------------------------------------------------------------------------------|
+|  Пустая  |       `blank`        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/blank.svg)  |
+|  Ошибка  |       `error`        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/error.svg)  |
+|    C     |         `c`          | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/c.svg)      |
+|   C++    |  `cpp`, `cplusplus`  | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cpp.svg)    |
+|    C#    |    `cs`, `csharp`    | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cs.svg)     |
+|   C--    | `cmm`, `cminusminus` | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cmm.svg)    |
+
+``https://profile-render-fawn.vercel.app/?type=icons``
+
+![](https://profile-render-fawn.vercel.app/?type=icons)
+
+``https://profile-render-fawn.vercel.app/?type=icons&icons=c,cpp,cs,cmm``
+
+![](https://profile-render-fawn.vercel.app/?type=icons&icons=c,cpp,cs,cmm)
+
+``https://profile-render-fawn.vercel.app/?type=icons&icons=cs,not_existing_icon,cpp``
+
+![](https://profile-render-fawn.vercel.app/?type=icons&icons=cs,not_existing_icon,cpp)

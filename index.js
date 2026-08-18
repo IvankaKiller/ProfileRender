@@ -114,7 +114,9 @@ module.exports = (Request, Result) => {
 			}
 
 			if(Type === "icons"){
-				const IconKeys = (QueryObject.icons || "").split(",");
+				if(!QueryObject.icons || QueryObject.icons === ""){ return "Не указаны иконки"; }
+
+				const IconKeys = QueryObject.icons.split(",");
 				const ResourcesPath = PATH.join(process.cwd(), "resources", "icons");
 				const IconsInfoPath = PATH.join(ResourcesPath, "icons.json");
 
@@ -146,8 +148,6 @@ module.exports = (Request, Result) => {
 						X += Size + Gap;
 					}
 				});
-
-				if(X === 0){ return "Не указаны иконки"; }
 
 				const TotalWidth = X - Gap;
 				return `<svg xmlns="http://www.w3.org/2000/svg" width="${TotalWidth}" height="${Size}">${CombinedContent}</svg>`;
