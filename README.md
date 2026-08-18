@@ -146,3 +146,7 @@
 ``https://profile-render-fawn.vercel.app/?type=icons&icons=python,not_existing_icon,js``
 
 ![](https://profile-render-fawn.vercel.app/?type=icons&icons=python,not_existing_icon,js)
+
+``https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error,c,cpp,cs,cmm,py,html,css,js,ts,java,nasm,wasm,win11,win,win8,win7,winxp``
+
+![](https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error,c,cpp,cs,cmm,py,html,css,js,ts,java,nasm,wasm,win11,win,win8,win7,winxp)

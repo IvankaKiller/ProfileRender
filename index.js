@@ -138,12 +138,17 @@ module.exports = (Request, Result) => {
 
 					const IconPath = PATH.join(ResourcesPath, FileName + ".svg");
 					if(FS.existsSync(IconPath)){
-						let SVGData = FS.readFileSync(IconPath, "utf8")
+						/*let SVGData = FS.readFileSync(IconPath, "utf8")
 							.replace(/<\?xml.*?\?>/gi, "")
 							.replace(/<!DOCTYPE.*?>/gi, "")
 							.replace(/<!--.*?-->/gs, "")
-							.trim();
-						CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}">${SVGData}</svg>`;
+							.replace(/fill="[^"]*"/gi, 'fill="currentColor"')
+							.replace(/fill='[^']*'/gi, "fill='currentColor'")
+							.replace(/stroke="[^"]*"/gi, 'stroke="currentColor"')
+							.replace(/stroke='[^']*'/gi, "stroke='currentColor'")
+							.trim();*/
+
+						CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}"><image href="${IconPath}" width="${Size}" height="${Size}" /></svg>`;
 
 						X += Size + Gap;
 					}
