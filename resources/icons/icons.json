@@ -1,4 +1,11 @@
 {
-	"blank": "blank",
-	"error": "error"
+	"blank"      : "blank",
+	"error"      : "error",
+	"c"          : "c",
+	"cpp"        : "cpp",
+	"cplusplus"  : "cpp",
+	"cmm"        : "cmm",
+	"cminusminus": "cmm",
+	"cs"         : "cs",
+	"csharp"     : "cs"
 }
