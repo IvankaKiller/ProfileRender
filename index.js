@@ -242,17 +242,21 @@ module.exports = (Request, Result) => {
     <text x="${ColIcon}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="14">Иконка</text>`;
 					Y += RowHeight + 5;
 
-					// Функция рендера строки
 					const RenderRow = (id, names, Ypos) => {
-						const iconSVG = GetIconSVG(id, `debug_${id}`);
+						let rawSVG = GetIconSVG(id, `debug_${id}`);
+
+						// Удаляем все атрибуты width/height из корневого SVG, оставляем только содержимое
+						rawSVG = rawSVG.replace(/<svg[^>]*>/, '').replace(/<\/svg>/, '');
+
 						const namesStr = names.filter(n => n !== id).join(', ');
 
-						// ⭐ ПРАВИЛЬНОЕ МАСШТАБИРОВАНИЕ: сохраняем пропорции
 						return `
     <rect x="0" y="${Ypos - 12}" width="100%" height="${RowHeight}" fill="#16213e" rx="3"/>
     <text x="${ColID}" y="${Ypos + 4}" fill="#ffffff">${id}</text>
     <text x="${ColNames}" y="${Ypos + 4}" fill="#b0b0d0" font-size="11">${namesStr}</text>
-    <svg x="${ColIcon}" y="${Ypos - 10}" width="${IconSize}" height="${IconSize}" viewBox="0 0 19.84375 19.84375" preserveAspectRatio="xMidYMid meet"><g fill="#ffffff">${iconSVG}</g></svg>`;
+    <svg x="${ColIcon}" y="${Ypos - 10}" width="${IconSize}" height="${IconSize}" viewBox="0 0 19.84375 19.84375" preserveAspectRatio="xMidYMid meet">
+        <g fill="#ffffff">${rawSVG}</g>
+    </svg>`;
 					};
 
 					// Категории
