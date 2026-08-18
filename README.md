@@ -125,6 +125,10 @@
 |    HTML    |        `html`        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/html.svg)  |
 |    CSS     |        `css`         | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/css.svg)   |
 | JavaScript |  `js`, `javascript`  | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/js.svg)    |
+| TypeScript |  `ts`, `typecript`   | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/ts.svg)    |
+|    Java    |        `java`        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/java.svg)  |
+|    NASM    |        `nasm`        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/nasm.svg)  |
+|    WASM    |        `wasm`        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/wasm.svg)  |
 
 ``https://profile-render-fawn.vercel.app/?type=icons``
 

@@ -14,5 +14,10 @@
 	"html"       : "html",
 	"css"        : "css",
 	"js"         : "js",
-	"javascript" : "js"
+	"javascript" : "js",
+	"ts"         : "ts",
+	"typescript" : "ts",
+	"java"       : "java",
+	"nasm"       : "nasm",
+	"wasm"       : "wasm"
 }
