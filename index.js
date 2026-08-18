@@ -57,27 +57,30 @@ const WrapInSVG = function(Text, Options = {}){
     </svg>`.trim();
 };
 
+const __CacheSVG = {};
 const GetIconSVG = function(IconID, UniquePrefix){
-	const IconPath = PATH.join(IconsPath, IconID + ".svg");
-	let SVG = FS.readFileSync(IconPath, "utf8");
+	let SVG = "";
+	if(__CacheSVG[IconID]){
+		SVG = __CacheSVG[IconID];
+	}else{
+		const IconPath = PATH.join(IconsPath, IconID + ".svg");
+		SVG = FS.readFileSync(IconPath, "utf8");
+		__CacheSVG[IconID] = SVG;
+	}
 
-	// Удаляем метаданные
 	SVG = SVG.replace(/<\?xml.*?\?>/gi, "");
 	SVG = SVG.replace(/<!DOCTYPE.*?>/gi, "");
 	SVG = SVG.replace(/<!--.*?-->/gs, "");
 
-	// ✅ ДЕЛАЕМ ID УНИКАЛЬНЫМИ
 	SVG = SVG.replace(/(id=")([^"]*)(")/g, `$1${UniquePrefix}_$2$3`);
 	SVG = SVG.replace(/(url\(#)([^)]*)(\))/g, `$1${UniquePrefix}_$2$3`);
 	SVG = SVG.replace(/xlink:href="#([^"]*)"/g, `xlink:href="#${UniquePrefix}_$1"`);
 
-	// Заменяем цвета на currentColor
-	SVG = SVG.replace(/fill="[^"]*"/gi, 'fill="currentColor"');
-	SVG = SVG.replace(/stroke="[^"]*"/gi, 'stroke="currentColor"');
+	//SVG = SVG.replace(/fill="[^"]*"/gi, 'fill="currentColor"');
+	//SVG = SVG.replace(/stroke="[^"]*"/gi, 'stroke="currentColor"');
 
-	// Удаляем inkscape/sodipodi
-	SVG = SVG.replace(/inkscape:[a-z-]+="[^"]*"/gi, "");
-	SVG = SVG.replace(/sodipodi:[a-z-]+="[^"]*"/gi, "");
+	//SVG = SVG.replace(/inkscape:[a-z-]+="[^"]*"/gi, "");
+	//SVG = SVG.replace(/sodipodi:[a-z-]+="[^"]*"/gi, "");
 
 	return SVG.trim();
 }

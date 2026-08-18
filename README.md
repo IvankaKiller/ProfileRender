@@ -125,28 +125,33 @@
 
 ### Доступные иконки
 
-|  Название  |                   ID                   | Иконка                                                                                      |
-|:----------:|:--------------------------------------:|:--------------------------------------------------------------------------------------------|
-|   Пустая   |                `blank`                 | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/blank.svg) |
-|   Ошибка   |                `error`                 | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/error.svg) |
-|     C      |              `c`, `clang`              | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/c.svg)     |
-|    C++     |           `cpp`, `cplusplus`           | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cpp.svg)   |
-|     C#     |             `cs`, `csharp`             | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cs.svg)    |
-|    C--     |          `cmm`, `cminusminus`          | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cmm.svg)   |
-|   Python   |             `py`, `python`             | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/py.svg)    |
-|    HTML    |                 `html`                 | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/html.svg)  |
-|    CSS     |                 `css`                  | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/css.svg)   |
-| JavaScript |           `js`, `javascript`           | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/js.svg)    |
-| TypeScript |           `ts`, `typecript`            | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/ts.svg)    |
-|    Java    |                 `java`                 | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/java.svg)  |
-|    NASM    |                 `nasm`                 | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/nasm.svg)  |
-|    WASM    |                 `wasm`                 | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/wasm.svg)  |
-| Windows 11 |          `win11`, `windows11`          | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/win11.svg) |
-| Windows 10 | `win10`, `windows10`, `win`, `windows` | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/win10.svg) |
-| Windows 8  |           `win8`, `windows8`           | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/win8.svg)  |
-| Windows 7  |           `win7`, `windows7`           | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/win7.svg)  |
-| Windows XP |          `winxp`, `windowsxp`          | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/winxp.svg) |
-
+|    Название     |                         ID                         | Иконка                                                                                             |
+|:---------------:|:--------------------------------------------------:|:---------------------------------------------------------------------------------------------------|
+|     Пустая      |                      `blank`                       | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/blank.svg)        |
+|     Ошибка      |                      `error`                       | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/error.svg)        |
+|        C        |                    `c`, `clang`                    | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/c.svg)            |
+|       C++       |                 `cpp`, `cplusplus`                 | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cpp.svg)          |
+|       C#        |                   `cs`, `csharp`                   | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cs.svg)           |
+|       C--       |                `cmm`, `cminusminus`                | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/cmm.svg)          |
+|     Python      |                   `py`, `python`                   | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/py.svg)           |
+|      HTML       |                       `html`                       | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/html.svg)         |
+|       CSS       |                       `css`                        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/css.svg)          |
+|   JavaScript    |                 `js`, `javascript`                 | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/js.svg)           |
+|   TypeScript    |                 `ts`, `typecript`                  | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/ts.svg)           |
+|      Java       |                       `java`                       | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/java.svg)         |
+|      NASM       |                       `nasm`                       | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/nasm.svg)         |
+|      WASM       |                       `wasm`                       | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/wasm.svg)         |
+|   Windows 11    |                `win11`, `windows11`                | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/win11.svg)        |
+|   Windows 10    |       `win10`, `windows10`, `win`, `windows`       | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/win10.svg)        |
+|    Windows 8    |                 `win8`, `windows8`                 | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/win8.svg)         |
+|    Windows 7    |                 `win7`, `windows7`                 | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/win7.svg)         |
+|   Windows XP    |                `winxp`, `windowsxp`                | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/winxp.svg)        |
+|       Lua       |                       `lua`                        | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/lua.svg)          |
+|      Luau       | `luau`, `robloxlua`, `luaroblox`, `rblua`, `luarb` | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/luau.svg)         |
+|   Garry's Mod   |          `gmod`, `garrymod`, `garrysmod`           | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/gmod.svg)         |
+| Garry's Mod Lua |            `glua`, `gmodlua`, `luagmod`            | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/glua.svg)         |
+|     Roblox      |                      `roblox`                      | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/roblox.svg)       |
+|  Roblox Studio  |            `robloxstudio`, `robloxstd`             | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/robloxstudio.svg) |
 
 ## icons
 
@@ -168,4 +173,4 @@
 
 ``https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error,c,cpp,cs,cmm,py,html,css,js,ts,java,nasm,wasm,win11,win,win8,win7,winxp``
 
-![](https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error,c,cpp,cs,cmm,py,html,css,js,ts,java,nasm,wasm,win11,win,win8,win7,winxp)
+![](https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error,c,cpp,cs,cmm,py,html,css,js,ts,java,nasm,wasm,win11,win,win8,win7,winxp,lua,luau,gmod,glua,roblox,robloxstd)
