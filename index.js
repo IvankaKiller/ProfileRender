@@ -20,7 +20,6 @@ const WrapInSVG = (Text, Options = {}) => {
 	const Background = FixColor(Options.Background);
 	const Color = FixColor(Options.Color);
 	const FontSize = parseInt(Options.FontSize);
-
 	const LineHeight = parseInt(Options.LineHeight) || Math.floor(FontSize * 1.5);
 	const Padding = parseInt(Options.Padding);
 
@@ -28,16 +27,16 @@ const WrapInSVG = (Text, Options = {}) => {
 	const DisplayLines = Lines.slice(0, parseInt(Options.MaxLines));
 
 	const MaxChars = Math.max(...DisplayLines.map(L => L.length), 1);
-	const ContentWidth = Math.floor(MaxChars * FontSize * 61);
-	const Width= parseInt(Options.Width) || Math.floor(ContentWidth + Padding * 2);
+	const ContentWidth = Math.floor(MaxChars * FontSize * 0.6) + (Padding * 2);
+	const Width= parseInt(Options.Width) || ContentWidth;
 
 	const ContentHeight = (DisplayLines.length - 1) * LineHeight + FontSize;
-	const Height = parseInt(Options.Height) || Math.max(ContentHeight * LineHeight * 2);
+	const Height = parseInt(Options.Height) || (ContentHeight + Padding * 2);
 
-	const FirstLineY = Padding + FontSize - Math.floor(FontSize * 0.1);
-	
+	const FirstLineY = Padding + FontSize - Math.floor(FontSize * 0.15);
+
 	let TextElements = DisplayLines.map((Line, Index) =>
-		`<text x="20" y="${FirstLineY + Index * LineHeight}" fill="${Color}" font-family="monospace" font-size="${FontSize}" xml:space="preserve">${EscapeXML(Line)}</text>`
+		`<text x="${Padding}" y="${FirstLineY + Index * LineHeight}" fill="${Color}" font-family="monospace" font-size="${FontSize}" xml:space="preserve">${EscapeXML(Line)}</text>`
 	).join("");
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
