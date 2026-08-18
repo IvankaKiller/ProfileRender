@@ -20,16 +20,20 @@ const WrapInSVG = (Text, Options = {}) => {
 	const Background = FixColor(Options.Background);
 	const Color = FixColor(Options.Color);
 	const Width= parseInt(Options.Width);
+	const FontSize = parseInt(Options.FontSize);
 
-	const LineHeight = parseInt(Options.LineHeight);
+	const LineHeight = parseInt(Options.LineHeight) || Math.floor(FontSize * 1.5);
 	const Padding = parseInt(Options.Padding);
 
 	const Lines = Text.split("\n");
 	const DisplayLines = Lines.slice(0, parseInt(Options.MaxLines));
-	const Height = parseInt(Options.Height) || Math.max(60, DisplayLines.length * LineHeight + Padding);
+
+	const FirstLineOffset = Math.floor(Padding / 2) + FontSize;
+
+	const Height = parseInt(Options.Height) || Math.max(FontSize * 2, DisplayLines.length * LineHeight + Padding);
 
 	let TextElements = DisplayLines.map((Line, Index) =>
-		`<text x="20" y="${30 + Index * LineHeight}" fill="${Color}" font-family="monospace" font-size="${Options.FontSize}" xml:space="preserve">${EscapeXML(Line)}</text>`
+		`<text x="20" y="${FirstLineOffset + Index * LineHeight}" fill="${Color}" font-family="monospace" font-size="${FontSize}" xml:space="preserve">${EscapeXML(Line)}</text>`
 	).join("");
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
@@ -40,6 +44,19 @@ const WrapInSVG = (Text, Options = {}) => {
 };
 
 module.exports = (Request, Result) => {
+	const DefaultOptions = {
+		Background: "#555555",
+		Color     : "#FFFFFF",
+		Width     : 650,
+		Height    : null,
+		LineHeight: null,
+		Padding   : 30,
+		MaxLines  : 100,
+		FontSize  : 12
+	};
+
+	let Options = { ...DefaultOptions };
+
 	try{
 		Result.statusCode = 200;
 
@@ -49,16 +66,14 @@ module.exports = (Request, Result) => {
 		Result.setHeader("Content-Type", "image/svg+xml; charset=utf-8");
 		Result.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
-		let Options = {
-			Background: QueryObject.bg || "#555555",
-			Color     : QueryObject.color || "#FFFFFF",
-			Width     : QueryObject.w || 650,
-			Height    : QueryObject.h || null,
-			LineHeight: QueryObject.lh || 20,
-			Padding   : QueryObject.pad || 30,
-			MaxLines  : QueryObject.ml || 100,
-			FontSize  : QueryObject.fs || 12
-		};
+		Options.Background = QueryObject.bg  || Options.Background;
+		Options.Color      = QueryObject.c   || Options.Color     ;
+		Options.Width      = QueryObject.w   || Options.Width     ;
+		Options.Height     = QueryObject.h   || Options.Height    ;
+		Options.LineHeight = QueryObject.lh  || Options.LineHeight;
+		Options.Padding    = QueryObject.pad || Options.Padding   ;
+		Options.MaxLines   = QueryObject.ml  || Options.MaxLines  ;
+		Options.FontSize   = QueryObject.fs  || Options.FontSize  ;
 
 		function Run(){
 			if(Type === "notype"){
@@ -97,12 +112,8 @@ module.exports = (Request, Result) => {
 
 		Result.end(WrapInSVG(Result__, Options));
 	}catch(e){
-		let Options = {
-			Background: "#411",
-			Color     : "#FF7878",
-			Width     : 650,
-			Height    : null
-		};
+		Options.Background = "#411";
+		Options.Color      = "#FF7878";
 
 		Result.end(WrapInSVG("Ошибка скрипта: " + e.stack, Options));
 	}
