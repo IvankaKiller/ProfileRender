@@ -131,13 +131,16 @@ module.exports = (Request, Result) => {
 				if(!QueryObject.icon || QueryObject.icon === ""){ return "Не указан \"icon\""; }
 
 				const Key = QueryObject.icon;
-				let IconID = IconsInfo[kEY] || "error";
+				let IconID = IconsInfo[Key] || "error";
 
 				const IconPath = PATH.join(IconsPath, IconID + ".svg");
 				let SVGData = FS.readFileSync(IconPath, "utf8")
 					.replace(/<\?xml.*?\?>/gi, "")
 					.replace(/<!DOCTYPE.*?>/gi, "")
 					.replace(/<!--.*?-->/gs, "")
+					.replace(/fill="[^"]*"/gi, "fill=\"currentColor\"")
+					.replace(/stroke="[^"]*"/gi, "stroke=\"currentColor\"")
+					.replace(/<style>[\s\S]*?<\/style>/gi, "")
 					.trim();
 
 				const Size = 75;
@@ -158,10 +161,7 @@ module.exports = (Request, Result) => {
 
 				IconKeys.forEach(Key => {
 					Key = Key.trim();
-					let IconID = IconsInfo[Key];
-					if(!IconID){
-						IconID = "error";
-					}
+					let IconID = IconsInfo[Key] || "error";
 
 					const IconPath = `${SiteURL}?type=icon&icon=${IconID}`;
 					CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}"><image href="${IconPath}" width="${Size}" height="${Size}" /></svg>`;
