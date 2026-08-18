@@ -2,19 +2,17 @@ const url = require('url');
 
 module.exports = (req, res) => {
   try {
-    // 1. Вручную разбираем параметры из URL, если req.query не сработал
+    // 1. Разбираем параметры из URL (нативный способ)
     const queryObject = url.parse(req.url, true).query || {};
 
-    // 2. Берем значения или ставим дефолтные
     const name = queryObject.name || 'Skill';
     const prog = queryObject.prog || '50';
     const color = queryObject.color || 'blue';
 
-    // 3. Рассчитываем ширину полоски
     const numericProg = Math.min(Math.max(parseInt(prog) || 0, 0), 100);
     const progressWidth = (numericProg / 100) * 180;
 
-    // 4. Генерируем SVG
+    // 2. Генерируем SVG
     const svg = `
       <svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
         <rect width="200" height="50" rx="8" fill="#222" />
@@ -27,12 +25,16 @@ module.exports = (req, res) => {
       </svg>
     `.trim();
 
-    // 5. Отправляем ответ
+    // 3. Используем НАТИВНЫЕ методы Node.js вместо Express
+    res.statusCode = 200; // Вместо res.status(200)
     res.setHeader('Content-Type', 'image/svg+xml');
     res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.status(200).send(svg);
+    
+    // Отправляем результат и закрываем соединение
+    res.end(svg); // Вместо res.send(svg)
 
   } catch (error) {
-    res.status(500).send("Server Error: " + error.message);
+    res.statusCode = 500;
+    res.end("Error: " + error.message);
   }
 };
