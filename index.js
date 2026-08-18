@@ -9,7 +9,7 @@ const EscapeXML = (S) => {
 		"&": "&amp;",
 		"\"": "&quot;",
 		"'": "&apos;"
-	}[C])).replace(/[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]/g, "?");
+	}[C])).replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F]/g, "");
 };
 
 const WrapInSVG = (Text, Options = {}) => {
@@ -84,7 +84,7 @@ module.exports = (Request, Result) => {
 			}
 
 			if(Type === "text"){
-				return (QueryObject.text || "Не указан \"text\"").replace("nbsp", " ");
+				return (QueryObject.text || "Не указан \"text\"").replace(/\\n/g, "\n").replace("nbsp", " ");
 			}
 
 			if(Type === "js"){
