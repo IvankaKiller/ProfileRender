@@ -61,25 +61,10 @@ const GetIconSVG = function(IconID){
 	const IconPath = PATH.join(IconsPath, IconID + ".svg");
 	let SVG = FS.readFileSync(IconPath, "utf8");
 
-	// 1. Удаляем ненужные метаданные
 	SVG = SVG.replace(/<\?xml.*?\?>/gi, "");
 	SVG = SVG.replace(/<!DOCTYPE.*?>/gi, "");
 	SVG = SVG.replace(/<!--.*?-->/gs, "");
 
-	// 2. УДАЛЯЕМ ГРАДИЕНТЫ (они вызывают красный цвет)
-	SVG = SVG.replace(/<defs>[\s\S]*?<\/defs>/gi, "");
-	SVG = SVG.replace(/<linearGradient[\s\S]*?<\/linearGradient>/gi, "");
-	SVG = SVG.replace(/<radialGradient[\s\S]*?<\/radialGradient>/gi, "");
-
-	// 3. ✅ ЗАМЕНЯЕМ fill на currentColor (НЕ удаляем!)
-	SVG = SVG.replace(/fill="[^"]*"/gi, 'fill="currentColor"');
-	SVG = SVG.replace(/fill='[^']*'/gi, "fill='currentColor'");
-
-	// 4. ✅ ЗАМЕНЯЕМ stroke на currentColor
-	SVG = SVG.replace(/stroke="[^"]*"/gi, 'stroke="currentColor"');
-	SVG = SVG.replace(/stroke='[^']*'/gi, "stroke='currentColor'");
-
-	// 5. Удаляем inkscape/sodipodi атрибуты
 	SVG = SVG.replace(/inkscape:[a-z-]+="[^"]*"/gi, "");
 	SVG = SVG.replace(/sodipodi:[a-z-]+="[^"]*"/gi, "");
 
@@ -120,14 +105,14 @@ module.exports = (Request, Result) => {
 		Result.setHeader("Content-Type", "image/svg+xml; charset=utf-8");
 		Result.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
-		Options.Background = QueryObject.bg  || Options.Background;
-		Options.Color      = QueryObject.c   || Options.Color     ;
-		Options.Width      = QueryObject.w   || Options.Width     ;
-		Options.Height     = QueryObject.h   || Options.Height    ;
-		Options.LineHeight = QueryObject.lh  || Options.LineHeight;
-		Options.Padding    = QueryObject.pad || Options.Padding   ;
-		Options.MaxLines   = QueryObject.ml  || Options.MaxLines  ;
-		Options.FontSize   = QueryObject.fs  || Options.FontSize  ;
+		Options.Background = QueryObject.t_bg  || Options.Background;
+		Options.Color      = QueryObject.t_c   || Options.Color     ;
+		Options.Width      = QueryObject.t_w   || Options.Width     ;
+		Options.Height     = QueryObject.t_h   || Options.Height    ;
+		Options.LineHeight = QueryObject.t_lh  || Options.LineHeight;
+		Options.Padding    = QueryObject.t_pad || Options.Padding   ;
+		Options.MaxLines   = QueryObject.t_ml  || Options.MaxLines  ;
+		Options.FontSize   = QueryObject.t_fs  || Options.FontSize  ;
 
 		function Run(){
 			if(Type === "notype"){
@@ -186,7 +171,7 @@ module.exports = (Request, Result) => {
 
 					let SVGData = GetIconSVG(IconID);
 
-					CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}">${SVGData}</svg>`;
+					CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}"><g>${SVGData}</g></svg>`;
 
 					X += Size + Gap;
 				});

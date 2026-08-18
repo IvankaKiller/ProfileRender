@@ -1,15 +1,15 @@
 # ProfileRender
 
-| Параметр | Информация                              | Дефолт |
-|:--------:|:----------------------------------------|:------:|
-|    bg    | Цвет заднего фона                       | 555555 |
-|    c     | Цвет текста                             | FFFFFF |
-|    w     | Ширина (в пикселях)                     |        |
-|    h     | Высота (в пикселях)                     |        |
-|    lh    | Растояние между строками (в пикселях)   |        |
-|   pad    | Растояние между содержимым (в пикселях) |   30   |
-|    ml    | Сколько максимум отображать линий?      |  100   |
-|    fs    | Размер шрифта (в пикселях)              |   12   |
+| Параметр  | Информация                              | Дефолт |
+|:---------:|:----------------------------------------|:------:|
+|   t_bg    | Цвет заднего фона                       | 555555 |
+|  t_c      | Цвет текста                             | FFFFFF |
+|    t_w    | Ширина (в пикселях)                     |        |
+|    t_h    | Высота (в пикселях)                     |        |
+|   t_lh    | Растояние между строками (в пикселях)   |        |
+|   t_pad   | Растояние между содержимым (в пикселях) |   30   |
+|   t_ml    | Сколько максимум отображать линий?      |  100   |
+|   t_fs    | Размер шрифта (в пикселях)              |   12   |
 
 ``https://profile-render-fawn.vercel.app/``
 
@@ -19,41 +19,41 @@
 
 ![](https://profile-render-fawn.vercel.app/?type=text)
 
-``https://profile-render-fawn.vercel.app/?bg=FF0000&type=text``
+``https://profile-render-fawn.vercel.app/?t_bg=FF0000&type=text``
 
-![](https://profile-render-fawn.vercel.app/?bg=FF0000&type=text)
+![](https://profile-render-fawn.vercel.app/?t_bg=FF0000&type=text)
 
-``https://profile-render-fawn.vercel.app/?c=000000&type=text``
+``https://profile-render-fawn.vercel.app/?t_c=000000&type=text``
 
-![](https://profile-render-fawn.vercel.app/?c=000000&type=text)
+![](https://profile-render-fawn.vercel.app/?t_c=000000&type=text)
 
-``https://profile-render-fawn.vercel.app/?pad=0&type=text``
+``https://profile-render-fawn.vercel.app/?t_pad=0&type=text``
 
-![](https://profile-render-fawn.vercel.app/?pad=0&type=text)
+![](https://profile-render-fawn.vercel.app/?t_pad=0&type=text)
 
-``https://profile-render-fawn.vercel.app/?pad=100&type=text``
+``https://profile-render-fawn.vercel.app/?t_pad=100&type=text``
 
-![](https://profile-render-fawn.vercel.app/?pad=100&type=text)
+![](https://profile-render-fawn.vercel.app/?t_pad=100&type=text)
 
-``https://profile-render-fawn.vercel.app/?w=150&h=150&type=text``
+``https://profile-render-fawn.vercel.app/?t_w=150&t_h=150&type=text``
 
-![](https://profile-render-fawn.vercel.app/?w=150&h=150&type=text)
+![](https://profile-render-fawn.vercel.app/?t_w=150&t_h=150&type=text)
 
-``https://profile-render-fawn.vercel.app/?fs=50&type=text``
+``https://profile-render-fawn.vercel.app/?t_fs=50&type=text``
 
-![](https://profile-render-fawn.vercel.app/?fs=50&type=text)
+![](https://profile-render-fawn.vercel.app/?t_fs=50&type=text)
 
-``https://profile-render-fawn.vercel.app/?lh=5&type=text&text=1\n2\n3\n4\n5``
+``https://profile-render-fawn.vercel.app/?t_lh=5&type=text&text=1\n2\n3\n4\n5``
 
-![](https://profile-render-fawn.vercel.app/?lh=5&type=text&text=1\n2\n3\n4\n5)
+![](https://profile-render-fawn.vercel.app/?t_lh=5&type=text&text=1\n2\n3\n4\n5)
 
-``https://profile-render-fawn.vercel.app/?lh=50&type=text&text=1\n2\n3\n4\n5``
+``https://profile-render-fawn.vercel.app/?t_lh=50&type=text&text=1\n2\n3\n4\n5``
 
-![](https://profile-render-fawn.vercel.app/?lh=50&type=text&text=1\n2\n3\n4\n5)
+![](https://profile-render-fawn.vercel.app/?t_lh=50&type=text&text=1\n2\n3\n4\n5)
 
-``https://profile-render-fawn.vercel.app/?ml=2&type=text&text=1\n2\n3\n4\n5``
+``https://profile-render-fawn.vercel.app/?t_ml=2&type=text&text=1\n2\n3\n4\n5``
 
-![](https://profile-render-fawn.vercel.app/?ml=2&type=text&text=1\n2\n3\n4\n5)
+![](https://profile-render-fawn.vercel.app/?t_ml=2&type=text&text=1\n2\n3\n4\n5)
 
 # Типы
 
