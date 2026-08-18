@@ -84,13 +84,11 @@ module.exports = (Request, Result) => {
 			}
 
 			if(Type === "text"){
-				return (QueryObject.text || "Не указан текст").replace("nbsp;", " ");
+				return (QueryObject.text || "Не указан \"text\"").replace("nbsp;", " ");
 			}
 
 			if(Type === "js"){
-				const Base64Code = QueryObject.code;
-
-				if(!Base64Code){ throw new Error("Не указан код!"); }
+				const Base64Code = QueryObject.code || "UmVzdWx0ID0gItCd0LUg0YPQutCw0LfQsNC9IFwiY29kZVwiIg==";
 
 				const Code = Buffer.from(Base64Code, "base64").toString("utf8");
 
