@@ -1,5 +1,7 @@
 const URL = require("url");
 const VM = require("vm");
+const FS = require("fs");
+const PATH = require("path");
 
 const EscapeXML = (S) => {
 	if(typeof S !== "string"){ S = String(S); }
@@ -103,6 +105,42 @@ module.exports = (Request, Result) => {
 				VM.runInContext(Code, Sandbox);
 
 				return String(Sandbox.Result || "Код был успешно вызван, используйте \"Result = ...\" в вашем коде что-бы вывести результат!");
+			}
+
+			if(Type === "icons"){
+				const IconKeys = (QueryObject.icons || "").split(",");
+				const ResourcesPath = PATH.join(process.cwd(), "resources", "icons");
+				const IconsInfoPath = PATH.join(ResourcesPath, "icons.json");
+
+				if(!FS.existsSync(IconsInfoPath)){ throw new Error("icons.json не найден!"); }
+
+				const IconsInfo = JSON.parse(FS.readFileSync(IconsInfoPath, "utf8"));
+
+				let X = 0;
+				const Size = 75;
+				const Gap = 5;
+				let CombinedContent = "";
+
+				IconKeys.forEach(Key => {
+					Key = Key.trim();
+					let FileName = IconsInfo[Key];
+					if(!FileName){
+						FileName = "blank";
+					}
+
+					const IconPath = PATH.join(ResourcesPath, FileName + ".svg");
+					if(FS.existsSync(IconPath)){
+						let SVGData = FS.readFileSync(IconPath, "utf8");
+						CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}">${SVGData}</svg>`;
+
+						X += Size + Gap;
+					}
+				});
+
+				if(X === 0){ return "Не указаны иконки"; }
+
+				const TotalWidth = X - Gap;
+				return `<svg xmlns="http://www.w3.org/2000/svg" width="${TotalWidth}" height="${Size}">${CombinedContent}</svg>`;
 			}
 
 			return undefined;
