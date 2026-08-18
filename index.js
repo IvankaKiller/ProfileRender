@@ -84,7 +84,7 @@ module.exports = (Request, Result) => {
 			}
 
 			if(Type === "text"){
-				return (QueryObject.text || "Не указан \"text\"").replace(/\\n/g, "\n").replace("nbsp", " ");
+				return (QueryObject.text || "Не указан \"text\"").replace(/\\n/g, "\n").replace(/nbsp;?/g, " ");
 			}
 
 			if(Type === "js"){
