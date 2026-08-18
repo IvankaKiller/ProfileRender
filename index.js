@@ -3,6 +3,9 @@ const VM = require("vm");
 const FS = require("fs");
 const PATH = require("path");
 
+const SiteURL = "https://profile-render-fawn.vercel.app/";
+const RepoURL = "https://raw.githubusercontent.com/Woowz11/ProfileRender/refs/heads/main/";
+
 const EscapeXML = (S) => {
 	if(typeof S !== "string"){ S = String(S); }
 	return S.replace(/[<>&"']/g, (C) => ({
@@ -114,7 +117,7 @@ module.exports = (Request, Result) => {
 			}
 
 			if(Type === "icons"){
-				if(!QueryObject.icons || QueryObject.icons === ""){ return "Не указаны иконки"; }
+				if(!QueryObject.icons || QueryObject.icons === ""){ return "Не указан \"icons\""; }
 
 				const IconKeys = QueryObject.icons.split(",");
 				const ResourcesPath = PATH.join(process.cwd(), "resources", "icons");
@@ -131,27 +134,15 @@ module.exports = (Request, Result) => {
 
 				IconKeys.forEach(Key => {
 					Key = Key.trim();
-					let FileName = IconsInfo[Key];
-					if(!FileName){
-						FileName = "error";
+					let IconID = IconsInfo[Key];
+					if(!IconID){
+						IconID = "error";
 					}
 
-					const IconPath = PATH.join(ResourcesPath, FileName + ".svg");
-					if(FS.existsSync(IconPath)){
-						/*let SVGData = FS.readFileSync(IconPath, "utf8")
-							.replace(/<\?xml.*?\?>/gi, "")
-							.replace(/<!DOCTYPE.*?>/gi, "")
-							.replace(/<!--.*?-->/gs, "")
-							.replace(/fill="[^"]*"/gi, 'fill="currentColor"')
-							.replace(/fill='[^']*'/gi, "fill='currentColor'")
-							.replace(/stroke="[^"]*"/gi, 'stroke="currentColor"')
-							.replace(/stroke='[^']*'/gi, "stroke='currentColor'")
-							.trim();*/
+					const IconPath = `${RepoURL}resources/icons/${IconID}.svg`;
+					CombinedContent += `<image href="${IconPath}" width="${Size}" height="${Size}" />`;
 
-						CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}"><image href="${IconPath}" width="${Size}" height="${Size}" /></svg>`;
-
-						X += Size + Gap;
-					}
+					X += Size + Gap;
 				});
 
 				const TotalWidth = X - Gap;
