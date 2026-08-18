@@ -6,7 +6,7 @@ const PATH = require("path");
 const SiteURL = "https://profile-render-fawn.vercel.app/";
 const RepoURL = "https://raw.githubusercontent.com/Woowz11/ProfileRender/refs/heads/main/";
 
-const EscapeXML = (S) => {
+const EscapeXML = function(S){
 	if(typeof S !== "string"){ S = String(S); }
 	return S.replace(/[<>&"']/g, (C) => ({
 		"<": "&lt;",
@@ -17,7 +17,7 @@ const EscapeXML = (S) => {
 	}[C])).replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F]/g, "");
 };
 
-const WrapInSVG = (Text, Options = {}) => {
+const WrapInSVG = function(Text, Options = {}){
 	Text = Text.trim();
 	if(Text.startsWith("<svg")){
 		if(!Text.startsWith("<?xml")){
@@ -56,6 +56,18 @@ const WrapInSVG = (Text, Options = {}) => {
       ${TextElements}
     </svg>`.trim();
 };
+
+const GetIconSVG = function(IconID){
+	const IconPath = PATH.join(IconsPath, IconID + ".svg");
+	return FS.readFileSync(IconPath, "utf8")
+		.replace(/<\?xml.*?\?>/gi, "")
+		.replace(/<!DOCTYPE.*?>/gi, "")
+		.replace(/<!--.*?-->/gs, "")
+		.replace(/fill="[^"]*"/gi, "fill=\"currentColor\"")
+		.replace(/stroke="[^"]*"/gi, "stroke=\"currentColor\"")
+		.replace(/<style>[\s\S]*?<\/style>/gi, "")
+		.trim();
+}
 
 // ----------------------------------------------------------------------
 
@@ -133,15 +145,7 @@ module.exports = (Request, Result) => {
 				const Key = QueryObject.icon;
 				let IconID = IconsInfo[Key] || "error";
 
-				const IconPath = PATH.join(IconsPath, IconID + ".svg");
-				let SVGData = FS.readFileSync(IconPath, "utf8")
-					.replace(/<\?xml.*?\?>/gi, "")
-					.replace(/<!DOCTYPE.*?>/gi, "")
-					.replace(/<!--.*?-->/gs, "")
-					.replace(/fill="[^"]*"/gi, "fill=\"currentColor\"")
-					.replace(/stroke="[^"]*"/gi, "stroke=\"currentColor\"")
-					.replace(/<style>[\s\S]*?<\/style>/gi, "")
-					.trim();
+				let SVGData = GetIconSVG(IconID);
 
 				const Size = 75;
 				return `<svg xmlns="http://www.w3.org/2000/svg" width="${Size}" height="${Size}">
@@ -163,8 +167,9 @@ module.exports = (Request, Result) => {
 					Key = Key.trim();
 					let IconID = IconsInfo[Key] || "error";
 
-					const IconPath = `${SiteURL}?type=icon&amp;icon=${IconID}`;
-					CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}"><image href="${IconPath}" width="${Size}" height="${Size}" /></svg>`;
+					let SVGData = GetIconSVG(IconID);
+
+					CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}">${SVGData}</svg>`;
 
 					X += Size + Gap;
 				});
