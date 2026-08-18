@@ -28,13 +28,16 @@ const WrapInSVG = (Text, Options = {}) => {
 	const DisplayLines = Lines.slice(0, parseInt(Options.MaxLines));
 
 	const MaxChars = Math.max(...DisplayLines.map(L => L.length), 1);
-	const Width= parseInt(Options.Width) || Math.floor(MaxChars * FontSize * 0.62) + Padding + 10;
+	const ContentWidth = Math.floor(MaxChars * FontSize * 61);
+	const Width= parseInt(Options.Width) || Math.floor(ContentWidth + Padding * 2);
 
-	const FirstLineOffset = Math.floor(Padding / 2) + FontSize;
-	const Height = parseInt(Options.Height) || Math.max(FontSize * 2, DisplayLines.length * LineHeight + Padding);
+	const ContentHeight = (DisplayLines.length - 1) * LineHeight + FontSize;
+	const Height = parseInt(Options.Height) || Math.max(ContentHeight * LineHeight * 2);
 
+	const FirstLineY = Padding + FontSize - Math.floor(FontSize * 0.1);
+	
 	let TextElements = DisplayLines.map((Line, Index) =>
-		`<text x="20" y="${FirstLineOffset + Index * LineHeight}" fill="${Color}" font-family="monospace" font-size="${FontSize}" xml:space="preserve">${EscapeXML(Line)}</text>`
+		`<text x="20" y="${FirstLineY + Index * LineHeight}" fill="${Color}" font-family="monospace" font-size="${FontSize}" xml:space="preserve">${EscapeXML(Line)}</text>`
 	).join("");
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
