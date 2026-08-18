@@ -59,27 +59,31 @@ const WrapInSVG = function(Text, Options = {}){
 
 const GetIconSVG = function(IconID){
 	const IconPath = PATH.join(IconsPath, IconID + ".svg");
-	return FS.readFileSync(IconPath, "utf8")
-		.replace(/<\?xml.*?\?>/gi, "")
-		.replace(/<!DOCTYPE.*?>/gi, "")
-		.replace(/<!--.*?-->/gs, "")
-		.replace(/<defs>[\s\S]*?<\/defs>/gi, "")
-		.replace(/<linearGradient[\s\S]*?<\/linearGradient>/gi, "")
-		.replace(/<radialGradient[\s\S]*?<\/radialGradient>/gi, "")
-		// ⭐ ЧИСТИМ АТРИБУТЫ fill И stroke
-		.replace(/fill="[^"]*"/gi, 'fill="currentColor"')
-		.replace(/fill='[^']*'/gi, "fill='currentColor'")
-		.replace(/stroke="[^"]*"/gi, 'stroke="currentColor"')
-		.replace(/stroke='[^']*'/gi, "stroke='currentColor'")
-		// ⭐ УДАЛЯЕМ CSS-стили ВНУТРИ style="..."
-		.replace(/style="[^"]*"/gi, 'style=""')
-		.replace(/style='[^']*'/gi, "style=''")
-		// ⭐ УДАЛЯЕМ ТЕГИ <style>
-		.replace(/<style>[\s\S]*?<\/style>/gi, "")
-		// ⭐ УДАЛЯЕМ inkscape-специфичные атрибуты (они могут содержать цвета)
-		.replace(/inkscape:label="[^"]*"/gi, "")
-		.replace(/sodipodi:nodetypes="[^"]*"/gi, "")
-		.trim();
+	let SVG = FS.readFileSync(IconPath, "utf8");
+
+	// 1. Удаляем ненужные метаданные
+	SVG = SVG.replace(/<\?xml.*?\?>/gi, "");
+	SVG = SVG.replace(/<!DOCTYPE.*?>/gi, "");
+	SVG = SVG.replace(/<!--.*?-->/gs, "");
+
+	// 2. УДАЛЯЕМ ГРАДИЕНТЫ (они вызывают красный цвет)
+	SVG = SVG.replace(/<defs>[\s\S]*?<\/defs>/gi, "");
+	SVG = SVG.replace(/<linearGradient[\s\S]*?<\/linearGradient>/gi, "");
+	SVG = SVG.replace(/<radialGradient[\s\S]*?<\/radialGradient>/gi, "");
+
+	// 3. ✅ ЗАМЕНЯЕМ fill на currentColor (НЕ удаляем!)
+	SVG = SVG.replace(/fill="[^"]*"/gi, 'fill="currentColor"');
+	SVG = SVG.replace(/fill='[^']*'/gi, "fill='currentColor'");
+
+	// 4. ✅ ЗАМЕНЯЕМ stroke на currentColor
+	SVG = SVG.replace(/stroke="[^"]*"/gi, 'stroke="currentColor"');
+	SVG = SVG.replace(/stroke='[^']*'/gi, "stroke='currentColor'");
+
+	// 5. Удаляем inkscape/sodipodi атрибуты
+	SVG = SVG.replace(/inkscape:[a-z-]+="[^"]*"/gi, "");
+	SVG = SVG.replace(/sodipodi:[a-z-]+="[^"]*"/gi, "");
+
+	return SVG.trim();
 }
 
 // ----------------------------------------------------------------------

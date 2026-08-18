@@ -105,11 +105,19 @@
 
 ![](https://profile-render-fawn.vercel.app/?type=js&code=dGhyb3cgbmV3IEVycm9yKCLQn9GA0LjQvNC10YAg0L7RiNC40LHQutC4Iik=)
 
-## icons
+## icon
 
-| Параметр | Информация                 | Дефолт |
-|:--------:|:---------------------------|:------:|
-|  icons   | Список отображаемых иконок |        |
+| Параметр | Информация | Дефолт |
+|:--------:|:-----------|:------:|
+|   icon   | Иконка     |        |
+
+``https://profile-render-fawn.vercel.app/?type=icon``
+
+![](https://profile-render-fawn.vercel.app/?type=icon)
+
+``https://profile-render-fawn.vercel.app/?type=icon&icon=winxp``
+
+![](https://profile-render-fawn.vercel.app/?type=icon&icon=winxp)
 
 ### Доступные иконки
 
@@ -134,6 +142,13 @@
 | Windows 8  |           `win8`, `windows8`           | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/win8.svg)  |
 | Windows 7  |           `win7`, `windows7`           | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/win7.svg)  |
 | Windows XP |          `winxp`, `windowsxp`          | ![](https://github.com/Woowz11/ProfileRender/raw/refs/heads/main/resources/icons/winxp.svg) |
+
+
+## icons
+
+| Параметр | Информация                 | Дефолт |
+|:--------:|:---------------------------|:------:|
+|  icons   | Список отображаемых иконок |        |
 
 ``https://profile-render-fawn.vercel.app/?type=icons``
 
