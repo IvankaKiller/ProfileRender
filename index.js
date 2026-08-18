@@ -1,33 +1,37 @@
 const URL = require("url");
 const VM = require("vm");
 
-const EscapeXML = (S) => S.replace(/[<>&"']/g, (C) => ({
-	"<" : "&lt;",
-	">" : "&gt;",
-	"&" : "&amp;",
-	"\"": "&quot;",
-	"'" : "&apos;"
-}[C]));
+const EscapeXML = (S) => {
+	if(typeof S !== "string"){ S = String(S); }
+	return S.replace(/[<>&"']/g, (C) => ({
+		"<": "&lt;",
+		">": "&gt;",
+		"&": "&amp;",
+		"\"": "&quot;",
+		"'": "&apos;"
+	}[C])).replace(/[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]/g, "?");
+};
 
 const WrapInSVG = (Text, BackgroundColor = "#222", TextColor = "#0FA") => {
 	if(Text.trim().startsWith("<svg")){ return Text; }
 
 	const Lines = Text.split("\n");
 	const LineHeight = 20;
-	const Padding = 20;
-	const Width = 600;
-	const Height = Math.max(40, Lines.length * LineHeight + Padding);
+	const Padding = 30;
+	const Width = 650;
 
-	let TextElements = Lines.map((line, index) =>
-		`<text x="20" y="${30 + index * LineHeight}" fill="${TextColor}" font-family="monospace" font-size="12">${EscapeXML(line)}</text>`
+	const DisplayLines = Lines.slice(0, 50);
+	const Height = Math.max(60, DisplayLines.length * LineHeight + Padding);
+
+	let TextElements = DisplayLines.map((line, index) =>
+		`<text x="20" y="${30 + index * LineHeight}" fill="${TextColor}" font-family="monospace" font-size="12" xml:space="preserve">${EscapeXML(line)}</text>`
 	).join("");
 
-	return `
+	return `<?xml version="1.0" encoding="UTF-8"?>
     <svg xmlns="http://www.w3.org/2000/svg" width="${Width}" height="${Height}" viewBox="0 0 ${Width} ${Height}">
       <rect width="100%" height="100%" rx="6" fill="${BackgroundColor}" />
       ${TextElements}
-    </svg>
-  `.trim();
+    </svg>`.trim();
 };
 
 module.exports = (Request, Result) => {
@@ -73,6 +77,6 @@ module.exports = (Request, Result) => {
 
 		Result.end(WrapInSVG(Result__));
 	}catch(e){
-		Result.end(WrapInSVG("Ошибка скрипта: " + e.message + "\nStack: " + e.stack, "#411", "#ff7878"));
+		Result.end(WrapInSVG("Ошибка скрипта: " + e.stack, "#411", "#ff7878"));
 	}
 };
