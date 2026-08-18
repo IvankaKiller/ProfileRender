@@ -84,13 +84,13 @@ module.exports = (Request, Result) => {
 			}
 
 			if(Type === "text"){
-				return (QueryObject.text || "Не указан \"text\"").replace("nbsp;", " ");
+				return (QueryObject.text || "Не указан \"text\"").replace("nbsp", " ");
 			}
 
 			if(Type === "js"){
 				const Base64Code = QueryObject.code || "UmVzdWx0ID0gItCd0LUg0YPQutCw0LfQsNC9IFwiY29kZVwiIg==";
 
-				const Code = Buffer.from(Base64Code, "base64").toString("utf8");
+				const Code = Buffer.from(Base64Code.replace(/ /g, "+"), "base64").toString("utf8");
 
 				const Sandbox = {
 					console,

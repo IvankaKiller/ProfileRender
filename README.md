@@ -47,13 +47,13 @@
 
 ## text
 
-| Параметр | Информация                          |      Дефолт      |
-|:--------:|:------------------------------------|:----------------:|
-|   text   | Текст ("nbsp;" заменяется на побел) | Не указан "text" |
+| Параметр | Информация                         |      Дефолт      |
+|:--------:|:-----------------------------------|:----------------:|
+|   text   | Текст ("nbsp" заменяется на побел) | Не указан "text" |
 
-``https://profile-render-fawn.vercel.app/?type=text&text=Hellonbsp;world!``
+``https://profile-render-fawn.vercel.app/?type=text&text=Hellonbspworld!``
 
-![](https://profile-render-fawn.vercel.app/?type=text&text=Hellonbsp;world!)
+![](https://profile-render-fawn.vercel.app/?type=text&text=Hellonbspworld!)
 
 ## js
 
