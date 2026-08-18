@@ -163,7 +163,7 @@ module.exports = (Request, Result) => {
 					Key = Key.trim();
 					let IconID = IconsInfo[Key] || "error";
 
-					const IconPath = `${SiteURL}?type=icon&icon=${IconID}`;
+					const IconPath = `${SiteURL}?type=icon&amp;icon=${IconID}`;
 					CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}"><image href="${IconPath}" width="${Size}" height="${Size}" /></svg>`;
 
 					X += Size + Gap;
