@@ -15,7 +15,13 @@ const EscapeXML = (S) => {
 };
 
 const WrapInSVG = (Text, Options = {}) => {
-	if(Text.trim().startsWith("<svg")){ return Text; }
+	Text = Text.trim();
+	if(Text.startsWith("<svg")){
+		if(!Text.startsWith("<?xml")){
+			return `<?xml version="1.0" encoding="UTF-8"?>\n${Text}`;
+		}
+		return Text;
+	}
 
 	const FixColor = (C) => C && !C.startsWith("#") ? "#" + C : C;
 
@@ -130,7 +136,11 @@ module.exports = (Request, Result) => {
 
 					const IconPath = PATH.join(ResourcesPath, FileName + ".svg");
 					if(FS.existsSync(IconPath)){
-						let SVGData = FS.readFileSync(IconPath, "utf8");
+						let SVGData = FS.readFileSync(IconPath, "utf8")
+							.replace(/<\?xml.*?\?>/gi, "")
+							.replace(/<!DOCTYPE.*?>/gi, "")
+							.replace(/<!--.*?-->/gs, "")
+							.trim();
 						CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}">${SVGData}</svg>`;
 
 						X += Size + Gap;
