@@ -19,7 +19,6 @@ const WrapInSVG = (Text, Options = {}) => {
 
 	const Background = FixColor(Options.Background);
 	const Color = FixColor(Options.Color);
-	const Width= parseInt(Options.Width);
 	const FontSize = parseInt(Options.FontSize);
 
 	const LineHeight = parseInt(Options.LineHeight) || Math.floor(FontSize * 1.5);
@@ -28,8 +27,10 @@ const WrapInSVG = (Text, Options = {}) => {
 	const Lines = Text.split("\n");
 	const DisplayLines = Lines.slice(0, parseInt(Options.MaxLines));
 
-	const FirstLineOffset = Math.floor(Padding / 2) + FontSize;
+	const MaxChars = Math.max(...DisplayLines.map(L => L.length), 1);
+	const Width= parseInt(Options.Width) || Math.floor(MaxChars * FontSize * 0.62) + Padding + 10;
 
+	const FirstLineOffset = Math.floor(Padding / 2) + FontSize;
 	const Height = parseInt(Options.Height) || Math.max(FontSize * 2, DisplayLines.length * LineHeight + Padding);
 
 	let TextElements = DisplayLines.map((Line, Index) =>
@@ -47,7 +48,7 @@ module.exports = (Request, Result) => {
 	const DefaultOptions = {
 		Background: "#555555",
 		Color     : "#FFFFFF",
-		Width     : 650,
+		Width     : null,
 		Height    : null,
 		LineHeight: null,
 		Padding   : 30,
