@@ -61,13 +61,17 @@
 		"scala"       : "scala",
 		"scl"         : "scala",
 		"kt"          : "kt",
-		"kotlin"      : "kotlin"
+		"kotlin"      : "kotlin",
+		"swift"       : "swift",
+		"yt"          : "yt",
+		"youtube"     : "yt"
 	},
 	"Categories": {
-		"ProgramLanguage"    : [ "c", "cpp", "cmm", "cs", "glua", "java", "js", "lua", "luau", "py", "rs", "ts", "wasm", "nasm", "php", "scala", "kt" ],
+		"ProgramLanguage"    : [ "c", "cpp", "cmm", "cs", "glua", "java", "js", "lua", "luau", "py", "rs", "ts", "wasm", "nasm", "php", "scala", "kt", "swift" ],
 		"OperationSystem"    : ["win7", "win8", "win10", "win11", "winxp"],
 		"FileType"           : ["html", "css", "svg"],
 		"Games"              : ["gmod", "roblox", "tl"],
+		"Social"             : ["yt"],
 		"DevelopmentPrograms": ["mvs", "vsc", "robloxstudio", "docker"],
 		"Other"              : ["error", "blank"]
 	}

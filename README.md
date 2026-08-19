@@ -168,6 +168,9 @@
 |           PHP           |                       `php`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=php)          |
 |          Scala          |                   `scala`, `scl`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=scala)        |
 |         Kotlin          |                   `kt`, `kotlin`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=kt)           |
+|        TLauncher        |                 `tl`, `tlauncher`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=tl)           |
+|         YouTube         |                  `yt`, `youtube`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=yt)           |
+|          Swift          |                      `swift`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=swift)        |
 
 ## icons
 
