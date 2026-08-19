@@ -82,17 +82,33 @@
 		"src"          : "src",
 		"source"       : "src",
 		"src2"         : "src2",
-		"source2"      : "src2"
+		"source2"      : "src2",
+		"ds"           : "ds",
+		"discord"      : "ds",
+		"ruby"         : "ruby",
+		"rb"           : "ruby",
+		"obs"          : "obs",
+		"dota"         : "dota",
+		"dota2"        : "dota",
+		"flash"        : "flash",
+		"minecraft"    : "minecraft",
+		"mine"         : "minecraft",
+		"teardown"     : "teardown",
+		"td"           : "teardown",
+		"sfd"          : "sfd",
+		"tg"           : "tg",
+		"telegram"     : "tg"
 	},
 	"Categories": {
-		"ProgramLanguage"    : [ "c", "cpp", "cmm", "cs", "glua", "java", "js", "lua", "luau", "py", "rs", "ts", "wasm", "nasm", "php", "scala", "kt", "swift", "go" ],
+		"ProgramLanguage"    : [ "c", "cpp", "cmm", "cs", "glua", "java", "js", "lua", "luau", "py", "rs", "ts", "wasm", "nasm", "php", "scala", "kt", "swift", "go", "ruby" ],
 		"OperationSystem"    : ["win7", "win8", "win10", "win11", "winxp"],
 		"FileType"           : ["html", "css", "svg"],
-		"Games"              : ["gmod", "roblox", "tl"],
+		"Games"              : ["gmod", "roblox", "tl", "dota", "minecraft", "teardown","sfd"],
 		"Core"               : ["gsrc", "src", "src2"],
-		"Social"             : ["yt", "github", "steam", "tt", "vk"],
+		"Social"             : ["yt", "github", "steam", "tt", "vk", "ds", "tg"],
 		"WEB"                : ["vercel"],
-		"DevelopmentPrograms": ["mvs", "vsc", "robloxstudio", "docker", "git"],
+		"Programs"           : ["obs"],
+		"DevelopmentPrograms": ["mvs", "vsc", "robloxstudio", "docker", "git", "flash"],
 		"Other"              : ["error", "blank"]
 	}
 }

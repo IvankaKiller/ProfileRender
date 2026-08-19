@@ -56,7 +56,7 @@ const WrapInSVG = function(Text, Options = {}){
 
 const __CacheSVG = {};
 const GetIconSVG = function(IconID, UniquePrefix){
-	let SVG = "";
+	let SVG;
 	if(__CacheSVG[IconID]){
 		SVG = __CacheSVG[IconID];
 	}else{

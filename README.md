@@ -181,6 +181,15 @@
 |       Gold Source       |          `gsrc`, `gsource`, `goldsource`           | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=gsrc)         |
 |         Source          |                  `src`, `source`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=src)          |
 |        Source 2         |                 `src2`, `source2`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=src2)         |
+|         Discord         |                  `ds`, `discord`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=ds)           |
+|          Ruby           |                    `rb`, `ruby`                    | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=rb)           |
+|           OBS           |                       `obs`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=obs)          |
+|         Dota 2          |                  `dota`, `dota2`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=dota)         |
+|          Flash          |                      `flash`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=flash)        |
+|        Minecraft        |                `minecraft`, `mine`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=minecraft)    |
+|        Teardown         |                  `teardown`, `td`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=teardown)     |
+|  SuperFighters Deluxe   |                       `sfd`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=sfd)          |
+|        Telegram         |                  `tg`, `telegram`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=tg)           |
 
 ## icons
 
