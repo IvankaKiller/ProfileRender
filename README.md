@@ -165,7 +165,7 @@
 | Microsoft Visual Studio |                       `mvs`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=mvs)          |
 |   Visual Studio Code    |                       `vsc`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vsc)          |
 |       SVG Format        |                       `svg`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=svg)          |
-|       PHP        |                       `php`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=php)          |
+|      PHP                |                       `php`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=php)          |
 
 ## icons
 

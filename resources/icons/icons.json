@@ -55,7 +55,7 @@
 		"mvs"         : "mvs",
 		"vsc"         : "vsc",
 		"svg"         : "svg",
-		"php"         : "php",
+		"php"         : "php"
 	},
 	"Categories": {
 		"ProgramLanguage"    : [ "c", "cpp", "cmm", "cs", "glua", "java", "js", "lua", "luau", "py", "rs", "ts", "wasm", "nasm", "php" ],
