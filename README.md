@@ -177,7 +177,7 @@
 |     Github Desktop      |           `githubdesk`, `githubdesktop`            | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=githubdesk)   |
 |         TikTok          |                   `tt`, `tiktok`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=tt)           |
 |           GO            |                        `go`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=go)           |
-|        VKontakte        |                 `vk`, `vkontakte`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vk)           |
+|        VKontakte        |                    `vkontakte`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vk)           |
 |       Gold Source       |          `gsrc`, `gsource`, `goldsource`           | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=gsrc)         |
 |         Source          |                  `src`, `source`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=src)          |
 |        Source 2         |                 `src2`, `source2`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=src2)         |
@@ -190,6 +190,18 @@
 |        Teardown         |                  `teardown`, `td`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=teardown)     |
 |  SuperFighters Deluxe   |                       `sfd`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=sfd)          |
 |        Telegram         |                  `tg`, `telegram`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=tg)           |
+|         OpenGL          |                   `opengl`, `gl`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=opengl)       |
+|         Vulkan          |                   `vk`, `vulkan`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vulkan)       |
+|         Google          |                      `google`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=google)       |
+|       Micorosoft        |                    `microsoft`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=microsoft)    |
+|         DirectX         |                     `directx`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=directx)      |
+|         Android         |                     `android`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=android)      |
+|         Twitch          |                      `twitch`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=twitch)       |
+|          GLFW           |                       `glfw`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=glfw)         |
+|         NodeJS          |                  `nodejs`, `njs`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=nodejs)       |
+|         Blender         |                     `blender`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=blender)      |
+|         ChatGPT         |                     `chatpgt`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=chatpgt)      |
+|        Electron         |                     `electron`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=electron)     |
 
 ## icons
 
