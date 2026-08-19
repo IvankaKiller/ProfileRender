@@ -171,6 +171,10 @@
 |        TLauncher        |                 `tl`, `tlauncher`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=tl)           |
 |         YouTube         |                  `yt`, `youtube`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=yt)           |
 |          Swift          |                      `swift`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=swift)        |
+|         Vercel          |                      `vercel`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vercel)       |
+|           Git           |                       `git`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=git)          |
+|         Github          |                      `github`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=github)       |
+|     Github Desktop      |           `githubdesk`, `githubdesktop`            | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=githubdesk)   |
 
 ## icons
 
