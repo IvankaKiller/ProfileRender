@@ -175,6 +175,12 @@
 |           Git           |                       `git`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=git)          |
 |         Github          |                      `github`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=github)       |
 |     Github Desktop      |           `githubdesk`, `githubdesktop`            | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=githubdesk)   |
+|         TikTok          |                   `tt`, `tiktok`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=tt)           |
+|           GO            |                        `go`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=go)           |
+|        VKontakte        |                 `vk`, `vkontakte`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vk)           |
+|       Gold Source       |          `gsrc`, `gsource`, `goldsource`           | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=gsrc)         |
+|         Source          |                  `src`, `source`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=src)          |
+|        Source 2         |                 `src2`, `source2`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=src2)         |
 
 ## icons
 
