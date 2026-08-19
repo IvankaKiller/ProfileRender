@@ -177,7 +177,7 @@
 |     Github Desktop      |           `githubdesk`, `githubdesktop`            | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=githubdesk)   |
 |         TikTok          |                   `tt`, `tiktok`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=tt)           |
 |           GO            |                        `go`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=go)           |
-|        VKontakte        |                    `vkontakte`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vk)           |
+|        VKontakte        |                    `vkontakte`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vkontakte)    |
 |       Gold Source       |          `gsrc`, `gsource`, `goldsource`           | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=gsrc)         |
 |         Source          |                  `src`, `source`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=src)          |
 |        Source 2         |                 `src2`, `source2`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=src2)         |
@@ -200,7 +200,7 @@
 |          GLFW           |                       `glfw`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=glfw)         |
 |         NodeJS          |                  `nodejs`, `njs`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=nodejs)       |
 |         Blender         |                     `blender`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=blender)      |
-|         ChatGPT         |                     `chatpgt`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=chatpgt)      |
+|         ChatGPT         |                     `chatgpt`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=chatgpt)      |
 |        Electron         |                     `electron`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=electron)     |
 
 ## icons
