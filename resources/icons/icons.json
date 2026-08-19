@@ -54,10 +54,11 @@
 		"dock"        : "docker",
 		"mvs"         : "mvs",
 		"vsc"         : "vsc",
-		"svg"         : "svg"
+		"svg"         : "svg",
+		"php"         : "php",
 	},
 	"Categories": {
-		"ProgramLanguage"    : [ "c", "cpp", "cmm", "cs", "glua", "java", "js", "lua", "luau", "py", "rs", "ts", "wasm", "nasm" ],
+		"ProgramLanguage"    : [ "c", "cpp", "cmm", "cs", "glua", "java", "js", "lua", "luau", "py", "rs", "ts", "wasm", "nasm", "php" ],
 		"OperationSystem"    : ["win7", "win8", "win10", "win11", "winxp"],
 		"FileType"           : ["html", "css", "svg"],
 		"Games"              : ["gmod", "roblox"],

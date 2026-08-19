@@ -165,6 +165,7 @@
 | Microsoft Visual Studio |                       `mvs`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=mvs)          |
 |   Visual Studio Code    |                       `vsc`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vsc)          |
 |       SVG Format        |                       `svg`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=svg)          |
+|       PHP        |                       `php`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=php)          |
 
 ## icons
 
@@ -184,9 +185,9 @@
 
 ![](https://profile-render-fawn.vercel.app/?type=icons&icons=python,not_existing_icon,js)
 
-``https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error,c,cpp,cs,cmm,py,html,css,js,ts,java,nasm,wasm,win11,win,win8,win7,winxp,lua,luau,gmod,glua,roblox,robloxstd,rs,dock,mvs,vsc,svg``
+``https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error,c,cpp,cs,cmm,py,html,css,js,ts,java,nasm,wasm,win11,win,win8,win7,winxp,lua,luau,gmod,glua,roblox,robloxstd,rs,dock,mvs,vsc,svg,php``
 
-![](https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error,c,cpp,cs,cmm,py,html,css,js,ts,java,nasm,wasm,win11,win,win8,win7,winxp,lua,luau,gmod,glua,roblox,robloxstd,rs,dock,mvs,vsc,svg)
+![](https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error,c,cpp,cs,cmm,py,html,css,js,ts,java,nasm,wasm,win11,win,win8,win7,winxp,lua,luau,gmod,glua,roblox,robloxstd,rs,dock,mvs,vsc,svg,php)
 
 ## debug
 
