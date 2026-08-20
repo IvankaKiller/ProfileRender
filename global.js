@@ -12,6 +12,55 @@ const EscapeXML = function(S){
     }[C])).replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F]/g, "");
 };
 
+const SplitParams = function(S){
+    S = String(S || "").trim();
+    const Parts = [];
+    let Current = "";
+    let Depth = 0;
+    for(let Char of S){
+        if(Char === '('){ Depth++; }
+        if(Char === ')'){ Depth--; }
+        if(Char === ',' && Depth === 0){
+            Parts.push(Current.trim());
+            Current = "";
+        }else{
+            Current += Char;
+        }
+    }
+    if(Current){ Parts.push(Current.trim()); }
+    return Parts.filter(P => P.length > 0)
+}
+
+const AutoCast = function(V){
+    V = String(V).trim();
+    if(V.toLowerCase() === "true" ){ return true; }
+    if(V.toLowerCase() === "false"){ return false; }
+    if(V !== "" && !isNaN(V)){ return Number(V); }
+    return V;
+}
+
+const ParseLocalParams = function(S, Defaults = {}, PrimaryKey = "value"){
+    S = String(S || "").trim();
+    const Result = { ...Defaults };
+    if(!S.startsWith('(')){
+        Result[PrimaryKey] = S;
+        return Result;
+    }
+    S = S.replace(/^\((.*)\)$/, "$1");
+    const Pairs = S.split(/,(?![^(]*\))/);
+    Pairs.forEach((Pair, Index) => {
+       let [Key, Value] = Pair.split("=").map(S => S.trim());
+       if(Key && Value !== undefined){
+           Result[Key] = AutoCast(Value);
+       }else if(Key && Value === undefined){
+           if(Index === 0){ Result[PrimaryKey] = AutoCase(Key); }else{ Result[Key] = true; }
+       }
+    });
+    return Result;
+}
+
+const FixColor = function(C){ return C && !C.startsWith("#") ? "#" + C : C; }
+
 const WrapInSVG = function(Text, Options = {}){
     Text = Text.trim();
     if(Text.startsWith("<svg")){
@@ -20,8 +69,6 @@ const WrapInSVG = function(Text, Options = {}){
         }
         return Text;
     }
-
-    const FixColor = (C) => C && !C.startsWith("#") ? "#" + C : C;
 
     const Background = FixColor(Options.Background);
     const Color = FixColor(Options.Color);
@@ -87,5 +134,9 @@ module.exports = {
     EscapeXML,
     WrapInSVG,
     GetIconSVG,
-    IconsInfo
+    IconsInfo,
+    SplitParams,
+    ParseLocalParams,
+    AutoCast,
+    FixColor
 };

@@ -1,7 +1,7 @@
 const URL = require("url");
 const VM = require("vm");
 
-const { EscapeXML, WrapInSVG, GetIconSVG, IconsInfo } = require("./global.js");
+const { EscapeXML, WrapInSVG, GetIconSVG, IconsInfo, SplitParams, ParseLocalParams, FixColor } = require("./global.js");
 
 // ----------------------------------------------------------------------
 
@@ -64,43 +64,72 @@ module.exports = (Request, Result) => {
 				return String(Sandbox.Result || "Код был успешно вызван, используйте \"Result = ...\" в вашем коде что-бы вывести результат!");
 			}
 
-			if(Type === "icon"){
-				if(!QueryObject.icon || QueryObject.icon === ""){ return "Не указан \"icon\""; }
+			if(Type === "icon" || Type === "icons"){
+				const RawInput = QueryObject.icons || QueryObject.icon || "";
+				if(!RawInput){ return "Не указаны \"icon\" или \"icons\""; }
 
-				const Key = QueryObject.icon;
-				let IconID = IconsInfo["Names"][Key] || "error";
+				const GlobalSize = parseInt(QueryObject.size) || 75;
+				const GlobalBackground = QueryObject.bg || "transparent";
+				const Gap = parseInt(QueryObject.gap) || 5;
+				const MaxRow = parseInt(QueryObject.max_row) || 0;
+				const Align = QueryObject.align || "left";
 
-				let SVGData = GetIconSVG(IconID, "woowz");
+				const IconItems = SplitParams(RawInput).map((Item, Idx) => {
+					const Local = ParseLocalParams(Item, {
+						size: GlobalSize,
+						bg: GlobalBackground,
+						tip: ""
+					}, "name");
 
-				const Size = 75;
-				return `<svg xmlns="http://www.w3.org/2000/svg" width="${Size}" height="${Size}">
-					<g>${SVGData}</g>
-				</svg>`;
-			}
-
-			if(Type === "icons"){
-				if(!QueryObject.icons || QueryObject.icons === ""){ return "Не указан \"icons\""; }
-
-				const IconKeys = QueryObject.icons.split(",");
-
-				let X = 0;
-				const Size = 75;
-				const Gap = 5;
-				let CombinedContent = "";
-
-				IconKeys.forEach((Key, Index) => {
-					Key = Key.trim();
-					let IconID = IconsInfo["Names"][Key] || "error";
-
-					let SVGData = GetIconSVG(IconID, `woowz_${Index}`);
-
-					CombinedContent += `<svg x="${X}" y="0" width="${Size}" height="${Size}"><g>${SVGData}</g></svg>`;
-
-					X += Size + Gap;
+					const IconID = IconsInfo["Names"][Local.name] || "error";
+					const SVGData = GetIconSVG(IconID, `idx${Idx}`);
+					return { ...Local, SVGData };
 				});
 
-				const TotalWidth = X - Gap;
-				return `<svg xmlns="http://www.w3.org/2000/svg" width="${TotalWidth}" height="${Size}">${CombinedContent}</svg>`;
+				let Rows = [];
+				if(MaxRow > 0){
+					for(let i = 0; i < IconItems.length; i += MaxRow){
+						Rows.push(IconItems.slice(i, i + MaxRow));
+					}
+				}else{
+					Rows.push(IconItems);
+				}
+
+				let CanvasWidth = 0;
+				const RowMetrics = Rows.map(Row => {
+					const RowW = Row.reduce((Sum, Icon) => Sum + Icon.size, 0) + (Row.length - 1) * Gap;
+					const RowH = Math.max(...Row.map(i => i.size));
+					if(RowW > CanvasWidth){ CanvasWidth = RowW; }
+					return { W: RowW, H: RowH };
+				});
+				const CanvasHeight = RowMetrics.reduce((Sum, M) => Sum + M.H, 0) + (Rows.length - 1) * Gap;
+
+				let CurrentY = 0;
+				let SVGContent = "";
+
+				Rows.forEach((Row, RIdx) => {
+					const Metrics = RowMetrics[RIdx];
+					let CurrentX;
+
+					if(Align === "center"){ CurrentX = (CanvasWidth - Metrics.W) / 2; }
+					if(Align === "right" ){ CurrentX = CanvasWidth - Metrics.W; }
+
+					Row.forEach(Icon => {
+						const BGColor = FixColor(Icon.bg);
+						const BGRect = (BGColor && BGColor !== "transparent") ? `<rect width="${Icon.size}" height="${Icon.size}" fill="${BGColor}" />` : "";
+
+						const Tooltip = Icon.tip ? `<title>${EscapeXML(Icon.tip)}</title>` : "";
+
+						SVGContent += `<svg x="${CurrentY}" y="${CurrentY}" width="${Icon.size}" height="${Icon.size}">${Tooltip}${BGRect}<g>${Icon.SVGData || ""}</g></svg>`;
+
+						CurrentX += Icon.size + Gap;
+					});
+					CurrentY += Metrics.H + Gap;
+				});
+
+				return `<svg xmlns="http://www.w3.org/2000/svg" width="${CanvasWidth}" height="${CanvasHeight}">
+					${SVGContent}
+				</svg>`;
 			}
 
 			if(Type === "debug"){
@@ -108,108 +137,7 @@ module.exports = (Request, Result) => {
 				const Debug = QueryObject.debug;
 
 				if(Debug === "icons"){
-					const Names = IconsInfo.Names || {};
-					const Categories = IconsInfo.Categories || {};
 
-					// Группируем по ID
-					const AllIcons = {};
-					for(const [key, value] of Object.entries(Names)){
-						if(!AllIcons[value]){
-							AllIcons[value] = { id: value, names: [] };
-						}
-						AllIcons[value].names.push(key);
-					}
-
-					// Распределяем по категориям
-					const CategoryMap = {};
-					const Uncategorized = [];
-					const SortedIDs = Object.keys(AllIcons).sort();
-
-					for(const id of SortedIDs){
-						let found = false;
-						for(const [category, icons] of Object.entries(Categories)){
-							if(icons.includes(id)){
-								if(!CategoryMap[category]) CategoryMap[category] = [];
-								CategoryMap[category].push(id);
-								found = true;
-								break;
-							}
-						}
-						if(!found) Uncategorized.push(id);
-					}
-
-					// Строим SVG
-					let Y = 30;
-					const RowHeight = 30;
-					const ColID = 10;
-					const ColNames = 100;
-					const ColIcon = 350;
-					const IconSize = 20;
-
-					// Высчитываем высоту
-					let totalRows = SortedIDs.length + Object.keys(CategoryMap).length + (Uncategorized.length > 0 ? 1 : 0);
-					let totalHeight = totalRows * RowHeight + 60;
-
-					let SVGContent = `<svg xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="12" width="500" height="${totalHeight}">
-    <rect width="100%" height="100%" fill="#1a1a2e"/>`;
-
-					// Шапка
-					SVGContent += `
-    <text x="${ColID}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="14">ID</text>
-    <text x="${ColNames}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="14">Алиасы</text>
-    <text x="${ColIcon}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="14">Иконка</text>`;
-					Y += RowHeight + 5;
-
-					const RenderRow = (id, names, Ypos) => {
-						let rawSVG = GetIconSVG(id, `debug_${id}`);
-
-						// Удаляем все атрибуты width/height из корневого SVG, оставляем только содержимое
-						rawSVG = rawSVG.replace(/<svg[^>]*>/, '').replace(/<\/svg>/, '');
-
-						const namesStr = names.filter(n => n !== id).join(', ');
-
-						return `
-    <rect x="0" y="${Ypos - 12}" width="100%" height="${RowHeight}" fill="#16213e" rx="3"/>
-    <text x="${ColID}" y="${Ypos + 4}" fill="#ffffff">${id}</text>
-    <text x="${ColNames}" y="${Ypos + 4}" fill="#b0b0d0" font-size="11">${namesStr}</text>
-    <svg x="${ColIcon}" y="${Ypos - 10}" width="${IconSize}" height="${IconSize}" viewBox="0 0 19.84375 19.84375" preserveAspectRatio="xMidYMid meet">
-        <g fill="#ffffff">${rawSVG}</g>
-    </svg>`;
-					};
-
-					// Категории
-					for(const category of Object.keys(CategoryMap).sort()){
-						SVGContent += `
-    <text x="${ColID}" y="${Y}" fill="#4fc3f7" font-weight="bold" font-size="14">📁 ${category}</text>`;
-						Y += RowHeight + 5;
-
-						for(const id of CategoryMap[category].sort()){
-							SVGContent += RenderRow(id, AllIcons[id].names, Y);
-							Y += RowHeight;
-						}
-						Y += 5;
-					}
-
-					// Без категории
-					if(Uncategorized.length > 0){
-						SVGContent += `
-    <text x="${ColID}" y="${Y}" fill="#ffb74d" font-weight="bold" font-size="14">📂 Без категории</text>`;
-						Y += RowHeight + 5;
-
-						for(const id of Uncategorized.sort()){
-							SVGContent += RenderRow(id, AllIcons[id].names, Y);
-							Y += RowHeight;
-						}
-					}
-
-					// Итог
-					SVGContent += `
-    <text x="${ColID}" y="${Y + 10}" fill="#666" font-size="11">Всего: ${SortedIDs.length} иконок</text>`;
-
-					SVGContent += `
-</svg>`;
-
-					return SVGContent;
 				}
 
 				return "Неизвестный тип \"debug\"!";
