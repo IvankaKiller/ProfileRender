@@ -114,6 +114,17 @@
 		"electron"     : "electron",
 		"inkscape"     : "inkscape"
 	},
+	"Backgrounds": {
+		"twitch": "9246FF",
+		"chatgpt": "74aa9cff",
+		"directx": "black",
+		"docker": "1c88efff",
+		"dota": "black",
+		"ds": "5865f2ff",
+		"electron": "2b2e3aff",
+		"error": "280000ff",
+		"flash": "bf0a08ff"
+	},
 	"Categories": {
 		"ProgramLanguage"    : ["c", "cpp", "cmm", "cs", "glua", "java", "js", "lua", "luau", "py", "rs", "ts", "wasm", "nasm", "php", "scala", "kt", "swift", "go", "ruby" ],
 		"OperationSystem"    : ["win7", "win8", "win10", "win11", "winxp", "android"],

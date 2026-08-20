@@ -266,9 +266,22 @@
 
 ![](https://profile-render-fawn.vercel.app/?type=icons&icons={sfd,tg,gl,vk}&max_row=2)
 
-``https://profile-render-fawn.vercel.app/?type=icons&icons={sfd,tg,gl,vk}&max_row=2``
+``https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google,radius=50},directx,twitch}``
 
-![](https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google},directx,twitch} )
+![](https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google,radius=50},directx,twitch})
+
+``https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google,bg=red},directx,twitch}``
+
+![](https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google,bg=red},directx,twitch})
+
+``https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google,size=150},directx,twitch}``
+
+![](https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google,size=150},directx,twitch})
+
+``https://profile-render-fawn.vercel.app/?type=icons&icons={{icon=njs,tip=ЯnbspфанатnbspNodeJS!},{icon=python,tip=НенавижуnbspPython!}}``
+
+![](https://profile-render-fawn.vercel.app/?type=icons&icons={{icon=njs,tip=ЯnbspфанатnbspNodeJS!},{icon=python,tip=НенавижуnbspPython!}})
+
 
 ## debug
 

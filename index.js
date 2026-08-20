@@ -85,6 +85,10 @@ module.exports = (Request, Result) => {
 
 					Local["tip"] = EscapeText(Local["tip"]);
 
+					if(Local.bg === "default"){
+						Local.bg = IconsInfo["Backgrounds"][IconID] || "white";
+					}
+
 					const IconID = IconsInfo["Names"][Local.icon] || "error";
 					const SVGData = GetIconSVG(IconID, `idx${Idx}`);
 					return { ...Local, SVGData, id: Idx };

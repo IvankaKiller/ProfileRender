@@ -133,15 +133,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     style="fill:#ff0101;fill-opacity:1"><rect
-       style="fill:#2b2e3a;fill-opacity:1;stroke-width:0.598849"
-       id="base"
-       width="19.84375"
-       height="19.84375"
-       x="0"
-       y="0"
-       sodipodi:type="rect"
-       ry="4.7682381" /><circle
+     style="fill:#ff0101;fill-opacity:1"><circle
        style="fill:#9feaf9;fill-opacity:1;fill-rule:evenodd;stroke-width:0.264583"
        id="path3"
        cx="9.8836117"

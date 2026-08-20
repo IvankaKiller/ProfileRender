@@ -25,8 +25,8 @@
      inkscape:document-units="px"
      showguides="false"
      inkscape:zoom="8.2142634"
-     inkscape:cx="35.304444"
-     inkscape:cy="40.417501"
+     inkscape:cx="35.365313"
+     inkscape:cy="40.356631"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -79,15 +79,5 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     style="fill:#ff0101;fill-opacity:1">
-    <rect
-       style="fill:#ffffff;fill-opacity:1;stroke-width:0.598849"
-       id="base"
-       width="19.84375"
-       height="19.84375"
-       x="0"
-       y="0"
-       sodipodi:type="rect"
-       ry="4.7682381" />
-  </g>
+     style="fill:#ff0101;fill-opacity:1" />
 </svg>
