@@ -126,18 +126,18 @@
 		"flash": "bf0a08ff"
 	},
 	"Categories": {
-		"ProgramLanguage"    : ["c", "cpp", "cmm", "cs", "glua", "java", "js", "lua", "luau", "py", "rs", "ts", "wasm", "nasm", "php", "scala", "kt", "swift", "go", "ruby" ],
-		"OperationSystem"    : ["win7", "win8", "win10", "win11", "winxp", "android"],
-		"FileType"           : ["html", "css", "svg"],
-		"Games"              : ["gmod", "roblox", "tl", "dota", "minecraft", "teardown", "sfd"],
-		"Core"               : ["gsrc", "src", "src2"],
-		"Social"             : ["yt", "github", "steam", "tt", "vk", "ds", "tg", "twitch"],
-		"WEB"                : ["vercel"],
-		"Programs"           : ["obs"],
-		"DevelopmentPrograms": ["mvs", "vsc", "robloxstudio", "docker", "git", "flash", "blender", "inkscape"],
-		"Libs"               : ["opengl", "vulkan", "directx", "glfw", "nodejs", "electron"],
-		"Company"            : ["microsoft", "google"],
-		"AI"                 : ["chatgpt"],
-		"Other"              : ["error", "blank"]
+		"Языки программирования"     : ["c", "cpp", "cmm", "cs", "glua", "java", "js", "lua", "luau", "py", "rs", "ts", "wasm", "nasm", "php", "scala", "kt", "swift", "go", "ruby" ],
+		"Операционные системы"       : ["win7", "win8", "win10", "win11", "winxp", "android"],
+		"Типы файлов"                : ["html", "css", "svg"],
+		"Игры"                       : ["gmod", "roblox", "tl", "dota", "minecraft", "teardown", "sfd"],
+		"Ядра"                       : ["gsrc", "src", "src2"],
+		"Социальные сети"            : ["yt", "github", "steam", "tt", "vk", "ds", "tg", "twitch"],
+		"Сайты"                      : ["vercel"],
+		"Программы"                  : ["obs"],
+		"Программы для разработчиков": ["mvs", "vsc", "robloxstudio", "docker", "git", "flash", "blender", "inkscape"],
+		"Библиотеки"                 : ["opengl", "vulkan", "directx", "glfw", "nodejs", "electron"],
+		"Компании"                   : ["microsoft", "google"],
+		"ИИ"                         : ["chatgpt"],
+		"Остальное"                  : ["error", "blank"]
 	}
 }
