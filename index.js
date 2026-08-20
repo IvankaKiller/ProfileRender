@@ -83,13 +83,14 @@ module.exports = (Request, Result) => {
 						tip: ""
 					}, "icon");
 
+					const IconID = IconsInfo["Names"][Local.icon] || "error";
+
 					Local["tip"] = EscapeText(Local["tip"]);
 
 					if(Local.bg === "default"){
 						Local.bg = IconsInfo["Backgrounds"][IconID] || "white";
 					}
 
-					const IconID = IconsInfo["Names"][Local.icon] || "error";
 					const SVGData = GetIconSVG(IconID, `idx${Idx}`);
 					return { ...Local, SVGData, id: Idx };
 				});
@@ -154,7 +155,104 @@ module.exports = (Request, Result) => {
 				const Debug = QueryObject.debug;
 
 				if(Debug === "icons"){
+					const Names = IconsInfo.Names || {};
+					const Categories = IconsInfo.Categories || {};
+					const Bgs = IconsInfo.Backgrounds || {};
 
+					// 1. Собираем все алиасы для каждого ID
+					const IdToAliases = {};
+					for(const [alias, id] of Object.entries(Names)){
+						if(!IdToAliases[id]) IdToAliases[id] = [];
+						IdToAliases[id].push(alias);
+					}
+
+					// 2. Распределяем ID по категориям
+					const RenderGroups = [];
+					const CategorizedIds = new Set();
+
+					for(const [catName, ids] of Object.entries(Categories)){
+						RenderGroups.push({ name: catName, ids: ids.sort() });
+						ids.forEach(id => CategorizedIds.add(id));
+					}
+
+					// 3. Находим те, что без категории
+					const Uncategorized = Object.keys(IdToAliases)
+						.filter(id => !CategorizedIds.has(id))
+						.sort();
+
+					if(Uncategorized.length > 0){
+						RenderGroups.push({ name: "Без категории", ids: Uncategorized });
+					}
+
+					// 4. Параметры отрисовки
+					const RowH = 50;
+					const HeaderH = 40;
+					const Padding = 20;
+					const ColId = 20;
+					const ColAliases = 120;
+					const ColIconDef = 380;
+					const ColIconClean = 460;
+					const IconSize = 32;
+
+					// Считаем общую высоту
+					let TotalRows = RenderGroups.length; // Заголовки
+					RenderGroups.forEach(g => TotalRows += g.ids.length);
+					const CanvasHeight = TotalRows * RowH + 100;
+					const CanvasWidth = 550;
+
+					let Y = 50;
+					let SVGContent = "";
+					let Defs = "";
+
+					RenderGroups.forEach(group => {
+						// Отрисовка заголовка категории
+						SVGContent += `<text x="${ColId}" y="${Y}" fill="#4fc3f7" font-family="monospace" font-size="18" font-weight="bold">${group.name.toUpperCase()}</text>`;
+						SVGContent += `<line x1="${ColId}" y1="${Y+10}" x2="${CanvasWidth-20}" y2="${Y+10}" stroke="#4fc3f7" stroke-opacity="0.3" />`;
+						Y += RowH;
+
+						group.ids.forEach(id => {
+							const aliases = (IdToAliases[id] || []).join(", ");
+							const defaultBg = FixColor(Bgs[id] || "white");
+
+							// Иконка с фоном (bg=default)
+							const rawSVG = GetIconSVG(id, `debug_def_${id}`);
+							const rawSVG2 = GetIconSVG(id, `debug_cln_${id}`);
+
+							// Подготовка скругления для дефолтной иконки
+							const clipId = `debug_clip_${id}`;
+							Defs += `<clipPath id="${clipId}"><rect width="${IconSize}" height="${IconSize}" rx="6" /></clipPath>`;
+
+							SVGContent += `
+								<g transform="translate(0, ${Y - 25})">
+									<text x="${ColId}" y="20" fill="#ffffff" font-family="monospace" font-size="14">${id}</text>
+									<text x="${ColAliases}" y="20" fill="#aaaaaa" font-family="monospace" font-size="11">${aliases}</text>
+									
+									<!-- С фоном -->
+									<g transform="translate(${ColIconDef}, 0)">
+										<rect width="${IconSize}" height="${IconSize}" fill="${defaultBg}" rx="6" />
+										<g clip-path="url(#${clipId})">${rawSVG}</g>
+									</g>
+									
+									<!-- Чистая -->
+									<g transform="translate(${ColIconClean}, 0)">
+										${rawSVG2}
+									</g>
+								</g>
+								<line x1="${ColId}" y1="${Y + 15}" x2="${CanvasWidth-20}" y2="${Y + 15}" stroke="#ffffff" stroke-opacity="0.05" />
+							`;
+							Y += RowH;
+						});
+						Y += 20; // Отступ между категориями
+					});
+
+					return `
+					<svg xmlns="http://www.w3.org/2000/svg" width="${CanvasWidth}" height="${Y + 50}">
+						<defs>${Defs}</defs>
+						<rect width="100%" height="100%" fill="#1a1a1a" />
+						<text x="${ColIconDef}" y="30" fill="#4fc3f7" font-family="monospace" font-size="10">DEFAULT</text>
+						<text x="${ColIconClean}" y="30" fill="#4fc3f7" font-family="monospace" font-size="10">CLEAN</text>
+						${SVGContent}
+					</svg>`;
 				}
 
 				return "Неизвестный тип \"debug\"!";
