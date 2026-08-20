@@ -1,17 +1,23 @@
 # ProfileRender
 
+### Правила
+
+#### [ТЕКСТ] Как пишется текст?
+Текст пишется просто, за исключением:
+* "nbsp" - превращается в пробел
+
 ### Применяется ко всем типам (только для текста simple)
 
-| Параметр  | Информация                              | Дефолт |
-|:---------:|:----------------------------------------|:------:|
-|   t_bg    | Цвет заднего фона                       | 555555 |
-|  t_c      | Цвет текста                             | FFFFFF |
-|    t_w    | Ширина (в пикселях)                     |        |
-|    t_h    | Высота (в пикселях)                     |        |
-|   t_lh    | Растояние между строками (в пикселях)   |        |
-|   t_pad   | Растояние между содержимым (в пикселях) |   30   |
-|   t_ml    | Сколько максимум отображать линий?      |  100   |
-|   t_fs    | Размер шрифта (в пикселях)              |   12   |
+| Параметр | Информация                              | Дефолт |
+|:--------:|:----------------------------------------|:------:|
+|   t_bg   | Цвет заднего фона                       | 555555 |
+|   t_c    | Цвет текста                             | FFFFFF |
+|   t_w    | Ширина (в пикселях)                     |        |
+|   t_h    | Высота (в пикселях)                     |        |
+|   t_lh   | Растояние между строками (в пикселях)   |        |
+|  t_pad   | Растояние между содержимым (в пикселях) |   30   |
+|   t_ml   | Сколько максимум отображать линий?      |  100   |
+|   t_fs   | Размер шрифта (в пикселях)              |   12   |
 
 ``https://profile-render-fawn.vercel.app/``
 
@@ -67,9 +73,9 @@
 
 ## simple
 
-| Параметр | Информация                         |      Дефолт      |
-|:--------:|:-----------------------------------|:----------------:|
-|   text   | Текст ("nbsp" заменяется на побел) | Не указан "text" |
+| Параметр | Информация                           |      Дефолт      |
+|:--------:|:-------------------------------------|:----------------:|
+|   text   | Текст (используется правило [ТЕКСТ]) | Не указан "text" |
 
 ``https://profile-render-fawn.vercel.app/?type=simple&text=Hellonbspworld!``
 
@@ -113,23 +119,26 @@
 
 ![](https://profile-render-fawn.vercel.app/?type=js&code=dGhyb3cgbmV3IEVycm9yKCLQn9GA0LjQvNC10YAg0L7RiNC40LHQutC4Iik=)
 
-## icon
+## icon, icons
 
-| Параметр | Информация | Дефолт |
-|:--------:|:-----------|:------:|
-|   icon   | Иконка     |        |
+|  Параметр   | Информация                                                                     |   Дефолт    |
+|:-----------:|:-------------------------------------------------------------------------------|:-----------:|
+| icon, icons | Список иконок (использует локальные переменные, см. таблицу ниже)              |             |
+|    size     | Размер иконок в пикселях                                                       |     75      |
+|     bg      | Цвет заднего фона                                                              | transparent |
+|   radius    | Радиус закругления в процентах (50 это круг)                                   |      0      |
+|     gap     | Отступы между иконками в пикселях                                              |      5      |
+|   max_row   | Максимальное кол-во иконок по горизонтале, потом переходит на следующую строку |      0      |
+|    align    | todo                                                                           |    left     |
 
-``https://profile-render-fawn.vercel.app/?type=icon``
+| Параметр | Информация                                                  |       Дефолт        |
+|:--------:|:------------------------------------------------------------|:-------------------:|
+|   icon   | Иконка                                                      |        error        |
+|   size   | Размер иконки в пикселях                                    |  из параметра size  |
+|    bg    | Цвет заднего фона                                           |   из параметра bg   |
+|  radius  | Радиус закругления в процентах (50 это круг)                | из параметра radius |
+|   tip    | Текст при наведении курсором (используется правило [ТЕКСТ]) |                     |
 
-![](https://profile-render-fawn.vercel.app/?type=icon)
-
-``https://profile-render-fawn.vercel.app/?type=icon&icon=winxp``
-
-![](https://profile-render-fawn.vercel.app/?type=icon&icon=winxp)
-
-``https://profile-render-fawn.vercel.app/?type=icon&icon=not_existing_icon``
-
-![](https://profile-render-fawn.vercel.app/?type=icon&icon=not_existing_icon)
 
 ### Доступные иконки
 
@@ -204,17 +213,36 @@
 |        Electron         |                     `electron`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=electron)     |
 |        Inkscape         |                     `inkscape`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=inkscape)     |
 
-## icons
 
-| Параметр | Информация                 | Дефолт |
-|:--------:|:---------------------------|:------:|
-|  icons   | Список отображаемых иконок |        |
+``https://profile-render-fawn.vercel.app/?type=icon``
+
+![](https://profile-render-fawn.vercel.app/?type=icon)
 
 ``https://profile-render-fawn.vercel.app/?type=icons``
 
 ![](https://profile-render-fawn.vercel.app/?type=icons)
 
-``https://profile-render-fawn.vercel.app/?type=icons&icons=c,cpp,cs,cmm``
+``https://profile-render-fawn.vercel.app/?type=icon&icon=winxp``
+
+![](https://profile-render-fawn.vercel.app/?type=icon&icon=winxp)
+
+``https://profile-render-fawn.vercel.app/?type=icon&icon=not_existing_icon``
+
+![](https://profile-render-fawn.vercel.app/?type=icon&icon=not_existing_icon)
+
+``https://profile-render-fawn.vercel.app/?type=icon&icon=win7&size=200``
+
+![](https://profile-render-fawn.vercel.app/?type=icon&icon=win7&size=200)
+
+``https://profile-render-fawn.vercel.app/?type=icon&icon=git&bg=red``
+
+![](https://profile-render-fawn.vercel.app/?type=icon&icon=git&bg=red)
+
+``https://profile-render-fawn.vercel.app/?type=icon&icon=swift&radius=50``
+
+![](https://profile-render-fawn.vercel.app/?type=icon&icon=swift&radius=50)
+
+``https://profile-render-fawn.vercel.app/?type=icons&icons=c,cpp,cs``
 
 ![](https://profile-render-fawn.vercel.app/?type=icons&icons=c,cpp,cs)
 
@@ -222,9 +250,25 @@
 
 ![](https://profile-render-fawn.vercel.app/?type=icons&icons=python,not_existing_icon,js)
 
-``https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error,c,cpp,cs,cmm,py,html,css,js,ts,java,nasm,wasm,win11,win,win8,win7,winxp,lua,luau,gmod,glua,roblox,robloxstd,rs,dock,mvs,vsc,svg,php``
+``https://profile-render-fawn.vercel.app/?type=icons&icons=(yt,tt,github,blender)``
 
-![](https://profile-render-fawn.vercel.app/?type=icons&icons=blank,error,c,cpp,cs,cmm,py,html,css,js,ts,java,nasm,wasm,win11,win,win8,win7,winxp,lua,luau,gmod,glua,roblox,robloxstd,rs,dock,mvs,vsc,svg,php)
+![](https://profile-render-fawn.vercel.app/?type=icons&icons=(yt,tt,github,blender))
+
+``https://profile-render-fawn.vercel.app/?type=icons&icons=(yt,tt,github,blender)&gap=50``
+
+![](https://profile-render-fawn.vercel.app/?type=icons&icons=(vercel,kt,scala,vkontakte)&gap=50)
+
+``https://profile-render-fawn.vercel.app/?type=icons&icons=(src,go,obs,minecraft)&radius=50``
+
+![](https://profile-render-fawn.vercel.app/?type=icons&icons=(src,go,obs,minecraft)&radius=50)
+
+``https://profile-render-fawn.vercel.app/?type=icons&icons=(sfd,tg,gl,vk)&max_row=2``
+
+![](https://profile-render-fawn.vercel.app/?type=icons&icons=(sfd,tg,gl,vk)&max_row=2)
+
+``https://profile-render-fawn.vercel.app/?type=icons&icons=(sfd,tg,gl,vk)&max_row=2``
+
+![](https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,(icon=google),directx,twitch} )
 
 ## debug
 

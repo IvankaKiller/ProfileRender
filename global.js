@@ -19,12 +19,12 @@ const EscapeText = function(S){
 const SplitParams = function(S){
     S = String(S || "").trim();
 
-    if(S.startsWith('(') && S.endsWith(')')){
+    if(S.startsWith('{') && S.endsWith('}')){
         let Balance = 0;
         let InternalReset = false;
         for(let i = 0; i < S.length - 1; i++){
-            if(S[i] === '('){ Balance++; }
-            if(S[i] === ')'){ Balance--; }
+            if(S[i] === '{'){ Balance++; }
+            if(S[i] === '}'){ Balance--; }
             if(Balance === 0 && i > 0){
                 InternalReset = true;
                 break;
@@ -39,8 +39,8 @@ const SplitParams = function(S){
     let Current = "";
     let Depth = 0;
     for(let Char of S){
-        if(Char === '('){ Depth++; }
-        if(Char === ')'){ Depth--; }
+        if(Char === '{'){ Depth++; }
+        if(Char === '}'){ Depth--; }
         if(Char === ',' && Depth === 0){
             Parts.push(Current.trim());
             Current = "";
@@ -67,8 +67,8 @@ const ParseLocalParams = function(S, Defaults = {}, PrimaryKey = "value"){
         Result[PrimaryKey] = S;
         return Result;
     }
-    S = S.replace(/^\((.*)\)$/, "$1");
-    const Pairs = S.split(/,(?![^(]*\))/);
+    S = S.replace(/^{(.*)}$/, "$1");
+    const Pairs = S.split(/,(?![^{]*})/);
     Pairs.forEach((Pair, Index) => {
        let [Key, Value] = Pair.split("=").map(S => S.trim());
        if(Key && Value !== undefined){
