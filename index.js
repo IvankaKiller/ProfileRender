@@ -120,7 +120,7 @@ module.exports = (Request, Result) => {
 
 						const Tooltip = Icon.tip ? `<title>${EscapeXML(Icon.tip)}</title>` : "";
 
-						SVGContent += `<svg x="${CurrentY}" y="${CurrentY}" width="${Icon.size}" height="${Icon.size}">${Tooltip}${BGRect}<g>${Icon.SVGData || ""}</g></svg>`;
+						SVGContent += `<svg x="${CurrentY}" y="${CurrentX}" width="${Icon.size}" height="${Icon.size}">${Tooltip}${BGRect}<g>${Icon.SVGData || ""}</g></svg>`;
 
 						CurrentX += Icon.size + Gap;
 					});

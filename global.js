@@ -53,7 +53,7 @@ const ParseLocalParams = function(S, Defaults = {}, PrimaryKey = "value"){
        if(Key && Value !== undefined){
            Result[Key] = AutoCast(Value);
        }else if(Key && Value === undefined){
-           if(Index === 0){ Result[PrimaryKey] = AutoCase(Key); }else{ Result[Key] = true; }
+           if(Index === 0){ Result[PrimaryKey] = AutoCast(Key); }else{ Result[Key] = true; }
        }
     });
     return Result;
