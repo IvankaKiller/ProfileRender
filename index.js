@@ -1,7 +1,7 @@
 const URL = require("url");
 const VM = require("vm");
 
-const { EscapeXML, WrapInSVG, GetIconSVG, IconsInfo, SplitParams, ParseLocalParams, FixColor } = require("./global.js");
+const { EscapeXML, WrapInSVG, GetIconSVG, IconsInfo, SplitParams, ParseLocalParams, FixColor, EscapeText } = require("./global.js");
 
 // ----------------------------------------------------------------------
 
@@ -43,7 +43,7 @@ module.exports = (Request, Result) => {
 			}
 
 			if(Type === "simple"){
-				return (QueryObject.text || "Не указан \"text\"").replace(/\\n/g, "\n").replace(/nbsp;?/g, " ");
+				return EscapeText(QueryObject.text || "Не указан \"text\"");
 			}
 
 			if(Type === "js"){
@@ -70,6 +70,7 @@ module.exports = (Request, Result) => {
 
 				const GlobalSize = parseInt(QueryObject.size) || 75;
 				const GlobalBackground = QueryObject.bg || "transparent";
+				const GlobalRadius = parseInt(QueryObject.radius) || 0;
 				const Gap = parseInt(QueryObject.gap) || 5;
 				const MaxRow = parseInt(QueryObject.max_row) || 0;
 				const Align = QueryObject.align || "left";
@@ -78,19 +79,20 @@ module.exports = (Request, Result) => {
 					const Local = ParseLocalParams(Item, {
 						size: GlobalSize,
 						bg: GlobalBackground,
+						radius: GlobalRadius,
 						tip: ""
-					}, "name");
+					}, "icon");
+
+					Local["tip"] = EscapeText(Local["tip"]);
 
 					const IconID = IconsInfo["Names"][Local.name] || "error";
 					const SVGData = GetIconSVG(IconID, `idx${Idx}`);
-					return { ...Local, SVGData };
+					return { ...Local, SVGData, id: Idx };
 				});
 
 				let Rows = [];
 				if(MaxRow > 0){
-					for(let i = 0; i < IconItems.length; i += MaxRow){
-						Rows.push(IconItems.slice(i, i + MaxRow));
-					}
+					for(let i = 0; i < IconItems.length; i += MaxRow){ Rows.push(IconItems.slice(i, i + MaxRow)); }
 				}else{
 					Rows.push(IconItems);
 				}
@@ -106,6 +108,7 @@ module.exports = (Request, Result) => {
 
 				let CurrentY = 0;
 				let SVGContent = "";
+				let Defs = "";
 
 				Rows.forEach((Row, RIdx) => {
 					const Metrics = RowMetrics[RIdx];
@@ -117,10 +120,16 @@ module.exports = (Request, Result) => {
 					Row.forEach(Icon => {
 						const BGColor = FixColor(Icon.bg);
 						const BGRect = (BGColor && BGColor !== "transparent") ? `<rect width="${Icon.size}" height="${Icon.size}" fill="${BGColor}" />` : "";
-
 						const Tooltip = Icon.tip ? `<title>${EscapeXML(Icon.tip)}</title>` : "";
 
-						SVGContent += `<svg x="${CurrentX}" y="${CurrentY}" width="${Icon.size}" height="${Icon.size}">${Tooltip}${BGRect}<g>${Icon.SVGData || ""}</g></svg>`;
+						let ClipAttribute = "";
+						if(Icon.radius > 0){
+							const ClipID = `round_${Icon.id}`;
+							Defs += `<clipPath id="${ClipID}"><rect width="${Icon.size}" height="${Icon.size}" rx="${Icon.radius}" /></clipPath>`;
+							ClipAttribute = `clip-path="url(#${ClipID})"`;
+						}
+
+						SVGContent += `<svg x="${CurrentX}" y="${CurrentY}" width="${Icon.size}" height="${Icon.size}">${Tooltip}${BGRect}<g ${ClipAttribute}>${Icon.SVGData || ""}</g></svg>`;
 
 						CurrentX += Icon.size + Gap;
 					});
@@ -128,6 +137,7 @@ module.exports = (Request, Result) => {
 				});
 
 				return `<svg xmlns="http://www.w3.org/2000/svg" width="${CanvasWidth}" height="${CanvasHeight}">
+					<defs>${Defs}</defs>
 					${SVGContent}
 				</svg>`;
 			}

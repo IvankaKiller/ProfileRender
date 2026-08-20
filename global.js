@@ -12,6 +12,10 @@ const EscapeXML = function(S){
     }[C])).replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F]/g, "");
 };
 
+const EscapeText = function(S){
+    return S.replace(/\\n/g, "\n").replace(/nbsp;?/g, " ");
+}
+
 const SplitParams = function(S){
     S = String(S || "").trim();
 
@@ -85,7 +89,7 @@ const FixColor = function(C){
     }
 
     if (/^[0-9a-fA-F]{3,8}$/.test(C)) {
-        return "#" + C;
+        return `#${C}`;
     }
 
     return C;
@@ -141,9 +145,10 @@ const GetIconSVG = function(IconID, UniquePrefix){
         __CacheSVG[IconID] = SVG;
     }
 
-    SVG = SVG.replace(/<\?xml.*?\?>/gi, "");
-    SVG = SVG.replace(/<!DOCTYPE.*?>/gi, "");
-    SVG = SVG.replace(/<!--.*?-->/gs, "");
+    SVG = SVG.replace(/<\?xml.*?\?>|<!DOCTYPE.*?>|<!--.*?-->/gs, "");
+
+    SVG = SVG.replace(/(<svg[^>]*?\s)(width|height)=["'][^"']*?["']/gi, '$1');
+    SVG = SVG.replace(/<svg/i, '<svg width="100%" height="100%"');
 
     SVG = SVG.replace(/(id=")([^"]*)(")/g, `$1${UniquePrefix}_$2$3`);
     SVG = SVG.replace(/(url\(#)([^)]*)(\))/g, `$1${UniquePrefix}_$2$3`);
@@ -169,5 +174,6 @@ module.exports = {
     SplitParams,
     ParseLocalParams,
     AutoCast,
-    FixColor
+    FixColor,
+    EscapeText
 };
