@@ -14,6 +14,23 @@ const EscapeXML = function(S){
 
 const SplitParams = function(S){
     S = String(S || "").trim();
+
+    if(S.startsWith('(') && S.endsWith(')')){
+        let Balance = 0;
+        let InternalReset = false;
+        for(let i = 0; i < S.length - 1; i++){
+            if(S[i] === '('){ Balance++; }
+            if(S[i] === ')'){ Balance--; }
+            if(Balance === 0 && i > 0){
+                InternalReset = true;
+                break;
+            }
+        }
+        if(!InternalReset){
+            S = S.slice(1, -1);
+        }
+    }
+
     const Parts = [];
     let Current = "";
     let Depth = 0;
@@ -58,8 +75,22 @@ const ParseLocalParams = function(S, Defaults = {}, PrimaryKey = "value"){
     });
     return Result;
 }
+const FixColor = function(C){
+    if(!C || typeof C !== "string"){ return C; }
 
-const FixColor = function(C){ return C && !C.startsWith("#") ? "#" + C : C; }
+    const LowerC = C.toLowerCase().trim();
+
+    if(LowerC.startsWith("#")){
+        return C;
+    }
+
+    if (/^[0-9a-fA-F]{3,8}$/.test(C)) {
+        return "#" + C;
+    }
+
+    return C;
+}
+
 
 const WrapInSVG = function(Text, Options = {}){
     Text = Text.trim();
