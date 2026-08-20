@@ -142,76 +142,76 @@
 
 ### Доступные иконки
 
-|        Название         |                         ID                         | Иконка                                                                       |
-|:-----------------------:|:--------------------------------------------------:|:-----------------------------------------------------------------------------|
-|         Пустая          |                      `blank`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=blank&bg=default) |
-|         Ошибка          |                      `error`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=error)            |
-|            C            |                    `c`, `clang`                    | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=c)                |
-|           C++           |                 `cpp`, `cplusplus`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=cpp)              |
-|           C#            |                   `cs`, `csharp`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=cs)               |
-|           C--           |                `cmm`, `cminusminus`                | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=cmm)              |
-|         Python          |                   `py`, `python`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=py)               |
-|          HTML           |                       `html`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=html)             |
-|           CSS           |                       `css`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=css)              |
-|       JavaScript        |                 `js`, `javascript`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=js)               |
-|       TypeScript        |                 `ts`, `typecript`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=ts)               |
-|          Java           |                       `java`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=java)             |
-|          NASM           |                       `nasm`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=nasm)             |
-|          WASM           |                       `wasm`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=wasm)             |
-|       Windows 11        |                `win11`, `windows11`                | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=win11)            |
-|       Windows 10        |       `win10`, `windows10`, `win`, `windows`       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=win10)            |
-|        Windows 8        |                 `win8`, `windows8`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=win8)             |
-|        Windows 7        |                 `win7`, `windows7`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=win7)             |
-|       Windows XP        |                `winxp`, `windowsxp`                | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=winxp)            |
-|           Lua           |                       `lua`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=lua)              |
-|          Luau           | `luau`, `robloxlua`, `luaroblox`, `rblua`, `luarb` | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=luau)             |
-|       Garry's Mod       |          `gmod`, `garrymod`, `garrysmod`           | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=gmod)             |
-|     Garry's Mod Lua     |            `glua`, `gmodlua`, `luagmod`            | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=glua)             |
-|         Roblox          |                      `roblox`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=roblox)           |
-|      Roblox Studio      |            `robloxstudio`, `robloxstd`             | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=robloxstudio)     |
-|          Rust           |                    `rust`, `rs`                    | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=rs)               |
-|         Docker          |                  `docker`, `dock`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=docker)           |
-| Microsoft Visual Studio |                       `mvs`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=mvs)              |
-|   Visual Studio Code    |                       `vsc`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vsc)              |
-|       SVG Format        |                       `svg`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=svg)              |
-|           PHP           |                       `php`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=php)              |
-|          Scala          |                   `scala`, `scl`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=scala)            |
-|         Kotlin          |                   `kt`, `kotlin`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=kt)               |
-|        TLauncher        |                 `tl`, `tlauncher`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=tl)               |
-|         YouTube         |                  `yt`, `youtube`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=yt)               |
-|          Swift          |                      `swift`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=swift)            |
-|         Vercel          |                      `vercel`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vercel)           |
-|           Git           |                       `git`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=git)              |
-|         Github          |                      `github`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=github)           |
-|     Github Desktop      |           `githubdesk`, `githubdesktop`            | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=githubdesk)       |
-|         TikTok          |                   `tt`, `tiktok`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=tt)               |
-|           GO            |                        `go`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=go)               |
-|        VKontakte        |                    `vkontakte`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vkontakte)        |
-|       Gold Source       |          `gsrc`, `gsource`, `goldsource`           | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=gsrc)             |
-|         Source          |                  `src`, `source`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=src)              |
-|        Source 2         |                 `src2`, `source2`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=src2)             |
-|         Discord         |                  `ds`, `discord`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=ds)               |
-|          Ruby           |                    `rb`, `ruby`                    | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=rb)               |
-|           OBS           |                       `obs`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=obs)              |
-|         Dota 2          |                  `dota`, `dota2`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=dota)             |
-|          Flash          |                      `flash`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=flash)            |
-|        Minecraft        |                `minecraft`, `mine`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=minecraft)        |
-|        Teardown         |                  `teardown`, `td`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=teardown)         |
-|  SuperFighters Deluxe   |                       `sfd`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=sfd)              |
-|        Telegram         |                  `tg`, `telegram`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=tg)               |
-|         OpenGL          |                   `opengl`, `gl`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=opengl)           |
-|         Vulkan          |                   `vk`, `vulkan`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vulkan)           |
-|         Google          |                      `google`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=google)           |
-|       Micorosoft        |                    `microsoft`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=microsoft)        |
-|         DirectX         |                     `directx`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=directx)          |
-|         Android         |                     `android`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=android)          |
-|         Twitch          |                      `twitch`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=twitch)           |
-|          GLFW           |                       `glfw`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=glfw)             |
-|         NodeJS          |                  `nodejs`, `njs`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=nodejs)           |
-|         Blender         |                     `blender`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=blender)          |
-|         ChatGPT         |                     `chatgpt`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=chatgpt)          |
-|        Electron         |                     `electron`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=electron)         |
-|        Inkscape         |                     `inkscape`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=inkscape)         |
+|        Название         |                         ID                         | Иконка                                                                             |
+|:-----------------------:|:--------------------------------------------------:|:-----------------------------------------------------------------------------------|
+|         Пустая          |                      `blank`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=blank&bg=default)       |
+|         Ошибка          |                      `error`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=error&bg=default)       |
+|            C            |                    `c`, `clang`                    | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=c&bg=default)           |
+|           C++           |                 `cpp`, `cplusplus`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=cpp&bg=default)         |
+|           C#            |                   `cs`, `csharp`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=cs&bg=default)          |
+|           C--           |                `cmm`, `cminusminus`                | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=cmm&bg=default)         |
+|         Python          |                   `py`, `python`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=py&bg=default)          |
+|          HTML           |                       `html`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=html&bg=default)        |
+|           CSS           |                       `css`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=css&bg=default)         |
+|       JavaScript        |                 `js`, `javascript`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=js&bg=default)          |
+|       TypeScript        |                 `ts`, `typecript`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=ts&bg=default)          |
+|          Java           |                       `java`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=java&bg=default)        |
+|          NASM           |                       `nasm`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=nasm&bg=default)        |
+|          WASM           |                       `wasm`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=wasm&bg=default)        |
+|       Windows 11        |                `win11`, `windows11`                | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=win11&bg=default)       |
+|       Windows 10        |       `win10`, `windows10`, `win`, `windows`       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=win10&bg=default)       |
+|        Windows 8        |                 `win8`, `windows8`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=win8&bg=default)        |
+|        Windows 7        |                 `win7`, `windows7`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=win7&bg=default)        |
+|       Windows XP        |                `winxp`, `windowsxp`                | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=winxp&bg=default)       |
+|           Lua           |                       `lua`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=lua&bg=default)         |
+|          Luau           | `luau`, `robloxlua`, `luaroblox`, `rblua`, `luarb` | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=luau&bg=default)        |
+|       Garry's Mod       |          `gmod`, `garrymod`, `garrysmod`           | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=gmod&bg=default)        |
+|     Garry's Mod Lua     |            `glua`, `gmodlua`, `luagmod`            | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=glua&bg=default)        |
+|         Roblox          |                      `roblox`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=roblox&bg=default)      |
+|      Roblox Studio      |            `robloxstudio`, `robloxstd`             | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=robloxstudio&bg=default)|
+|          Rust           |                    `rust`, `rs`                    | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=rs&bg=default)          |
+|         Docker          |                  `docker`, `dock`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=docker&bg=default)      |
+| Microsoft Visual Studio |                       `mvs`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=mvs)                    |
+|   Visual Studio Code    |                       `vsc`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vsc)                    |
+|       SVG Format        |                       `svg`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=svg)                    |
+|           PHP           |                       `php`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=php)                    |
+|          Scala          |                   `scala`, `scl`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=scala)                  |
+|         Kotlin          |                   `kt`, `kotlin`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=kt)                     |
+|        TLauncher        |                 `tl`, `tlauncher`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=tl)                     |
+|         YouTube         |                  `yt`, `youtube`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=yt)                     |
+|          Swift          |                      `swift`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=swift)                  |
+|         Vercel          |                      `vercel`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vercel)                 |
+|           Git           |                       `git`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=git)                    |
+|         Github          |                      `github`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=github)                 |
+|     Github Desktop      |           `githubdesk`, `githubdesktop`            | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=githubdesk)             |
+|         TikTok          |                   `tt`, `tiktok`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=tt)                     |
+|           GO            |                        `go`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=go)                     |
+|        VKontakte        |                    `vkontakte`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vkontakte)              |
+|       Gold Source       |          `gsrc`, `gsource`, `goldsource`           | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=gsrc)                   |
+|         Source          |                  `src`, `source`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=src)                    |
+|        Source 2         |                 `src2`, `source2`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=src2)                   |
+|         Discord         |                  `ds`, `discord`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=ds)                     |
+|          Ruby           |                    `rb`, `ruby`                    | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=rb)                     |
+|           OBS           |                       `obs`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=obs)                    |
+|         Dota 2          |                  `dota`, `dota2`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=dota)                   |
+|          Flash          |                      `flash`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=flash)                  |
+|        Minecraft        |                `minecraft`, `mine`                 | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=minecraft)              |
+|        Teardown         |                  `teardown`, `td`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=teardown)               |
+|  SuperFighters Deluxe   |                       `sfd`                        | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=sfd)                    |
+|        Telegram         |                  `tg`, `telegram`                  | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=tg)                     |
+|         OpenGL          |                   `opengl`, `gl`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=opengl)                 |
+|         Vulkan          |                   `vk`, `vulkan`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=vulkan)                 |
+|         Google          |                      `google`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=google)                 |
+|       Micorosoft        |                    `microsoft`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=microsoft)              |
+|         DirectX         |                     `directx`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=directx)                |
+|         Android         |                     `android`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=android)                |
+|         Twitch          |                      `twitch`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=twitch)                 |
+|          GLFW           |                       `glfw`                       | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=glfw)                   |
+|         NodeJS          |                  `nodejs`, `njs`                   | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=nodejs)                 |
+|         Blender         |                     `blender`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=blender)                |
+|         ChatGPT         |                     `chatgpt`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=chatgpt)                |
+|        Electron         |                     `electron`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=electron)               |
+|        Inkscape         |                     `inkscape`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=inkscape)               |
 
 
 ``https://profile-render-fawn.vercel.app/?type=icon``
