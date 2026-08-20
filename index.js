@@ -85,7 +85,7 @@ module.exports = (Request, Result) => {
 
 					Local["tip"] = EscapeText(Local["tip"]);
 
-					const IconID = IconsInfo["Names"][Local.name] || "error";
+					const IconID = IconsInfo["Names"][Local.icon] || "error";
 					const SVGData = GetIconSVG(IconID, `idx${Idx}`);
 					return { ...Local, SVGData, id: Idx };
 				});
@@ -119,13 +119,16 @@ module.exports = (Request, Result) => {
 
 					Row.forEach(Icon => {
 						const BGColor = FixColor(Icon.bg);
-						const BGRect = (BGColor && BGColor !== "transparent") ? `<rect width="${Icon.size}" height="${Icon.size}" fill="${BGColor}" rx="${Icon.radius}" />` : "";
+
+						const RX = (Icon.size * Icon.radius) / 100;
+
+						const BGRect = (BGColor && BGColor !== "transparent") ? `<rect width="${Icon.size}" height="${Icon.size}" fill="${BGColor}" rx="${RX}" />` : "";
 						const Tooltip = Icon.tip ? `<title>${EscapeXML(Icon.tip)}</title>` : "";
 
 						let ClipAttribute = "";
 						if(Icon.radius > 0){
 							const ClipID = `round_${Icon.id}`;
-							Defs += `<clipPath id="${ClipID}"><rect width="${Icon.size}" height="${Icon.size}" rx="${Icon.radius}" /></clipPath>`;
+							Defs += `<clipPath id="${ClipID}"><rect width="${Icon.size}" height="${Icon.size}" rx="${RX}" /></clipPath>`;
 							ClipAttribute = `clip-path="url(#${ClipID})"`;
 						}
 
