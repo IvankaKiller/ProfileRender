@@ -109,7 +109,7 @@ module.exports = (Request, Result) => {
 
 				Rows.forEach((Row, RIdx) => {
 					const Metrics = RowMetrics[RIdx];
-					let CurrentX;
+					let CurrentX = 0;
 
 					if(Align === "center"){ CurrentX = (CanvasWidth - Metrics.W) / 2; }
 					if(Align === "right" ){ CurrentX = CanvasWidth - Metrics.W; }
@@ -120,7 +120,7 @@ module.exports = (Request, Result) => {
 
 						const Tooltip = Icon.tip ? `<title>${EscapeXML(Icon.tip)}</title>` : "";
 
-						SVGContent += `<svg x="${CurrentY}" y="${CurrentX}" width="${Icon.size}" height="${Icon.size}">${Tooltip}${BGRect}<g>${Icon.SVGData || ""}</g></svg>`;
+						SVGContent += `<svg x="${CurrentX}" y="${CurrentY}" width="${Icon.size}" height="${Icon.size}">${Tooltip}${BGRect}<g>${Icon.SVGData || ""}</g></svg>`;
 
 						CurrentX += Icon.size + Gap;
 					});
