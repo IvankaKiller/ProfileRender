@@ -176,6 +176,7 @@
 		"ard"           : "arduino"
 	},
 	"Backgrounds": {
+		"arduino": "009788ff",
 		"dotnet": "512BD4",
 		"fortran": "734F96",
 		"creeper": "1DB53C",
@@ -239,13 +240,13 @@
 		"Ядра"                     : ["gsrc", "src", "src2", "quake", "unity"],
 		"Социальные сети"          : ["yt", "steam", "tt", "vk", "ds", "tg", "twitch", "x", "twitter", "pinterest", "ok"],
 		"Сайты"                    : ["vercel", "github"],
-		"Фреймворки"               : ["electron", "react", "angular", "vuejs", "love"],
+		"Фреймворки"               : ["electron", "react", "angular", "vuejs", "love", "bootstrap"],
 		"Программы"                : ["obs", "spotify"],
-		"Среда выполнения"         : ["nodejs"],
-		"Инструменты разработчиков": ["mvs", "nuget", "terraform", "vsc", "robloxstudio", "docker", "vim", "sublime", "git", "npm", "gradle", "ps", "flash", "blender", "inkscape", "githubdesk", "figma", "kubernetes"],
-		"Библиотеки"               : ["opengl", "vulkan", "directx", "glfw", "box2d"],
+		"Среда выполнения"         : ["nodejs", "dotnet"],
+		"Инструменты разработчиков": ["mvs", "nuget", "terraform", "cmake", "vsc", "robloxstudio", "arduino", "docker", "vim", "sublime", "git", "npm", "gradle", "ps", "flash", "blender", "inkscape", "githubdesk", "figma", "kubernetes"],
+		"Библиотеки"               : ["opengl", "vulkan", "bullet", "directx", "glfw", "box2d"],
 		"Компании"                 : ["microsoft", "google", "nvidia"],
-		"ИИ"                       : ["chatgpt"],
+		"ИИ"                       : ["chatgpt", "deepseek"],
 		"Приколы"                  : ["render", "troll", "creeper"],
 		"Остальное"                : ["error", "blank"]
 	}
