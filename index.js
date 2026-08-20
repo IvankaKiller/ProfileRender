@@ -119,7 +119,7 @@ module.exports = (Request, Result) => {
 
 					Row.forEach(Icon => {
 						const BGColor = FixColor(Icon.bg);
-						const BGRect = (BGColor && BGColor !== "transparent") ? `<rect width="${Icon.size}" height="${Icon.size}" fill="${BGColor}" />` : "";
+						const BGRect = (BGColor && BGColor !== "transparent") ? `<rect width="${Icon.size}" height="${Icon.size}" fill="${BGColor}" rx="${Icon.radius}" />` : "";
 						const Tooltip = Icon.tip ? `<title>${EscapeXML(Icon.tip)}</title>` : "";
 
 						let ClipAttribute = "";
@@ -129,7 +129,7 @@ module.exports = (Request, Result) => {
 							ClipAttribute = `clip-path="url(#${ClipID})"`;
 						}
 
-						SVGContent += `<svg x="${CurrentX}" y="${CurrentY}" width="${Icon.size}" height="${Icon.size}">${Tooltip}${BGRect}<g ${ClipAttribute}>${Icon.SVGData || ""}</g></svg>`;
+						SVGContent += `<svg x="${CurrentX}" y="${CurrentY}" width="${Icon.size}" height="${Icon.size}">${Tooltip}<g ${ClipAttribute}>${BGRect}<g>${Icon.SVGData || ""}</g></g></svg>`;
 
 						CurrentX += Icon.size + Gap;
 					});

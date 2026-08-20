@@ -147,8 +147,10 @@ const GetIconSVG = function(IconID, UniquePrefix){
 
     SVG = SVG.replace(/<\?xml.*?\?>|<!DOCTYPE.*?>|<!--.*?-->/gs, "");
 
-    SVG = SVG.replace(/(<svg[^>]*?\s)(width|height)=["'][^"']*?["']/gi, '$1');
-    SVG = SVG.replace(/<svg/i, '<svg width="100%" height="100%"');
+    SVG = SVG.replace(/<svg\s+([^>]*)>/i, (match, attrs) => {
+        const CleanAttributes = attrs.replace(/\b(width|height)\s*=\s*["'][^"']*["']/gi, "").trim();
+        return `<svg ${CleanAttributes} width="100%" height="100%">`;
+    });
 
     SVG = SVG.replace(/(id=")([^"]*)(")/g, `$1${UniquePrefix}_$2$3`);
     SVG = SVG.replace(/(url\(#)([^)]*)(\))/g, `$1${UniquePrefix}_$2$3`);
