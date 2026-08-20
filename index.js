@@ -125,7 +125,7 @@ module.exports = (Request, Result) => {
 					Row.forEach(Icon => {
 						const BGColor = FixColor(Icon.bg);
 
-						const RX = (Icon.size * Icon.radius) / 100;
+						const RX = (Icon.size * Icon.rad) / 100;
 
 						const BGRect = (BGColor && BGColor !== "transparent") ? `<rect width="${Icon.size}" height="${Icon.size}" fill="${BGColor}" rx="${RX}" />` : "";
 						const Tooltip = Icon.tip ? `<title>${EscapeXML(Icon.tip)}</title>` : "";
