@@ -25,8 +25,8 @@
      inkscape:document-units="px"
      showguides="false"
      inkscape:zoom="11.313709"
-     inkscape:cx="34.20629"
-     inkscape:cy="36.681164"
+     inkscape:cx="34.250483"
+     inkscape:cy="36.725357"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -74,15 +74,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     style="fill:#ff0101;fill-opacity:1"><rect
-       style="fill:#ffffff;fill-opacity:1;stroke-width:0.598849"
-       id="base"
-       width="19.84375"
-       height="19.84375"
-       x="0"
-       y="0"
-       sodipodi:type="rect"
-       ry="4.7682381" /><path
+     style="fill:#ff0101;fill-opacity:1"><path
        style="fill:#e44d26;stroke-width:0.264583;-inkscape-stroke:none;fill-opacity:1"
        d="M 3.623651,4.4772222 H 16.512653 L 15.328297,17.628681 10.067024,19.097738 4.7943634,17.640069 Z"
        id="path1"

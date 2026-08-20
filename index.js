@@ -159,98 +159,88 @@ module.exports = (Request, Result) => {
 					const Categories = IconsInfo.Categories || {};
 					const Bgs = IconsInfo.Backgrounds || {};
 
-					// 1. Собираем алиасы (имена) для каждого ID
 					const IdToAliases = {};
-					for(const [alias, id] of Object.entries(Names)){
-						if(!IdToAliases[id]) IdToAliases[id] = [];
+					for (const [alias, id] of Object.entries(Names)) {
+						if (!IdToAliases[id]) IdToAliases[id] = [];
 						IdToAliases[id].push(alias);
 					}
 
-					// 2. Группируем по категориям
 					const RenderGroups = [];
 					const CategorizedIds = new Set();
-					for(const [catName, ids] of Object.entries(Categories)){
+					for (const [catName, ids] of Object.entries(Categories)) {
 						RenderGroups.push({ name: catName, ids: ids.sort() });
 						ids.forEach(id => CategorizedIds.add(id));
 					}
 
-					// 3. Обработка иконок без категории
 					const Uncategorized = Object.keys(IdToAliases)
 						.filter(id => !CategorizedIds.has(id))
 						.sort();
-					if(Uncategorized.length > 0) RenderGroups.push({ name: "Прочие / Без категории", ids: Uncategorized });
+					if (Uncategorized.length > 0) RenderGroups.push({ name: "Прочие / Без категории", ids: Uncategorized });
 
-					// 4. Метрики таблицы (увеличенные размеры)
-					const RowH = 90;        // Высота строки (под иконку 75px + отступы)
-					const IconSize = 75;    // Размер иконки
-					const ColId = 20;       // Колонка ID
-					const ColAliases = 150; // Колонка Алиасов
-					const ColIconDef = 550; // Колонка иконки с фоном
-					const ColIconClean = 660;// Колонка чистой иконки
-					const CanvasWidth = 780; // Общая ширина холста
+					const RowH = 90;
+					const IconSize = 75;
+					const ColId = 20;
+					const ColAliases = 150;
+					const ColIconDef = 550;
+					const ColIconClean = 660;
+					const CanvasWidth = 780;
 
 					let Y = 70;
 					let SVGContent = "";
 					let Defs = "";
 
 					RenderGroups.forEach(group => {
-						// Заголовок категории на русском
 						SVGContent += `<text x="${ColId}" y="${Y}" fill="#4fc3f7" font-family="monospace" font-size="20" font-weight="bold">${group.name.toUpperCase()}</text>`;
-						SVGContent += `<line x1="${ColId}" y1="${Y+12}" x2="${CanvasWidth - 20}" y2="${Y+12}" stroke="#4fc3f7" stroke-opacity="0.3" stroke-width="2" />`;
+						SVGContent += `<line x1="${ColId}" y1="${Y + 12}" x2="${CanvasWidth - 20}" y2="${Y + 12}" stroke="#4fc3f7" stroke-opacity="0.3" stroke-width="2" />`;
 						Y += 50;
 
 						group.ids.forEach(id => {
-							const aliases = (IdToAliases[id] || []).filter(a => a !== id).join(", ");
-							const bgColor = FixColor(Bgs[id] || "333");
+							const aliases = (IdToAliases[id] || []).join(", ");
+							const bgColor = FixColor(Bgs[id] || "white");
 
 							const rawSVG_def = GetIconSVG(id, `db_d_${id}`);
 							const rawSVG_cln = GetIconSVG(id, `db_c_${id}`);
 
-							// Маска для скругления (радиус 12% от 75px ≈ 9px)
 							const clipId = `c_${id}`;
-							Defs += `<clipPath id="${clipId}"><rect width="${IconSize}" height="${IconSize}" rx="10" /></clipPath>`;
+							Defs += `<clipPath id="${clipId}"><rect width="${IconSize}" height="${IconSize}" /></clipPath>`;
 
 							SVGContent += `
-							<g transform="translate(0, ${Y})">
-								<!-- ID и Алиасы -->
-								<text x="${ColId}" y="42" fill="#ffffff" font-family="monospace" font-size="16" font-weight="bold">${id}</text>
-								<text x="${ColAliases}" y="42" fill="#888" font-family="monospace" font-size="12">${aliases}</text>
-								
-								<!-- С фоном (DEFAULT) -->
-								<svg x="${ColIconDef}" y="0" width="${IconSize}" height="${IconSize}">
-									<rect width="100%" height="100%" fill="${bgColor}" rx="10" />
-									<g clip-path="url(#${clipId})">${rawSVG_def || ""}</g>
-								</svg>
-								
-								<!-- Чистая (CLEAN) -->
-								<svg x="${ColIconClean}" y="0" width="${IconSize}" height="${IconSize}">
-									${rawSVG_cln || ""}
-								</svg>
-								
-								<line x1="${ColId}" y1="85" x2="${CanvasWidth - 20}" y2="85" stroke="#ffffff" stroke-opacity="0.05" />
-							</g>`;
+            <g transform="translate(0, ${Y})">
+                <text x="${ColId}" y="42" fill="#ffffff" font-family="monospace" font-size="16" font-weight="bold">${id}</text>
+                <text x="${ColAliases}" y="42" fill="#888" font-family="monospace" font-size="12">${aliases}</text>
+                
+                <svg x="${ColIconDef}" y="0" width="${IconSize}" height="${IconSize}">
+                    <rect width="100%" height="100%" fill="${bgColor}" />
+                    <g clip-path="url(#${clipId})">${rawSVG_def || ""}</g>
+                </svg>
+                
+                <svg x="${ColIconClean}" y="0" width="${IconSize}" height="${IconSize}">
+                    ${rawSVG_cln || ""}
+                </svg>
+                
+                <line x1="${ColId}" y1="85" x2="${CanvasWidth - 20}" y2="85" stroke="#ffffff" stroke-opacity="0.05" />
+            </g>`;
 							Y += RowH;
 						});
-						Y += 40; // Пробел между блоками категорий
+						Y += 40;
 					});
 
 					const TotalCanvasHeight = Y + 60;
 
 					return `
-					<svg xmlns="http://www.w3.org/2000/svg" width="${CanvasWidth}" height="${TotalCanvasHeight}">
-						<defs>${Defs}</defs>
-						<rect width="100%" height="100%" fill="#0f0f0f" />
-						
-						<!-- Шапка таблицы на русском -->
-						<text x="${ColId}" y="35" fill="#666" font-family="monospace" font-size="11" font-weight="bold">ID ИКОНКИ</text>
-						<text x="${ColAliases}" y="35" fill="#666" font-family="monospace" font-size="11" font-weight="bold">АЛИАСЫ / ИМЕНА ДЛЯ ВВОДА</text>
-						<text x="${ColIconDef}" y="35" fill="#666" font-family="monospace" font-size="11" font-weight="bold">С ФОНОМ</text>
-						<text x="${ColIconClean}" y="35" fill="#666" font-family="monospace" font-size="11" font-weight="bold">ЧИСТАЯ</text>
-						
-						${SVGContent}
-						
-						<text x="${ColId}" y="${TotalCanvasHeight - 25}" fill="#4fc3f7" font-family="monospace" font-size="12">Всего уникальных иконок: ${Object.keys(IdToAliases).length}</text>
-					</svg>`;
+    <svg xmlns="http://www.w3.org/2000/svg" width="${CanvasWidth}" height="${TotalCanvasHeight}">
+        <defs>${Defs}</defs>
+        <rect width="100%" height="100%" fill="#0f0f0f" />
+        
+        <text x="${ColId}" y="35" fill="#666" font-family="monospace" font-size="11" font-weight="bold">ID ИКОНКИ</text>
+        <text x="${ColAliases}" y="35" fill="#666" font-family="monospace" font-size="11" font-weight="bold">АЛИАСЫ / ИМЕНА ДЛЯ ВВОДА</text>
+        <text x="${ColIconDef}" y="35" fill="#666" font-family="monospace" font-size="11" font-weight="bold">bg=default</text>
+        <text x="${ColIconClean}" y="35" fill="#666" font-family="monospace" font-size="11" font-weight="bold">bg=transparent</text>
+        
+        ${SVGContent}
+        
+        <text x="${ColId}" y="${TotalCanvasHeight - 25}" fill="#4fc3f7" font-family="monospace" font-size="12">Всего уникальных иконок: ${Object.keys(IdToAliases).length}</text>
+    </svg>`;
 				}
 
 				return "Неизвестный тип \"debug\"!";

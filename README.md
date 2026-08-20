@@ -215,3 +215,11 @@
 | Параметр | Информация    | Дефолт |
 |:--------:|:--------------|:------:|
 |  debug   | Что дебажить? |        |
+
+``https://profile-render-fawn.vercel.app/?type=debug``
+
+![](https://profile-render-fawn.vercel.app/?type=debug)
+
+``https://profile-render-fawn.vercel.app/?type=debug&debug=icons``
+
+![](https://profile-render-fawn.vercel.app/?type=debug&debug=icons)

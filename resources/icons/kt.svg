@@ -123,15 +123,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     style="fill:#ff0101;fill-opacity:1"><rect
-       style="fill:#ffffff;fill-opacity:1;stroke-width:0.598849"
-       id="base"
-       width="19.84375"
-       height="19.84375"
-       x="0"
-       y="0"
-       sodipodi:type="rect"
-       ry="4.7682381" /><path
+     style="fill:#ff0101;fill-opacity:1"><path
        style="fill:url(#linearGradient6);fill-opacity:1;stroke-width:0.264583"
        d="M 16.362798,15.99238 9.9851719,9.6147542 4.1713216,16.005224 Z"
        id="path2" /><path

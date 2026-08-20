@@ -74,15 +74,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     style="fill:#ff0101;fill-opacity:1"><rect
-       style="fill:#000000;fill-opacity:1;stroke-width:0.598849"
-       id="base"
-       width="19.84375"
-       height="19.84375"
-       x="0"
-       y="0"
-       sodipodi:type="rect"
-       ry="4.7682381" /><path
+     style="fill:#ff0101;fill-opacity:1"><path
        style="fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
        d="M 2.2406243,15.561568 9.8164059,2.4399299 17.387113,15.55278 Z"
        id="path1"
