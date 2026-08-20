@@ -112,9 +112,17 @@
 		"blender"      : "blender",
 		"chatgpt"      : "chatgpt",
 		"electron"     : "electron",
-		"inkscape"     : "inkscape"
+		"inkscape"     : "inkscape",
+		"halflife"     : "halflife",
+		"hl"           : "halflife",
+		"halflife2"    : "halflife2",
+		"hl2"          : "halflife2",
+		"quake"        : "quake",
+		"qk"           : "qk"
 	},
 	"Backgrounds": {
+		"quake": "black",
+		"halflife": "black",
 		"twitch": "9246FF",
 		"chatgpt": "74aa9cff",
 		"directx": "black",
