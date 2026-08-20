@@ -126,18 +126,18 @@
 | icon, icons | Список иконок (использует локальные переменные, см. таблицу ниже)              |         |
 |    size     | Размер иконок в пикселях                                                       |   75    |
 |     bg      | Цвет заднего фона (если default, то будет цвет заднего фона под иконку)        | default |
-|   radius    | Радиус закругления в процентах (50 это круг)                                   |    0    |
+|     rad     | Радиус закругления в процентах (50 это круг)                                   |   25    |
 |     gap     | Отступы между иконками в пикселях                                              |    5    |
 |   max_row   | Максимальное кол-во иконок по горизонтале, потом переходит на следующую строку |    0    |
 |    align    | todo                                                                           |  left   |
 
-| Параметр | Информация                                                  |       Дефолт        |
-|:--------:|:------------------------------------------------------------|:-------------------:|
-|   icon   | Иконка                                                      |        error        |
-|   size   | Размер иконки в пикселях                                    |  из параметра size  |
-|    bg    | Цвет заднего фона                                           |   из параметра bg   |
-|  radius  | Радиус закругления в процентах (50 это круг)                | из параметра radius |
-|   tip    | Текст при наведении курсором (используется правило [ТЕКСТ]) |                     |
+| Параметр | Информация                                                  |      Дефолт       |
+|:--------:|:------------------------------------------------------------|:-----------------:|
+|   icon   | Иконка                                                      |       error       |
+|   size   | Размер иконки в пикселях                                    | из параметра size |
+|    bg    | Цвет заднего фона                                           |  из параметра bg  |
+|   rad    | Радиус закругления в процентах (50 это круг)                | из параметра rad  |
+|   tip    | Текст при наведении курсором (используется правило [ТЕКСТ]) |                   |
 
 ![](https://profile-render-fawn.vercel.app/?type=debug&debug=icons)
 
@@ -189,17 +189,17 @@
 
 ![](https://profile-render-fawn.vercel.app/?type=icons&icons={vercel,kt,scala,vkontakte}&gap=50)
 
-``https://profile-render-fawn.vercel.app/?type=icons&icons={src,go,obs,minecraft}&radius=50``
+``https://profile-render-fawn.vercel.app/?type=icons&icons={src,go,obs,minecraft}&rad=50``
 
-![](https://profile-render-fawn.vercel.app/?type=icons&icons={src,go,obs,minecraft}&radius=50)
+![](https://profile-render-fawn.vercel.app/?type=icons&icons={src,go,obs,minecraft}&rad=50)
 
 ``https://profile-render-fawn.vercel.app/?type=icons&icons={sfd,tg,gl,vk}&max_row=2``
 
 ![](https://profile-render-fawn.vercel.app/?type=icons&icons={sfd,tg,gl,vk}&max_row=2)
 
-``https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google,radius=50},directx,twitch}``
+``https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google,rad=50},directx,twitch}``
 
-![](https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google,radius=50},directx,twitch})
+![](https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google,rad=50},directx,twitch})
 
 ``https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google,bg=red},directx,twitch}``
 

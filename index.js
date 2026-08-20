@@ -70,7 +70,7 @@ module.exports = (Request, Result) => {
 
 				const GlobalSize = parseInt(QueryObject.size) || 75;
 				const GlobalBackground = QueryObject.bg || "default";
-				const GlobalRadius = parseInt(QueryObject.radius) || 0;
+				const GlobalRadius = parseInt(QueryObject.rad) || 25;
 				const Gap = parseInt(QueryObject.gap) || 5;
 				const MaxRow = parseInt(QueryObject.max_row) || 0;
 				const Align = QueryObject.align || "left";
@@ -79,7 +79,7 @@ module.exports = (Request, Result) => {
 					const Local = ParseLocalParams(Item, {
 						size: GlobalSize,
 						bg: GlobalBackground,
-						radius: GlobalRadius,
+						rad: GlobalRadius,
 						tip: ""
 					}, "icon");
 
