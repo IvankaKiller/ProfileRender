@@ -250,25 +250,25 @@
 
 ![](https://profile-render-fawn.vercel.app/?type=icons&icons=python,not_existing_icon,js)
 
-``https://profile-render-fawn.vercel.app/?type=icons&icons=(yt,tt,github,blender)``
+``https://profile-render-fawn.vercel.app/?type=icons&icons={yt,tt,github,blender}``
 
-![](https://profile-render-fawn.vercel.app/?type=icons&icons=(yt,tt,github,blender))
+![](https://profile-render-fawn.vercel.app/?type=icons&icons={yt,tt,github,blender})
 
-``https://profile-render-fawn.vercel.app/?type=icons&icons=(yt,tt,github,blender)&gap=50``
+``https://profile-render-fawn.vercel.app/?type=icons&icons={yt,tt,github,blender}&gap=50``
 
-![](https://profile-render-fawn.vercel.app/?type=icons&icons=(vercel,kt,scala,vkontakte)&gap=50)
+![](https://profile-render-fawn.vercel.app/?type=icons&icons={vercel,kt,scala,vkontakte}&gap=50)
 
-``https://profile-render-fawn.vercel.app/?type=icons&icons=(src,go,obs,minecraft)&radius=50``
+``https://profile-render-fawn.vercel.app/?type=icons&icons={src,go,obs,minecraft}&radius=50``
 
-![](https://profile-render-fawn.vercel.app/?type=icons&icons=(src,go,obs,minecraft)&radius=50)
+![](https://profile-render-fawn.vercel.app/?type=icons&icons={src,go,obs,minecraft}&radius=50)
 
-``https://profile-render-fawn.vercel.app/?type=icons&icons=(sfd,tg,gl,vk)&max_row=2``
+``https://profile-render-fawn.vercel.app/?type=icons&icons={sfd,tg,gl,vk}&max_row=2``
 
-![](https://profile-render-fawn.vercel.app/?type=icons&icons=(sfd,tg,gl,vk)&max_row=2)
+![](https://profile-render-fawn.vercel.app/?type=icons&icons={sfd,tg,gl,vk}&max_row=2)
 
-``https://profile-render-fawn.vercel.app/?type=icons&icons=(sfd,tg,gl,vk)&max_row=2``
+``https://profile-render-fawn.vercel.app/?type=icons&icons={sfd,tg,gl,vk}&max_row=2``
 
-![](https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,(icon=google),directx,twitch} )
+![](https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google},directx,twitch} )
 
 ## debug
 

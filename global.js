@@ -63,7 +63,7 @@ const AutoCast = function(V){
 const ParseLocalParams = function(S, Defaults = {}, PrimaryKey = "value"){
     S = String(S || "").trim();
     const Result = { ...Defaults };
-    if(!S.startsWith('(')){
+    if(!S.startsWith('{')){
         Result[PrimaryKey] = S;
         return Result;
     }
