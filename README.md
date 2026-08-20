@@ -202,6 +202,7 @@
 |         Blender         |                     `blender`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=blender)      |
 |         ChatGPT         |                     `chatgpt`                      | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=chatgpt)      |
 |        Electron         |                     `electron`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=electron)     |
+|        Inkscape         |                     `inkscape`                     | ![](https://profile-render-fawn.vercel.app/?type=icon&icon=inkscape)     |
 
 ## icons
 

@@ -111,7 +111,8 @@
 		"njs"          : "nodejs",
 		"blender"      : "blender",
 		"chatgpt"      : "chatgpt",
-		"electron"     : "electron"
+		"electron"     : "electron",
+		"inkscape"     : "inkscape"
 	},
 	"Categories": {
 		"ProgramLanguage"    : ["c", "cpp", "cmm", "cs", "glua", "java", "js", "lua", "luau", "py", "rs", "ts", "wasm", "nasm", "php", "scala", "kt", "swift", "go", "ruby" ],
@@ -122,7 +123,7 @@
 		"Social"             : ["yt", "github", "steam", "tt", "vk", "ds", "tg", "twitch"],
 		"WEB"                : ["vercel"],
 		"Programs"           : ["obs"],
-		"DevelopmentPrograms": ["mvs", "vsc", "robloxstudio", "docker", "git", "flash", "blender"],
+		"DevelopmentPrograms": ["mvs", "vsc", "robloxstudio", "docker", "git", "flash", "blender", "inkscape"],
 		"Libs"               : ["opengl", "vulkan", "directx", "glfw", "nodejs", "electron"],
 		"Company"            : ["microsoft", "google"],
 		"AI"                 : ["chatgpt"],
