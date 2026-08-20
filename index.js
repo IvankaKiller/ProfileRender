@@ -69,7 +69,7 @@ module.exports = (Request, Result) => {
 				if(!RawInput){ return "Не указаны \"icon\" или \"icons\""; }
 
 				const GlobalSize = parseInt(QueryObject.size) || 75;
-				const GlobalBackground = QueryObject.bg || "transparent";
+				const GlobalBackground = QueryObject.bg || "default";
 				const GlobalRadius = parseInt(QueryObject.radius) || 0;
 				const Gap = parseInt(QueryObject.gap) || 5;
 				const MaxRow = parseInt(QueryObject.max_row) || 0;
