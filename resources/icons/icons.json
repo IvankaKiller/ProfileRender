@@ -251,9 +251,14 @@
 		"gitlab"          : "gitlab",
 		"forge"           : "forge",
 		"maven"           : "maven",
-		"redhat"          : "redhat"
+		"redhat"          : "redhat",
+		"golu"            : "golu",
+		"lithuism"        : "golu",
+		"lituism"         : "golu",
+		"god"             : "golu"
 	},
 	"Backgrounds": {
+		"golu": "f9f9f9ff",
 		"forge": "1E2D44",
 		"behance": "4176FA",
 		"qwik": "black",
@@ -334,10 +339,10 @@
 		"Базы данных"              : ["sql", "pg", "mysql", "mongo", "redis", "new4j"],
 		"Типы файлов"              : ["svg", "json", "xml"],
 		"Разметка"                 : ["html", "css"],
-		"Игры"                     : ["portal", "portal2", "manyland", "spore", "portal", "tm2", "gmod", "roblox", "tl", "dota", "minecraft", "forge", "teardown", "sfd", "csgo", "halflife", "halflife2"],
+		"Игры"                     : ["portal", "portal2", "manyland", "spore", "tm2", "gmod", "roblox", "tl", "dota", "minecraft", "forge", "teardown", "sfd", "csgo", "halflife", "halflife2"],
 		"Ядра"                     : ["gsrc", "src", "src2", "quake", "unity", "unreal", "godot", "redot"],
-		"Социальные сети"          : ["yt", "steam", "tt", "vk", "ds", "tg", "twitch", "x", "twitter", "pinterest", "ok"],
-		"Сайты"                    : ["vercel", "github", "cloudflare", "behance"],
+		"Социальные сети"          : ["yt", "steam", "tt", "vk", "ds", "tg", "twitch", "x", "twitter", "pinterest", "ok", "behance"],
+		"Сайты"                    : ["vercel", "github", "cloudflare"],
 		"Фреймворки"               : ["electron", "react", "angular", "vuejs", "love", "bootstrap"],
 		"Программы"                : ["obs", "spotify"],
 		"Среда выполнения"         : ["nodejs", "dotnet"],
@@ -345,7 +350,7 @@
 		"Библиотеки"               : ["opengl", "vulkan", "bullet", "directx", "glfw", "box2d", "hibernate"],
 		"Компании"                 : ["microsoft", "google", "nvidia", "apple", "redhat"],
 		"ИИ"                       : ["chatgpt", "deepseek"],
-		"Приколы"                  : ["render", "troll", "creeper"],
+		"Приколы"                  : ["render", "troll", "creeper", "golu"],
 		"Остальное"                : ["error", "blank"]
 	}
 }
