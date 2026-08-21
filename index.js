@@ -71,15 +71,16 @@ module.exports = (Request, Result) => {
 				const GlobalSize = parseInt(QueryObject.size) || 75;
 				const GlobalBackground = QueryObject.bg || "default";
 				const GlobalRadius = parseInt(QueryObject.rad) || 25;
+				const GlobalRotate = parseInt(QueryObject.rot) || 0;
 				const Gap = parseInt(QueryObject.gap) || 5;
 				const MaxRow = parseInt(QueryObject.max_row) || 0;
-				const Align = QueryObject.align || "left";
 
 				const IconItems = SplitParams(RawInput).map((Item, Idx) => {
 					const Local = ParseLocalParams(Item, {
 						size: GlobalSize,
 						bg: GlobalBackground,
 						rad: GlobalRadius,
+						rot: GlobalRotate,
 						tip: ""
 					}, "icon");
 
@@ -119,9 +120,6 @@ module.exports = (Request, Result) => {
 					const Metrics = RowMetrics[RIdx];
 					let CurrentX = 0;
 
-					if(Align === "center"){ CurrentX = (CanvasWidth - Metrics.W) / 2; }
-					if(Align === "right" ){ CurrentX = CanvasWidth - Metrics.W; }
-
 					Row.forEach(Icon => {
 						const BGColor = FixColor(Icon.bg);
 
@@ -130,14 +128,16 @@ module.exports = (Request, Result) => {
 						const BGRect = (BGColor && BGColor !== "transparent") ? `<rect width="${Icon.size}" height="${Icon.size}" fill="${BGColor}" rx="${RX}" />` : "";
 						const Tooltip = Icon.tip ? `<title>${EscapeXML(Icon.tip)}</title>` : "";
 
+						const Rotation = Icon.rot ? `transform="rotate(${Icon.rot} ${Icon.size / 2} ${Icon.size / 2})"` : "";
+
 						let ClipAttribute = "";
-						if(Icon.radius > 0){
+						if(Icon.rad > 0){
 							const ClipID = `round_${Icon.id}`;
 							Defs += `<clipPath id="${ClipID}"><rect width="${Icon.size}" height="${Icon.size}" rx="${RX}" /></clipPath>`;
 							ClipAttribute = `clip-path="url(#${ClipID})"`;
 						}
 
-						SVGContent += `<svg x="${CurrentX}" y="${CurrentY}" width="${Icon.size}" height="${Icon.size}">${Tooltip}<g ${ClipAttribute}>${BGRect}<g>${Icon.SVGData || ""}</g></g></svg>`;
+						SVGContent += `<svg x="${CurrentX}" y="${CurrentY}" width="${Icon.size}" height="${Icon.size}">${Tooltip}<g ${ClipAttribute}>${BGRect}<g ${Rotation}>${Icon.SVGData || ""}</g></g></svg>`;
 
 						CurrentX += Icon.size + Gap;
 					});
