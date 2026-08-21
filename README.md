@@ -131,14 +131,14 @@
 |   max_row   | Максимальное кол-во иконок по горизонтале, потом переходит на следующую строку |    0    |
 |     rot     | Поворот иконки в градусах                                                      |    0    |
 
-| Параметр | Информация                                                                      |      Дефолт       |
-|:--------:|:--------------------------------------------------------------------------------|:-----------------:|
-|   icon   | Иконка                                                                          |       error       |
-|   size   | Размер иконки в пикселях                                                        | Из параметра size |
-|    bg    | Цвет заднего фона                                                               |  Из параметра bg  |
-|   rad    | Радиус закругления в процентах (50 это круг)                                    | Из параметра rad  |
-|   tip    | Текст при наведении курсором (используется правило [ТЕКСТ]) (не работает, todo) |                   |
-|   rot    | Поворот иконки в градусах                                                       | Из параметра rot  |
+| Параметр | Информация                                       |      Дефолт       |
+|:--------:|:-------------------------------------------------|:-----------------:|
+|   icon   | Иконка                                           |       error       |
+|   size   | Размер иконки в пикселях                         | Из параметра size |
+|    bg    | Цвет заднего фона                                |  Из параметра bg  |
+|   rad    | Радиус закругления в процентах (50 это круг)     | Из параметра rad  |
+|   tip    | Текст под иконкой (используется правило [ТЕКСТ]) |                   |
+|   rot    | Поворот иконки в градусах                        | Из параметра rot  |
 
 ![](https://profile-render-fawn.vercel.app/?type=debug&debug=icons)
 
@@ -218,11 +218,9 @@
 
 ![](https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google,size=150},directx,twitch})
 
-\\/ todo
+``https://profile-render-fawn.vercel.app/?type=icons&icons={{icon=njs,tip=TIPnbsp1},{icon=python,tip=TIPnbsp2}}``
 
-``https://profile-render-fawn.vercel.app/?type=icons&icons={{icon=njs,tip=ЯnbspфанатnbspNodeJS!},{icon=python,tip=НенавижуnbspPython!}}``
-
-![](https://profile-render-fawn.vercel.app/?type=icons&icons={{icon=njs,tip=ЯnbspфанатnbspNodeJS!},{icon=python,tip=НенавижуnbspPython!}})
+![](https://profile-render-fawn.vercel.app/?type=icons&icons={{icon=njs,tip=TIPnbsp1},{icon=python,tip=TIPnbsp2}})
 
 ``https://profile-render-fawn.vercel.app/?type=icons&icons={{icon=troll},{icon=troll,rot=90},{icon=troll,rot=180},{icon=troll,rot=-90}}&bg=transparent``
 

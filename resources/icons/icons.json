@@ -280,12 +280,12 @@
 		"glsl": "black"
 	},
 	"Categories": {
-		"Языки программирования"   : ["c", "cpp", "cmm", "cs", "glua", "java", "js", "lua", "zig", "luau", "py", "fortran", "rs", "ts", "wasm", "nasm", "php", "scala", "kt", "swift", "go", "ruby", "glsl", "groovy"],
+		"Языки программирования"   : ["c", "perl", "haskell", "elixir", "erlang", "solidity", "dart", "r", "matlab", "julia", "cobol", "cpp", "cmm", "cs", "glua", "java", "js", "lua", "zig", "luau", "py", "fortran", "rs", "ts", "wasm", "nasm", "php", "scala", "kt", "swift", "go", "ruby", "glsl", "groovy"],
 		"Операционные системы"     : ["win7", "win8", "win10", "win11", "winxp", "android"],
 		"Базы данных"              : ["sql", "pg", "mysql", "mongo", "redis"],
 		"Типы файлов"              : ["svg", "json", "xml"],
 		"Разметка"                 : ["html", "css"],
-		"Игры"                     : ["gmod", "roblox", "tl", "dota", "minecraft", "teardown", "sfd", "csgo", "halflife", "halflife2"],
+		"Игры"                     : ["portal", "portal2", "tm2", "gmod", "roblox", "tl", "dota", "minecraft", "teardown", "sfd", "csgo", "halflife", "halflife2"],
 		"Ядра"                     : ["gsrc", "src", "src2", "quake", "unity", "unreal", "godot", "redot"],
 		"Социальные сети"          : ["yt", "steam", "tt", "vk", "ds", "tg", "twitch", "x", "twitter", "pinterest", "ok"],
 		"Сайты"                    : ["vercel", "github"],
