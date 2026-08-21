@@ -170,9 +170,17 @@
 
 ![](https://profile-render-fawn.vercel.app/?type=icon&icon=ruby&bg=transparent)
 
-``https://profile-render-fawn.vercel.app/?type=icon&icon=swift&radius=50``
+``https://profile-render-fawn.vercel.app/?type=icon&icon=swift&rad=50``
 
-![](https://profile-render-fawn.vercel.app/?type=icon&icon=swift&radius=50)
+![](https://profile-render-fawn.vercel.app/?type=icon&icon=swift&rad=50)
+
+``https://profile-render-fawn.vercel.app/?type=icon&icon=ue&rot=180``
+
+![](https://profile-render-fawn.vercel.app/?type=icon&icon=ue&rot=180)
+
+``https://profile-render-fawn.vercel.app/?type=icon&icon=creeper&rot=90``
+
+![](https://profile-render-fawn.vercel.app/?type=icon&icon=creeper&rot=90)
 
 ``https://profile-render-fawn.vercel.app/?type=icons&icons=c,cpp,cs``
 
@@ -210,9 +218,15 @@
 
 ![](https://profile-render-fawn.vercel.app/?type=icons&icons={microsoft,{icon=google,size=150},directx,twitch})
 
+\\/ todo
+
 ``https://profile-render-fawn.vercel.app/?type=icons&icons={{icon=njs,tip=ЯnbspфанатnbspNodeJS!},{icon=python,tip=НенавижуnbspPython!}}``
 
 ![](https://profile-render-fawn.vercel.app/?type=icons&icons={{icon=njs,tip=ЯnbspфанатnbspNodeJS!},{icon=python,tip=НенавижуnbspPython!}})
+
+``https://profile-render-fawn.vercel.app/?type=icons&icons={{icon=troll},{icon=troll,rot=90},{icon=troll,rot=180},{icon=troll,rot=-90}}&bg=transparent``
+
+![](https://profile-render-fawn.vercel.app/?type=icons&icons={{icon=troll},{icon=troll,rot=90},{icon=troll,rot=180},{icon=troll,rot=-90}}&bg=transparent)
 
 
 ## debug

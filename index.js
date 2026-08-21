@@ -103,10 +103,14 @@ module.exports = (Request, Result) => {
 					Rows.push(IconItems);
 				}
 
+				const LabelFontSize = 11;
+				const LabelGap = 4;
+
 				let CanvasWidth = 0;
 				const RowMetrics = Rows.map(Row => {
 					const RowW = Row.reduce((Sum, Icon) => Sum + Icon.size, 0) + (Row.length - 1) * Gap;
-					const RowH = Math.max(...Row.map(i => i.size));
+					const HasAnyTip = Row.some(i => i.tip);
+					const RowH = Math.max(...Row.map(i => i.size)) + (HasAnyTip ? (LabelFontSize + LabelGap) : 0);
 					if(RowW > CanvasWidth){ CanvasWidth = RowW; }
 					return { W: RowW, H: RowH };
 				});
@@ -126,7 +130,6 @@ module.exports = (Request, Result) => {
 						const RX = (Icon.size * Icon.rad) / 100;
 
 						const BGRect = (BGColor && BGColor !== "transparent") ? `<rect width="${Icon.size}" height="${Icon.size}" fill="${BGColor}" rx="${RX}" />` : "";
-						const Tooltip = Icon.tip ? `<title>${EscapeXML(Icon.tip)}</title>` : "";
 
 						const Rotation = Icon.rot ? `transform="rotate(${Icon.rot} ${Icon.size / 2} ${Icon.size / 2})"` : "";
 
@@ -137,7 +140,13 @@ module.exports = (Request, Result) => {
 							ClipAttribute = `clip-path="url(#${ClipID})"`;
 						}
 
-						SVGContent += `<svg x="${CurrentX}" y="${CurrentY}" width="${Icon.size}" height="${Icon.size}">${Tooltip}<g ${ClipAttribute}>${BGRect}<g ${Rotation}>${Icon.SVGData || ""}</g></g></svg>`;
+						SVGContent += `<svg x="${CurrentX}" y="${CurrentY}" width="${Icon.size}" height="${Icon.size}"><g ${ClipAttribute}>${BGRect}<g ${Rotation}>${Icon.SVGData || ""}</g></g></svg>`;
+
+						if(Icon.tip){
+							const TextX = CurrentX + (Icon.size / 2);
+							const TextY = CurrentY + Icon.size + LabelGap + (LabelFontSize * 0.8);
+							SVGContent += `<text x="${TextX}" y="${TextY}" fill="${Options.Color}" font-family="monospace" font-size="${LabelFontSize}" text-anchor="middle" xml:space="preserve">${EscapeXML(Icon.tip)}</text>`;
+						}
 
 						CurrentX += Icon.size + Gap;
 					});
