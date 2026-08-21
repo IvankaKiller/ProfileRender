@@ -215,8 +215,8 @@ module.exports = (Request, Result) => {
 
 							SVGContent += `
             <g transform="translate(0, ${Y})">
-                <text x="${ColId}" y="42" fill="#ffffff" font-family="monospace" font-size="16" font-weight="bold">${id}</text>
-                <text x="${ColAliases}" y="42" fill="#888" font-family="monospace" font-size="12">${aliases}</text>
+                <text x="${ColId}" y="42" fill="#ffffff" font-family="monospace" font-size="16" font-weight="bold">${id}.svg</text>
+                <text x="${ColAliases}" y="42" fill="#888" font-family="monospace" font-size="16">${aliases}</text>
                 
                 <svg x="${ColIconDef}" y="0" width="${IconSize}" height="${IconSize}">
                     <rect width="100%" height="100%" fill="${bgColor}" />
@@ -241,7 +241,7 @@ module.exports = (Request, Result) => {
         <defs>${Defs}</defs>
         <rect width="100%" height="100%" fill="#0f0f0f" />
         
-        <text x="${ColId}" y="35" fill="#666" font-family="monospace" font-size="11" font-weight="bold">ID ИКОНКИ</text>
+        <text x="${ColId}" y="35" fill="#666" font-family="monospace" font-size="11" font-weight="bold">НАЗВАНИЕ ФАЙЛА SVG</text>
         <text x="${ColAliases}" y="35" fill="#666" font-family="monospace" font-size="11" font-weight="bold">АЛИАСЫ / ИМЕНА ДЛЯ ВВОДА</text>
         <text x="${ColIconDef}" y="35" fill="#666" font-family="monospace" font-size="11" font-weight="bold">bg=default</text>
         <text x="${ColIconClean}" y="35" fill="#666" font-family="monospace" font-size="11" font-weight="bold">bg=transparent</text>

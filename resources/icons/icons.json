@@ -250,7 +250,8 @@
 		"subversion"      : "subversion",
 		"gitlab"          : "gitlab",
 		"forge"           : "forge",
-		"maven"           : "maven"
+		"maven"           : "maven",
+		"redhat"          : "redhat"
 	},
 	"Backgrounds": {
 		"forge": "1E2D44",
@@ -324,7 +325,8 @@
 		"win7": "0f77b9ff",
 		"win10": "0078d7ff",
 		"win11": "000e79ff",
-		"glsl": "black"
+		"glsl": "black",
+		"redhat": "black"
 	},
 	"Categories": {
 		"Языки программирования"   : ["c", "perl", "haskell", "elixir", "erlang", "solidity", "dart", "r", "matlab", "julia", "cobol", "cpp", "cmm", "cs", "glua", "clojure", "qwik", "java", "js", "lua", "zig", "luau", "py", "fortran", "rs", "ts", "wasm", "nasm", "php", "scala", "kt", "swift", "go", "ruby", "glsl", "groovy"],
@@ -332,7 +334,7 @@
 		"Базы данных"              : ["sql", "pg", "mysql", "mongo", "redis", "new4j"],
 		"Типы файлов"              : ["svg", "json", "xml"],
 		"Разметка"                 : ["html", "css"],
-		"Игры"                     : ["portal", "portal2", "manyland", "portal", "tm2", "gmod", "roblox", "tl", "dota", "minecraft", "forge", "teardown", "sfd", "csgo", "halflife", "halflife2"],
+		"Игры"                     : ["portal", "portal2", "manyland", "spore", "portal", "tm2", "gmod", "roblox", "tl", "dota", "minecraft", "forge", "teardown", "sfd", "csgo", "halflife", "halflife2"],
 		"Ядра"                     : ["gsrc", "src", "src2", "quake", "unity", "unreal", "godot", "redot"],
 		"Социальные сети"          : ["yt", "steam", "tt", "vk", "ds", "tg", "twitch", "x", "twitter", "pinterest", "ok"],
 		"Сайты"                    : ["vercel", "github", "cloudflare", "behance"],
@@ -340,8 +342,8 @@
 		"Программы"                : ["obs", "spotify"],
 		"Среда выполнения"         : ["nodejs", "dotnet"],
 		"Инструменты разработчиков": ["rider", "pycharm", "webstorm", "intelij", "rustrover", "goland", "clion", "phpstorm", "jupyter", "tortoisegit", "drupal", "appwrite", "okta", "jira", "subversion", "gitlab", "maven", "nginx", "mvs", "nuget", "terraform", "jenkins", "ansible", "prometheus", "grafana", "cmake", "vsc", "robloxstudio", "arduino", "docker", "vim", "sublime", "git", "npm", "gradle", "ps", "flash", "blender", "inkscape", "githubdesk", "figma", "kubernetes"],
-		"Библиотеки"               : ["opengl", "vulkan", "bullet", "directx", "glfw", "box2d"],
-		"Компании"                 : ["microsoft", "google", "nvidia", "apple"],
+		"Библиотеки"               : ["opengl", "vulkan", "bullet", "directx", "glfw", "box2d", "hibernate"],
+		"Компании"                 : ["microsoft", "google", "nvidia", "apple", "redhat"],
 		"ИИ"                       : ["chatgpt", "deepseek"],
 		"Приколы"                  : ["render", "troll", "creeper"],
 		"Остальное"                : ["error", "blank"]
